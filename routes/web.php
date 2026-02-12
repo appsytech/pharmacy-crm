@@ -8,11 +8,10 @@ use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\MedicineListController;
 use App\Http\Controllers\Admin\PatientAppoinmentController;
 use App\Http\Controllers\Admin\PatientController;
+use App\Http\Controllers\Admin\StaffAuthController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\StaffController;
 use Illuminate\Support\Facades\Route;
-
-
 
 
 
@@ -22,8 +21,12 @@ Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::post('login/proceed', [AuthController::class, 'authenticate'])->name('login.proceed');
 Route::post('logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
+/* ====================== Dashboard > Portal Auth  ====================== */
+Route::get('staff/login', [StaffAuthController::class, 'login'])->name('staff.login');
+Route::post('staff/login/proceed', [StaffAuthController::class, 'authenticate'])->name('staff.login.proceed');
+
 /* ====================== Dashboard  ====================== */
-Route::get('/', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard')->middleware(['auth']);
 Route::get('medicine-list', [MedicineListController::class, 'index'])->name('medicine-list.index')->middleware('auth');
 
 

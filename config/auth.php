@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\Admin;
+use App\Models\Doctor;
+use App\Models\Staff;
 
 return [
 
@@ -42,6 +44,17 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'doctors' => [
+            'driver' => 'session',
+            'provider' => 'doctors',
+        ],
+
+        'staffs' => [
+            'driver' => 'session',
+            'provider' => 'staffs',
+        ],
+
     ],
 
     /*
@@ -65,6 +78,16 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', Admin::class),
+        ],
+
+        'doctors' => [
+            'driver' => 'eloquent',
+            'model' => Doctor::class,
+        ],
+
+        'staffs' => [
+            'driver' => 'eloquent',
+            'model' => Staff::class,
         ],
 
         // 'users' => [

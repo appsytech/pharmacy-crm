@@ -33,8 +33,19 @@
                 <p class="text-gray-600">Sign in to your account to continue</p>
             </div>
 
-            <x-admin.globals.forms.form-secondary :action="route('login.proceed')" method="POST" class="space-y-5">
+            <x-admin.globals.forms.form-secondary :action="route('staff.login.proceed')" method="POST" class="space-y-5">
                 <x-slot name="fields">
+
+                    {{-- ==== Role Selection ==== --}}
+                    <x-admin.globals.forms.form-field-secondary
+                        type="select"
+                        name="role"
+                        label="Login As"
+                        required
+                        :leftIcon="asset('assets/svg/user-light-gray.svg')">
+                        <option value="doctor">Doctor</option>
+                        <option value="staff">Staff</option>
+                    </x-admin.globals.forms.form-field-secondary>
 
                     {{-- ==== Email ==== --}}
                     <x-admin.globals.forms.form-field-secondary type="email" name="credential" label="Email" required
