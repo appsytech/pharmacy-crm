@@ -4,6 +4,7 @@ namespace App\Repositories\Admin;
 
 use App\Models\Patient;
 use App\Repositories\Admin\Interfaces\PatientRepositoryInterface;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class PatientRepository implements PatientRepositoryInterface
@@ -66,6 +67,34 @@ class PatientRepository implements PatientRepositoryInterface
             )
             ->paginate($filterData['paginateLimit'] ?? 10);
     }
+
+
+    /* ============================================================================
+    |  Fetch patient collections with optional filters and selected columns.
+    ==============================================================================*/
+    public function getPatientCollections(?array $filterData = null, ?array $selectedcolumns = null): ?Collection
+    {
+        return Patient::when(
+            isset($filterData['firstName']),
+            function ($query) use ($filterData) {
+                $query->where('first_name', 'LIKE', '%' . $filterData['firstName'] . '%');
+            }
+        )
+            ->when(
+                isset($filterData['email']),
+                function ($query) use ($filterData) {
+                    $query->where('email', 'LIKE', '%' . $filterData['email'] . '%');
+                }
+            )
+            ->when(
+                isset($selectedcolumns) && count($selectedcolumns) >= 1,
+                function ($query) use ($selectedcolumns) {
+                    return $query->select($selectedcolumns);
+                }
+            )
+            ->get();
+    }
+
 
     /* ============================================================================
     |Update specific columns of an existing patient record.

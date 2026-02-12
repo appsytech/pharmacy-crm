@@ -38,9 +38,9 @@
          </x-admin.sidebar.nav-item-group>
 
          <!--======== Patients  ========-->
-         <x-admin.sidebar.nav-item-group title="Patients" :svgUrl="asset('assets/svg/user-group.svg')" :activeRoutes="['patient.index', 'patient.edit']">
+         <x-admin.sidebar.nav-item-group title="Patients" :svgUrl="asset('assets/svg/user-group.svg')" :activeRoutes="['patient.index', 'patient.edit', 'patient-appointment.index', 'patient-appointment.edit']">
              <x-admin.sidebar.nav-sub-item title="Patient List" :url="route('patient.index')" :activeRoutes="['patient.index', 'patient.edit']" />
-             <x-admin.sidebar.nav-sub-item title="Patient Appointment" url="#" />
+             <x-admin.sidebar.nav-sub-item title="Patient Appointment" :url="route('patient-appointment.index')" :activeRoutes="['patient-appointment.index', 'patient-appointment.edit']" />
          </x-admin.sidebar.nav-item-group>
 
          <!--======== Setting  ========-->

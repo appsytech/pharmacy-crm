@@ -6,6 +6,7 @@ use App\Models\Patient;
 use App\Repositories\Admin\Interfaces\DoctorRepositoryInterface;
 use App\Repositories\Admin\Interfaces\PatientRepositoryInterface;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class PatientService
@@ -87,6 +88,16 @@ class PatientService
         return $this->patientRepo->getPatients($filterData, $selectedcolumns);
     }
 
+
+    /* ============================================================================
+    |  Fetch patient collections with optional filters and selected columns.
+    ==============================================================================*/
+    public function getPatientCollections(?array $filterData = null, ?array $selectedcolumns = null): ?Collection
+    {
+        return $this->patientRepo->getPatientCollections($filterData, $selectedcolumns);
+    }
+
+    
     /* ============================================================================
     | Update an existing patient record .
     ==============================================================================*/

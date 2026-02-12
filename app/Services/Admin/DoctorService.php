@@ -39,6 +39,9 @@ class DoctorService
             'position' => $request->position,
             'license_number' => $request->license_number,
             'join_date' => $request->join_date,
+            'fb_profile' => $request->fb_profile,
+            'linkedin_profile' => $request->linkedin_profile,
+            'twitter_profile' => $request->twitter_profile,
             'availability' => $request->availability,
             'location' => $request->location,
             'created_at' => Carbon::now()
@@ -115,6 +118,9 @@ class DoctorService
             'join_date' => $request->join_date,
             'availability' => $request->availability,
             'location' => $request->location,
+            'fb_profile' => $request->fb_profile,
+            'linkedin_profile' => $request->linkedin_profile,
+            'twitter_profile' => $request->twitter_profile,
             'updated_at' => Carbon::now(),
         ];
 

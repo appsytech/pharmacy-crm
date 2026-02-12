@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\MedicineListController;
+use App\Http\Controllers\Admin\PatientAppoinmentController;
 use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\StaffController;
@@ -63,6 +64,16 @@ Route::post('dashboard/patient/store', [PatientController::class, 'store'])->nam
 Route::delete('dashboard/patient/delete', [PatientController::class, 'delete'])->name('patient.delete')->middleware('auth');
 Route::get('dashboard/patient/edit/{id}', [PatientController::class, 'edit'])->name('patient.edit')->middleware('auth');
 Route::put('dashboard/patient/update', [PatientController::class, 'update'])->name('patient.update')->middleware('auth');
+
+
+
+/* ====================== Dashboard > Patient Appoinment ====================== */
+Route::get('dashboard/patient-appointment', [PatientAppoinmentController::class, 'index'])->name('patient-appointment.index')->middleware('auth');
+Route::post('dashboard/patient-appointment/store', [PatientAppoinmentController::class, 'store'])->name('patient-appointment.store')->middleware('auth');
+Route::delete('dashboard/patient-appointment/delete', [PatientAppoinmentController::class, 'delete'])->name('patient-appointment.delete')->middleware('auth');
+Route::get('dashboard/patient-appointment/edit/{id}', [PatientAppoinmentController::class, 'edit'])->name('patient-appointment.edit')->middleware('auth');
+Route::put('dashboard/patient-appointment/update', [PatientAppoinmentController::class, 'update'])->name('patient-appointment.update')->middleware('auth');
+Route::post('dashboard/patient-appointment/status/update', [PatientAppoinmentController::class, 'updateStatus'])->name('patient-appointment.status.update')->middleware('auth');
 
 
 /* ====================== Dashboard > Staffs ====================== */

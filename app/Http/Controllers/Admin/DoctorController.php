@@ -53,6 +53,9 @@ class DoctorController extends Controller
             'license_number' => 'required|string|max:50|unique:doctors,license_number',
             'join_date' => 'nullable|date',
             'availability' => 'nullable|string',
+            'fb_profile' => 'nullable|url|max:255',
+            'linkedin_profile' => 'nullable|url|max:255',
+            'twitter_profile' => 'nullable|url|max:255',
             'location' => 'nullable|string|max:150',
         ]);
 
@@ -107,6 +110,9 @@ class DoctorController extends Controller
             'license_number' => 'required|string|max:50|unique:doctors,license_number,' . $request->id,
             'join_date' => 'nullable|date',
             'availability' => 'nullable|string',
+            'fb_profile' => 'nullable|url|max:255',
+            'linkedin_profile' => 'nullable|url|max:255',
+            'twitter_profile' => 'nullable|url|max:255',
             'location' => 'nullable|string|max:150',
         ]);
 

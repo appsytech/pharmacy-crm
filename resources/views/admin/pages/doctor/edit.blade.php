@@ -104,6 +104,32 @@
                 <x-admin.globals.forms.field type="date" label="Location" value="{{ $data['doctor']->location ?? '' }}" name="location" placeholder="Enter Location"
                     :svgUrl="asset('assets/svg/map-pin.svg')" />
 
+
+                {{-- ====== Facebook ====== --}}
+                <x-admin.globals.forms.field type="text"
+                    label="Facebook Profile" value="{{ $data['doctor']->fb_profile ?? '' }}"
+                    name="fb_profile"
+                    placeholder="Enter Facebook URL"
+                    :svgUrl="asset('assets/svg/facebook.svg')" />
+
+                {{-- ====== Linkedin ====== --}}
+                <x-admin.globals.forms.field
+                    type="text"
+                    value="{{ $data['doctor']->linkedin_profile ?? '' }}"
+                    label="LinkedIn Profile"
+                    name="linkedin_profile"
+                    placeholder="Enter LinkedIn URL"
+                    :svgUrl="asset('assets/svg/linkedin.svg')" />
+
+                {{-- ====== Twitter ====== --}}
+                <x-admin.globals.forms.field
+                    type="text"
+                    value="{{ $data['doctor']->twitter_profile ?? '' }}"
+                    label="Twitter Profile"
+                    name="twitter_profile"
+                    placeholder="Enter Twitter URL"
+                    :svgUrl="asset('assets/svg/twitter.svg')" />
+
                 {{-- ====== Profile ====== --}}
                 <x-admin.globals.forms.field type="file" class="image-upload&preview" label="Profile" name="profile_image"
                     :svgUrl="asset('assets/svg/image-plus.svg')">
