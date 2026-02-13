@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DoctorController;
+use App\Http\Controllers\Admin\JobApplicationController;
 use App\Http\Controllers\Admin\MedicineListController;
 use App\Http\Controllers\Admin\PatientAppoinmentController;
 use App\Http\Controllers\Admin\PatientController;
@@ -85,3 +86,11 @@ Route::post('dashboard/staff/store', [StaffController::class, 'store'])->name('s
 Route::delete('dashboard/staff/delete', [StaffController::class, 'delete'])->name('staff.delete')->middleware('auth');
 Route::get('dashboard/staff/edit/{id}', [StaffController::class, 'edit'])->name('staff.edit')->middleware('auth');
 Route::put('dashboard/staff/update', [StaffController::class, 'update'])->name('staff.update')->middleware('auth');
+
+
+
+/* ====================== Dashboard > Job Applications====================== */
+Route::get('dashboard/job-application', [JobApplicationController::class, 'index'])->name('job-application.index')->middleware('auth');
+Route::delete('dashboard/job-application/delete', [JobApplicationController::class, 'delete'])->name('job-application.delete')->middleware('auth');
+Route::get('dashboard/job-application/respond/{id}', [JobApplicationController::class, 'edit'])->name('job-application.edit')->middleware('auth');
+Route::put('dashboard/job-application/update', [JobApplicationController::class, 'update'])->name('job-application.update')->middleware('auth');

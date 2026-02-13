@@ -8,9 +8,11 @@ use App\Repositories\Admin\DoctorRepository;
 use App\Repositories\Admin\Interfaces\ActivityRepositoryInterface;
 use App\Repositories\Admin\Interfaces\AdminRepositoryInterface;
 use App\Repositories\Admin\Interfaces\DoctorRepositoryInterface;
+use App\Repositories\Admin\Interfaces\JobApplicationRepositoryInterface;
 use App\Repositories\Admin\Interfaces\PatientAppoinmentRepositoryInterface;
 use App\Repositories\Admin\Interfaces\PatientRepositoryInterface;
 use App\Repositories\Admin\Interfaces\StaffRepositoryInterface;
+use App\Repositories\Admin\JobApplicationRepository;
 use App\Repositories\Admin\PatientAppoinmentRepository;
 use App\Repositories\Admin\PatientRepository;
 use App\Repositories\Admin\StaffRepository;
@@ -33,6 +35,7 @@ class AppServiceProvider extends ServiceProvider
             StaffRepositoryInterface::class => StaffRepository::class,
             ActivityRepositoryInterface::class => ActivityRepository::class,
             PatientAppoinmentRepositoryInterface::class => PatientAppoinmentRepository::class,
+            JobApplicationRepositoryInterface::class => JobApplicationRepository::class
         ];
 
         foreach ($bindings as $interface => $repository) {

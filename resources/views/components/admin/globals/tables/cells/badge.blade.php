@@ -77,38 +77,66 @@ $statusMap = [
 ],
 
 'APPLIED' => [
-    'label' => 'Applied',
-    'bg' => 'bg-blue-100',
-    'text' => 'text-blue-800',
-    'dot' => 'bg-blue-600',
+'label' => 'Applied',
+'bg' => 'bg-blue-100',
+'text' => 'text-blue-800',
+'dot' => 'bg-blue-600',
 ],
 
 'APPROVED' => [
-    'label' => 'Approved',
-    'bg' => 'bg-green-100',
-    'text' => 'text-green-800',
-    'dot' => 'bg-green-600',
+'label' => 'Approved',
+'bg' => 'bg-green-100',
+'text' => 'text-green-800',
+'dot' => 'bg-green-600',
 ],
 
 'IN_LINE' => [
-    'label' => 'In Line',
-    'bg' => 'bg-yellow-100',
-    'text' => 'text-yellow-800',
-    'dot' => 'bg-yellow-600',
+'label' => 'In Line',
+'bg' => 'bg-yellow-100',
+'text' => 'text-yellow-800',
+'dot' => 'bg-yellow-600',
 ],
 
 'IN_CHECKING' => [
-    'label' => 'In Checking',
-    'bg' => 'bg-purple-100',
-    'text' => 'text-purple-800',
-    'dot' => 'bg-purple-600',
+'label' => 'In Checking',
+'bg' => 'bg-purple-100',
+'text' => 'text-purple-800',
+'dot' => 'bg-purple-600',
 ],
 
 'CHECKED' => [
-    'label' => 'Checked',
-    'bg' => 'bg-gray-100',
-    'text' => 'text-gray-800',
-    'dot' => 'bg-gray-600',
+'label' => 'Checked',
+'bg' => 'bg-gray-100',
+'text' => 'text-gray-800',
+'dot' => 'bg-gray-600',
+],
+
+'PENDING' => [
+'label' => 'Pending',
+'bg' => 'bg-yellow-100',
+'text' => 'text-yellow-800',
+'dot' => 'bg-yellow-600',
+],
+
+'REVIEWED' => [
+'label' => 'Reviewed',
+'bg' => 'bg-blue-100',
+'text' => 'text-blue-800',
+'dot' => 'bg-blue-600',
+],
+
+'SHORTLISTED' => [
+'label' => 'Shortlisted',
+'bg' => 'bg-green-100',
+'text' => 'text-green-800',
+'dot' => 'bg-green-600',
+],
+
+'REJECTED' => [
+'label' => 'Rejected',
+'bg' => 'bg-red-100',
+'text' => 'text-red-800',
+'dot' => 'bg-red-600',
 ],
 ];
 

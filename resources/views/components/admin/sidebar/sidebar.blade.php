@@ -35,6 +35,7 @@
          <!--======== Extra Events  ========-->
          <x-admin.sidebar.nav-item-group title="Extra Events" :svgUrl="asset('assets/svg/calendar-check.svg')" :activeRoutes="['activity.index', 'activity.edit']">
              <x-admin.sidebar.nav-sub-item title="Activities" url="{{ route('activity.index') }}" :activeRoutes="['activity.index', 'activity.edit']" />
+             <x-admin.sidebar.nav-sub-item title="Job Applications" url="{{ route('job-application.index') }}" :activeRoutes="['job-application.index', 'job-application.edit']" />
          </x-admin.sidebar.nav-item-group>
 
          <!--======== Patients  ========-->
