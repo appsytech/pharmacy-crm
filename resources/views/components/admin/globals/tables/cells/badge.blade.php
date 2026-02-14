@@ -138,6 +138,25 @@ $statusMap = [
 'text' => 'text-red-800',
 'dot' => 'bg-red-600',
 ],
+'PAID' => [
+'label' => 'Paid',
+'bg' => 'bg-emerald-100',
+'text' => 'text-emerald-800',
+'dot' => 'bg-emerald-600',
+],
+'PARTIALLY PAID' => [
+'label' => 'Partially Paid',
+'bg' => 'bg-yellow-100',
+'text' => 'text-yellow-800',
+'dot' => 'bg-yellow-600',
+],
+'UNPAID' => [
+'label' => 'Unpaid',
+'bg' => 'bg-red-100',
+'text' => 'text-red-800',
+'dot' => 'bg-red-600',
+],
+
 ];
 
 $badge = $statusMap[$value] ?? [

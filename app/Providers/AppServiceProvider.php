@@ -5,17 +5,25 @@ namespace App\Providers;
 use App\Repositories\Admin\ActivityRepository;
 use App\Repositories\Admin\AdminRepository;
 use App\Repositories\Admin\DoctorRepository;
+use App\Repositories\Admin\ExpenseRepository;
+use App\Repositories\Admin\ExpenseTypeRepository;
+use App\Repositories\Admin\HomeSliderRepository;
 use App\Repositories\Admin\Interfaces\ActivityRepositoryInterface;
 use App\Repositories\Admin\Interfaces\AdminRepositoryInterface;
 use App\Repositories\Admin\Interfaces\DoctorRepositoryInterface;
+use App\Repositories\Admin\Interfaces\ExpenseRepositoryInterface;
+use App\Repositories\Admin\Interfaces\ExpenseTypeRepositoryInterface;
+use App\Repositories\Admin\Interfaces\HomeSliderRepositoryInterface;
 use App\Repositories\Admin\Interfaces\JobApplicationRepositoryInterface;
 use App\Repositories\Admin\Interfaces\PatientAppoinmentRepositoryInterface;
 use App\Repositories\Admin\Interfaces\PatientRepositoryInterface;
 use App\Repositories\Admin\Interfaces\StaffRepositoryInterface;
+use App\Repositories\Admin\Interfaces\StaffSalaryRepositoryInterface;
 use App\Repositories\Admin\JobApplicationRepository;
 use App\Repositories\Admin\PatientAppoinmentRepository;
 use App\Repositories\Admin\PatientRepository;
 use App\Repositories\Admin\StaffRepository;
+use App\Repositories\Admin\StaffSalaryRepository;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -35,7 +43,11 @@ class AppServiceProvider extends ServiceProvider
             StaffRepositoryInterface::class => StaffRepository::class,
             ActivityRepositoryInterface::class => ActivityRepository::class,
             PatientAppoinmentRepositoryInterface::class => PatientAppoinmentRepository::class,
-            JobApplicationRepositoryInterface::class => JobApplicationRepository::class
+            JobApplicationRepositoryInterface::class => JobApplicationRepository::class,
+            ExpenseTypeRepositoryInterface::class => ExpenseTypeRepository::class,
+            ExpenseRepositoryInterface::class => ExpenseRepository::class,
+            HomeSliderRepositoryInterface::class => HomeSliderRepository::class,
+            StaffSalaryRepositoryInterface::class => StaffSalaryRepository::class
         ];
 
         foreach ($bindings as $interface => $repository) {

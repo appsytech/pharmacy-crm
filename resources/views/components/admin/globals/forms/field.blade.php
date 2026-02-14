@@ -6,7 +6,7 @@
  'type' => 'text',
  'label' => null,
  'svgUrl' => null,
- 'name',
+ 'name' => null,
  'id' => null,
  'value' => null,
  'accept' => null,

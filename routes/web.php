@@ -5,6 +5,9 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DoctorController;
+use App\Http\Controllers\Admin\ExpenseController;
+use App\Http\Controllers\Admin\ExpenseTypeController;
+use App\Http\Controllers\Admin\HomeSliderController;
 use App\Http\Controllers\Admin\JobApplicationController;
 use App\Http\Controllers\Admin\MedicineListController;
 use App\Http\Controllers\Admin\PatientAppoinmentController;
@@ -12,6 +15,7 @@ use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\StaffAuthController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\StaffController;
+use App\Http\Controllers\Admin\StaffSalaryController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -94,3 +98,34 @@ Route::get('dashboard/job-application', [JobApplicationController::class, 'index
 Route::delete('dashboard/job-application/delete', [JobApplicationController::class, 'delete'])->name('job-application.delete')->middleware('auth');
 Route::get('dashboard/job-application/respond/{id}', [JobApplicationController::class, 'edit'])->name('job-application.edit')->middleware('auth');
 Route::put('dashboard/job-application/update', [JobApplicationController::class, 'update'])->name('job-application.update')->middleware('auth');
+
+
+/* ====================== Dashboard > Expense Type ====================== */
+Route::get('dashboard/expense-type', [ExpenseTypeController::class, 'index'])->name('expense-type.index')->middleware('auth');
+Route::post('dashboard/expense-type/store', [ExpenseTypeController::class, 'store'])->name('expense-type.store')->middleware('auth');
+Route::delete('dashboard/expense-type/delete', [ExpenseTypeController::class, 'delete'])->name('expense-type.delete')->middleware('auth');
+
+
+/* ====================== Dashboard > Expense ====================== */
+Route::get('dashboard/expense', [ExpenseController::class, 'index'])->name('expense.index')->middleware('auth');
+Route::post('dashboard/expense/store', [ExpenseController::class, 'store'])->name('expense.store')->middleware('auth');
+Route::get('dashboard/expense/edit/{id}', [ExpenseController::class, 'edit'])->name('expense.edit')->middleware('auth');
+Route::put('dashboard/expense/update', [ExpenseController::class, 'update'])->name('expense.update')->middleware('auth');
+
+
+/* ====================== Dashboard > Homepage Slider ====================== */
+Route::get('dashboard/homepage-slider', [HomeSliderController::class, 'index'])->name('homepage-slider.index')->middleware('auth');
+Route::post('dashboard/homepage-slider/store', [HomeSliderController::class, 'store'])->name('homepage-slider.store')->middleware('auth');
+Route::delete('dashboard/homepage-slider/delete', [HomeSliderController::class, 'delete'])->name('homepage-slider.delete')->middleware('auth');
+Route::get('dashboard/homepage-slider/edit/{id}', [HomeSliderController::class, 'edit'])->name('homepage-slider.edit')->middleware('auth');
+Route::put('dashboard/homepage-slider/update', [HomeSliderController::class, 'update'])->name('homepage-slider.update')->middleware('auth');
+Route::post('dashboard/homepage-slider/status/update', [HomeSliderController::class, 'updateStatus'])->name('homepage-slider.status.update')->middleware('auth');
+
+
+/* ====================== Dashboard > staff Salary====================== */
+Route::get('dashboard/staff-salary', [StaffSalaryController::class, 'index'])->name('staff-salary.index')->middleware('auth');
+Route::post('dashboard/staff-salary/store', [StaffSalaryController::class, 'store'])->name('staff-salary.store')->middleware('auth');
+Route::get('dashboard/staff-salary/edit/{id}', [StaffSalaryController::class, 'edit'])->name('staff-salary.edit')->middleware('auth');
+Route::put('dashboard/staff-salary/update', [StaffSalaryController::class, 'update'])->name('staff-salary.update')->middleware('auth');
+Route::delete('dashboard/staff-salary/delete', [StaffSalaryController::class, 'delete'])->name('staff-salary.delete')->middleware('auth');
+Route::post('dashboard/staff-salary/amounts', [StaffSalaryController::class, 'getStaffAmountsById'])->name('staff-salary.get-amounts')->middleware('auth');

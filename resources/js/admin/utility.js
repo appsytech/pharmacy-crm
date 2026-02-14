@@ -174,4 +174,35 @@ function handleAjaxForm(event) {
         });
 }
 
-export { togglePasswordField, handleAjaxForm, updateStatus };
+function toggleVoucherRequirement() {
+    const paymentType = document.getElementById("payment_type");
+    const voucherInput = document.getElementById("voucherInput");
+    const voucherWrapper = document.querySelectorAll(
+        ".voucher-realted-wrappers",
+    );
+
+    const isCash = paymentType.value === "CASH";
+
+    if (isCash) {
+        voucherWrapper.forEach((wrapper) => {
+            wrapper.style.display = "none";
+        });
+
+        voucherInput.required = false;
+        voucherInput.value = "";
+    } else {
+        voucherWrapper.forEach((wrapper) => {
+            wrapper.style.display = "block";
+        });
+        voucherInput.required = true;
+        voucherInput.value = "";
+    }
+}
+
+export {
+    togglePasswordField,
+    handleAjaxForm,
+    updateStatus,
+    toggleVoucherRequirement,
+    showAlert,
+};
