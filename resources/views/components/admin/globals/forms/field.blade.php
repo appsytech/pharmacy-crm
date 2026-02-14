@@ -48,8 +48,8 @@
                  for="{{ $id }}"
                  class="flex items-center justify-center w-full px-4 py-2.5 text-sm text-gray-700 bg-white border-2 border-gray-200 rounded-lg cursor-pointer transition-all shadow-sm hover:shadow-md hover:border-blue-500 focus-within:ring-2 focus-within:ring-blue-500">
                  <img src="{{ asset('assets/svg/upload-cloud.svg') }}" class="w-5 h-5 mr-2" alt="">
-                 <span class="font-medium">Click to upload image</span>
-                 <span class="text-gray-400 ml-1">(PNG, JPG, GIF)</span>
+                 <span class="font-medium">Click to upload File</span>
+                 <!-- <span class="text-gray-400 ml-1">(PNG, JPG, GIF)</span> -->
              </label>
 
              {{-- SELECT --}}

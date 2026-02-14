@@ -13,8 +13,10 @@
          <x-admin.sidebar.nav-item title="Home" :svgUrl="asset('assets/svg/home.svg')" :url="route('dashboard')" :activeRoutes="['dashboard']" />
 
          <!--======== Medicine  ========-->
-         <x-admin.sidebar.nav-item-group title="Medicine" :svgUrl="asset('assets/svg/pill.svg')" :activeRoutes="['medicine-list.index', 'medicine-list.edit']">
-             <x-admin.sidebar.nav-sub-item title="Medicine List" :url="route('medicine-list.index')" :activeRoutes="['medicine-list.index', 'medicine-list.edit']" />
+         <x-admin.sidebar.nav-item-group title="Medicine" :svgUrl="asset('assets/svg/pill.svg')" :activeRoutes="['medicine.index', 'medicine.edit', 'supplier.index', 'supplier.edit', 'manufacturer.index', 'manufacturer.edit']">
+             <x-admin.sidebar.nav-sub-item title="Supplier" :url="route('supplier.index')" :activeRoutes="['supplier.index', 'supplier.edit']" />
+             <x-admin.sidebar.nav-sub-item title="Manufacturer" :url="route('manufacturer.index')" :activeRoutes="['manufacturer.index', 'manufacturer.edit']" />
+             <x-admin.sidebar.nav-sub-item title="Medicine List" :url="route('medicine.index')" :activeRoutes="['medicine.index', 'medicine.edit']" />
              <x-admin.sidebar.nav-sub-item title="Upcoming Medicine" url="#" />
          </x-admin.sidebar.nav-item-group>
 
@@ -51,9 +53,10 @@
          </x-admin.sidebar.nav-item-group>
 
          <!--======== Patients  ========-->
-         <x-admin.sidebar.nav-item-group title="Patients" :svgUrl="asset('assets/svg/user-group.svg')" :activeRoutes="['patient.index', 'patient.edit', 'patient-appointment.index', 'patient-appointment.edit']">
+         <x-admin.sidebar.nav-item-group title="Patients" :svgUrl="asset('assets/svg/user-group.svg')" :activeRoutes="['patient.index', 'patient.edit', 'patient-appointment.index', 'patient-appointment.edit', 'patient-report.index', 'patient-report.edit']">
              <x-admin.sidebar.nav-sub-item title="Patient List" :url="route('patient.index')" :activeRoutes="['patient.index', 'patient.edit']" />
              <x-admin.sidebar.nav-sub-item title="Patient Appointment" :url="route('patient-appointment.index')" :activeRoutes="['patient-appointment.index', 'patient-appointment.edit']" />
+             <x-admin.sidebar.nav-sub-item title="Patient Report" :url="route('patient-report.index')" :activeRoutes="['patient-report.index', 'patient-report.edit']" />
          </x-admin.sidebar.nav-item-group>
 
          <!--======== Setting  ========-->

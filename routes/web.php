@@ -9,13 +9,17 @@ use App\Http\Controllers\Admin\ExpenseController;
 use App\Http\Controllers\Admin\ExpenseTypeController;
 use App\Http\Controllers\Admin\HomeSliderController;
 use App\Http\Controllers\Admin\JobApplicationController;
+use App\Http\Controllers\Admin\ManufacturerController;
+use App\Http\Controllers\Admin\MedicineController;
 use App\Http\Controllers\Admin\MedicineListController;
 use App\Http\Controllers\Admin\PatientAppoinmentController;
 use App\Http\Controllers\Admin\PatientController;
+use App\Http\Controllers\Admin\PatientReportController;
 use App\Http\Controllers\Admin\StaffAuthController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\StaffSalaryController;
+use App\Http\Controllers\Admin\SupplierController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -84,6 +88,16 @@ Route::put('dashboard/patient-appointment/update', [PatientAppoinmentController:
 Route::post('dashboard/patient-appointment/status/update', [PatientAppoinmentController::class, 'updateStatus'])->name('patient-appointment.status.update')->middleware('auth');
 
 
+
+/* ====================== Dashboard > Patient Report ====================== */
+Route::get('dashboard/patient-report', [PatientReportController::class, 'index'])->name('patient-report.index')->middleware('auth');
+Route::post('dashboard/patient-report/store', [PatientReportController::class, 'store'])->name('patient-report.store')->middleware('auth');
+Route::delete('dashboard/patient-report/delete', [PatientReportController::class, 'delete'])->name('patient-report.delete')->middleware('auth');
+Route::get('dashboard/patient-report/edit/{id}', [PatientReportController::class, 'edit'])->name('patient-report.edit')->middleware('auth');
+Route::put('dashboard/patient-report/update', [PatientReportController::class, 'update'])->name('patient-report.update')->middleware('auth');
+
+
+
 /* ====================== Dashboard > Staffs ====================== */
 Route::get('dashboard/staff', [StaffController::class, 'index'])->name('staff.index')->middleware('auth');
 Route::post('dashboard/staff/store', [StaffController::class, 'store'])->name('staff.store')->middleware('auth');
@@ -129,3 +143,27 @@ Route::get('dashboard/staff-salary/edit/{id}', [StaffSalaryController::class, 'e
 Route::put('dashboard/staff-salary/update', [StaffSalaryController::class, 'update'])->name('staff-salary.update')->middleware('auth');
 Route::delete('dashboard/staff-salary/delete', [StaffSalaryController::class, 'delete'])->name('staff-salary.delete')->middleware('auth');
 Route::post('dashboard/staff-salary/amounts', [StaffSalaryController::class, 'getStaffAmountsById'])->name('staff-salary.get-amounts')->middleware('auth');
+
+
+/* ====================== Dashboard > Supplier ====================== */
+Route::get('dashboard/supplier', [SupplierController::class, 'index'])->name('supplier.index')->middleware('auth');
+Route::post('dashboard/supplier/store', [SupplierController::class, 'store'])->name('supplier.store')->middleware('auth');
+Route::delete('dashboard/supplier/delete', [SupplierController::class, 'delete'])->name('supplier.delete')->middleware('auth');
+Route::get('dashboard/supplier/edit/{id}', [SupplierController::class, 'edit'])->name('supplier.edit')->middleware('auth');
+Route::put('dashboard/supplier/update', [SupplierController::class, 'update'])->name('supplier.update')->middleware('auth');
+
+
+/* ====================== Dashboard > Manufacturer ====================== */
+Route::get('dashboard/manufacturer', [ManufacturerController::class, 'index'])->name('manufacturer.index')->middleware('auth');
+Route::post('dashboard/manufacturer/store', [ManufacturerController::class, 'store'])->name('manufacturer.store')->middleware('auth');
+Route::delete('dashboard/manufacturer/delete', [ManufacturerController::class, 'delete'])->name('manufacturer.delete')->middleware('auth');
+Route::get('dashboard/manufacturer/edit/{id}', [ManufacturerController::class, 'edit'])->name('manufacturer.edit')->middleware('auth');
+Route::put('dashboard/manufacturer/update', [ManufacturerController::class, 'update'])->name('manufacturer.update')->middleware('auth');
+
+
+/* ====================== Dashboard > Medicine ====================== */
+Route::get('dashboard/medicine', [MedicineController::class, 'index'])->name('medicine.index')->middleware('auth');
+Route::post('dashboard/medicine/store', [MedicineController::class, 'store'])->name('medicine.store')->middleware('auth');
+Route::delete('dashboard/medicine/delete', [MedicineController::class, 'delete'])->name('medicine.delete')->middleware('auth');
+Route::get('dashboard/medicine/edit/{id}', [MedicineController::class, 'edit'])->name('medicine.edit')->middleware('auth');
+Route::put('dashboard/medicine/update', [MedicineController::class, 'update'])->name('medicine.update')->middleware('auth');

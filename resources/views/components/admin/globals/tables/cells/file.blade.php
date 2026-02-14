@@ -16,11 +16,11 @@ $isImage = in_array($extension, $imageExtensions);
         class="h-10 w-10 rounded object-cover">
 </a>
 @else
-<a href="{{ asset('storage/' . $file)  }}" class="flex items-center gap-2">
+<a href="{{ asset('storage/' . $file)  }}" target="_blank" class="flex items-center gap-2">
     <img src="{{asset('assets/svg/file-text.svg') }}" class="h-6 w-6 text-gray-500" alt="">
-    <span class="text-sm text-gray-600">
+    <!-- <span class="text-sm text-gray-600">
         {{ basename($file) }}
-    </span>
+    </span> -->
 </a>
 @endif
 @else

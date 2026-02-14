@@ -38,6 +38,7 @@ class PatientService
             'last_name' => $request->last_name,
             'date_of_birth' => $request->date_of_birth,
             'gender' => $request->gender,
+            'blood_group' => $request->blood_group  ?? null,
             'phone' => $request->phone ?? null,
             'email' => $request->email,
             'password' => bcrypt($request->password),
@@ -97,7 +98,7 @@ class PatientService
         return $this->patientRepo->getPatientCollections($filterData, $selectedcolumns);
     }
 
-    
+
     /* ============================================================================
     | Update an existing patient record .
     ==============================================================================*/
@@ -116,6 +117,7 @@ class PatientService
             'last_name' => $request->last_name,
             'date_of_birth' => $request->date_of_birth,
             'gender' => $request->gender,
+            'blood_group' => $request->blood_group  ?? null,
             'phone' => $request->phone ?? null,
             'email' => $request->email,
             'password' => bcrypt($request->password),
