@@ -50,11 +50,14 @@
 
         <x-slot name="action_buttons">
             <x-admin.buttons.primary type="reset" label="Clear Filter" :svgUrl="asset('assets/svg/setting-vertical.svg')" />
+            @multiAuth('web')
             <x-admin.buttons.secondary type="button" label="Add Patient" class="open-modal"
                 data-targetModalId="patient-add-modal" :svgUrl="asset('assets/svg/plus-white.svg')" />
+            @endmultiAuth
         </x-slot>
 
         @scopedslot('cellaction', ($row))
+        @multiAuth('web')
         <div class="flex items-center justify-center gap-1">
             <x-admin.headers.icon-button :url="route('patient.edit', encrypt($row->id))" class="px-0!" :svgUrl="asset('assets/svg/pencil.svg')" />
 
@@ -68,6 +71,7 @@
                 </x-slot:icon_button>
             </x-admin.globals.forms.form>
         </div>
+        @endmultiAuth
         @endscopedslot
 
     </x-admin.globals.tables.table>

@@ -30,21 +30,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::post('login/proceed', [AuthController::class, 'authenticate'])->name('login.proceed');
-Route::post('logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+Route::post('logout', [AuthController::class, 'logout'])->name('logout')->middleware(['multiAuth:web,doctors,staffs']);
 
-/* ====================== Dashboard > Portal Auth  ====================== */
+/* ====================== Dashboard > Staff Auth  ====================== */
 Route::get('staff/login', [StaffAuthController::class, 'login'])->name('staff.login');
 Route::post('staff/login/proceed', [StaffAuthController::class, 'authenticate'])->name('staff.login.proceed');
 
 /* ====================== Dashboard  ====================== */
-Route::get('/', [DashboardController::class, 'index'])->name('dashboard')->middleware(['auth']);
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard')->middleware(['multiAuth:web,doctors,staffs']);
 Route::get('medicine-list', [MedicineListController::class, 'index'])->name('medicine-list.index')->middleware('auth');
 
 
 /* ====================== Dashboard > Profile ====================== */
-Route::get('dashboard/profile', [ProfileController::class, 'index'])->name('profile.index')->middleware('auth');
-Route::get('dashboard/profile-edit', [ProfileController::class, 'edit'])->name('profile.edit')->middleware('auth');
-Route::put('dashboard/profile/update', [ProfileController::class, 'update'])->name('profile.update')->middleware('auth');
+Route::get('dashboard/profile', [ProfileController::class, 'index'])->name('profile.index')->middleware(['multiAuth:web,doctors,staffs']);
+Route::get('dashboard/profile-edit', [ProfileController::class, 'edit'])->name('profile.edit')->middleware(['multiAuth:web,doctors,staffs']);
+Route::put('dashboard/profile/update', [ProfileController::class, 'update'])->name('profile.update')->middleware(['multiAuth:web,doctors,staffs']);
 
 /* ====================== Dashboard > Admins ====================== */
 Route::get('dashboard/admin', [AdminController::class, 'index'])->name('admin.index')->middleware('auth');
@@ -73,22 +73,20 @@ Route::put('dashboard/doctor/update', [DoctorController::class, 'update'])->name
 
 
 /* ====================== Dashboard > Patients ====================== */
-Route::get('dashboard/patient', [PatientController::class, 'index'])->name('patient.index')->middleware('auth');
-Route::post('dashboard/patient/store', [PatientController::class, 'store'])->name('patient.store')->middleware('auth');
-Route::delete('dashboard/patient/delete', [PatientController::class, 'delete'])->name('patient.delete')->middleware('auth');
-Route::get('dashboard/patient/edit/{id}', [PatientController::class, 'edit'])->name('patient.edit')->middleware('auth');
-Route::put('dashboard/patient/update', [PatientController::class, 'update'])->name('patient.update')->middleware('auth');
-
+Route::get('dashboard/patient', [PatientController::class, 'index'])->name('patient.index')->middleware(['multiAuth:web,doctors,staffs']);
+Route::post('dashboard/patient/store', [PatientController::class, 'store'])->name('patient.store')->middleware('auth')->middleware(['multiAuth:web,doctors,staffs']);
+Route::delete('dashboard/patient/delete', [PatientController::class, 'delete'])->name('patient.delete')->middleware('auth')->middleware(['multiAuth:web,doctors,staffs']);
+Route::get('dashboard/patient/edit/{id}', [PatientController::class, 'edit'])->name('patient.edit')->middleware('auth')->middleware(['multiAuth:web,doctors,staffs']);
+Route::put('dashboard/patient/update', [PatientController::class, 'update'])->name('patient.update')->middleware('auth')->middleware(['multiAuth:web,doctors,staffs']);
 
 
 /* ====================== Dashboard > Patient Appoinment ====================== */
-Route::get('dashboard/patient-appointment', [PatientAppoinmentController::class, 'index'])->name('patient-appointment.index')->middleware('auth');
-Route::post('dashboard/patient-appointment/store', [PatientAppoinmentController::class, 'store'])->name('patient-appointment.store')->middleware('auth');
-Route::delete('dashboard/patient-appointment/delete', [PatientAppoinmentController::class, 'delete'])->name('patient-appointment.delete')->middleware('auth');
-Route::get('dashboard/patient-appointment/edit/{id}', [PatientAppoinmentController::class, 'edit'])->name('patient-appointment.edit')->middleware('auth');
-Route::put('dashboard/patient-appointment/update', [PatientAppoinmentController::class, 'update'])->name('patient-appointment.update')->middleware('auth');
-Route::post('dashboard/patient-appointment/status/update', [PatientAppoinmentController::class, 'updateStatus'])->name('patient-appointment.status.update')->middleware('auth');
-
+Route::get('dashboard/patient-appointment', [PatientAppoinmentController::class, 'index'])->name('patient-appointment.index')->middleware(['multiAuth:web,doctors,staffs']);
+Route::post('dashboard/patient-appointment/store', [PatientAppoinmentController::class, 'store'])->name('patient-appointment.store')->middleware(['multiAuth:web,doctors,staffs']);
+Route::delete('dashboard/patient-appointment/delete', [PatientAppoinmentController::class, 'delete'])->name('patient-appointment.delete')->middleware(['multiAuth:web,doctors,staffs']);
+Route::get('dashboard/patient-appointment/edit/{id}', [PatientAppoinmentController::class, 'edit'])->name('patient-appointment.edit')->middleware(['multiAuth:web,doctors,staffs']);
+Route::put('dashboard/patient-appointment/update', [PatientAppoinmentController::class, 'update'])->name('patient-appointment.update')->middleware(['multiAuth:web,doctors,staffs']);
+Route::post('dashboard/patient-appointment/status/update', [PatientAppoinmentController::class, 'updateStatus'])->name('patient-appointment.status.update')->middleware(['multiAuth:web,doctors,staffs']);
 
 
 /* ====================== Dashboard > Patient Report ====================== */

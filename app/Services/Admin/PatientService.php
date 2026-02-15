@@ -8,6 +8,7 @@ use App\Repositories\Admin\Interfaces\PatientRepositoryInterface;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Auth;
 
 class PatientService
 {
@@ -162,5 +163,37 @@ class PatientService
     public function delete(int $id): bool
     {
         return $this->patientRepo->delete($id);
+    }
+
+
+    public function getIndexPageData($request): array
+    {
+        $patients = null;
+        $doctors = null;
+
+        if (Auth::guard('web')->check() || Auth::guard('staffs')->check()) {
+
+            $patients =  $this->patientRepo->getPatients([
+                'firstName' => $request->first_name ?? null,
+                'email' => $request->email ?? null,
+            ]);
+
+            $doctors = $this->doctorRepo->getDoctorsCollection([], ['id', 'full_name']);
+        } elseif (Auth::guard('doctors')->check()) {
+
+            $patients =  $this->patientRepo->getPatients([
+                'firstName' => $request->first_name ?? null,
+                'email' => $request->email ?? null,
+                'doctorId' => Auth::user()->id
+            ]);
+        }
+
+        $data =  [
+            'patients' => $patients,
+            'doctors' => $doctors,
+            'oldInputs' => $request->all(),
+        ];
+
+        return $data;
     }
 }

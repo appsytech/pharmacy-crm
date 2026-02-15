@@ -85,7 +85,7 @@ class PatientAppoinmentService
     ==============================================================================*/
     public function getPatientAppoinments(?array $filterData = null, ?array $selectedcolumns = null): ?LengthAwarePaginator
     {
-       
+
         return $this->patientAppoinmentRepo->getPatientAppoinments($filterData, $selectedcolumns);
     }
 
@@ -148,5 +148,40 @@ class PatientAppoinmentService
     public function delete(int $id): bool
     {
         return $this->patientAppoinmentRepo->delete($id);
+    }
+
+
+    public function getIndexPageData($request)
+    {
+
+        $appointments  = null;
+        $patients = null;
+        $doctors = null;
+
+        if (Auth::guard('web')->check() || Auth::guard('staffs')->check()) {
+
+            $appointments = $this->patientAppoinmentRepo->getPatientAppoinments([
+                'patientName' => $request->patient_name ?? null,
+                'phone' => $request->phone,
+            ]);
+
+            $patients = $this->patientRepo->getPatientCollections([], ['id', 'first_name', 'last_name']);
+            $doctors = $this->doctorRepo->getDoctorsCollection([], ['id', 'full_name']);
+        } elseif (Auth::guard('doctors')->check()) {
+            $appointments = $this->patientAppoinmentRepo->getPatientAppoinments([
+                'patientName' => $request->patient_name ?? null,
+                'phone' => $request->phone,
+                'doctorId' => Auth::user()->id,
+            ]);
+        }
+
+        $data = [
+            'appointments' => $appointments,
+            'patients' => $patients,
+            'doctors' => $doctors,
+            'oldInputs' => $request->all(),
+        ];
+
+        return $data;
     }
 }

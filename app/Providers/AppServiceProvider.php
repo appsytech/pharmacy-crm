@@ -38,6 +38,9 @@ use App\Repositories\Admin\SupplierPaymentRepository;
 use App\Repositories\Admin\SupplierRepository;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Auth;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -78,6 +81,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+
+        Blade::if('multiAuth', function (...$guards) {
+
+            foreach ($guards as $guard) {
+                if (Auth::guard($guard)->check()) {
+                    return true;
+                }
+            }
+            return false;
+        });
+
         Schema::defaultStringLength(191);
     }
 }

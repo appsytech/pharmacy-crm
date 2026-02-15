@@ -18,7 +18,15 @@ class AuthController extends Controller
 
     public function login()
     {
-        if (Auth::check()) {
+        if (Auth::guard('web')->check()) {
+            return redirect()->intended(route('dashboard'));
+        }
+
+        if (Auth::guard('doctors')->check()) {
+            return redirect()->intended(route('dashboard'));
+        }
+
+        if (Auth::guard('staffs')->check()) {
             return redirect()->intended(route('dashboard'));
         }
 
@@ -43,11 +51,27 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
+        $guards = ['web', 'doctors', 'staffs'];
+        $redirectRoute = 'login';
 
-        Auth::logout();
+        foreach ($guards as $guard) {
+            if (Auth::guard($guard)->check()) {
+                Auth::guard($guard)->logout();
+
+                if (in_array($guard, ['doctors', 'staffs'])) {
+                    $redirectRoute = 'staff.login';
+                } else {
+                    $redirectRoute = 'login';
+                }
+
+                break;
+            }
+        }
+
+    
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('login');
+        return redirect()->route($redirectRoute);
     }
 }

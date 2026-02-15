@@ -49,14 +49,18 @@
 
         <x-slot name="action_buttons">
             <x-admin.buttons.primary type="reset" label="Clear Filter" :svgUrl="asset('assets/svg/setting-vertical.svg')" />
+
+            @multiAuth('web', 'staffs')
             <x-admin.buttons.secondary type="button" label="Add Appointment" class="open-modal"
                 data-targetModalId="patient-appointment-add-modal" :svgUrl="asset('assets/svg/plus-white.svg')" />
+            @endmultiAuth
         </x-slot>
 
         @scopedslot('cellaction', ($row))
         <div class="flex items-center justify-center gap-1">
+            @multiAuth('web', 'staffs')
             <x-admin.headers.icon-button :url="route('patient-appointment.edit', encrypt($row->id))" class="px-0!" :svgUrl="asset('assets/svg/pencil.svg')" />
-
+            @endmultiAuth
             <!-- <x-admin.globals.forms.form method="POST" class="flex items-center justify-center" :action="route('patient-appointment.delete')">
                 <x-slot:extra_methods>
                     <input type="hidden" name="id" value="{{ $row->id }}">

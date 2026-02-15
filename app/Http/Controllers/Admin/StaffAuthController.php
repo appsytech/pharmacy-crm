@@ -18,6 +18,10 @@ class StaffAuthController extends Controller
     public function login()
     {
 
+        if (Auth::guard('web')->check()) {
+            return redirect()->intended(route('dashboard'));
+        }
+
         if (Auth::guard('doctors')->check()) {
             return redirect()->intended(route('dashboard'));
         }

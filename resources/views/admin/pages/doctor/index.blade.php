@@ -50,6 +50,7 @@
 
         <x-slot name="action_buttons">
             <x-admin.buttons.primary type="reset" label="Clear Filter" :svgUrl="asset('assets/svg/setting-vertical.svg')" />
+            
             <x-admin.buttons.secondary type="button" label="Add Doctor" class="open-modal"
                 data-targetModalId="doctor-add-modal" :svgUrl="asset('assets/svg/plus-white.svg')" />
         </x-slot>

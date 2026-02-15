@@ -29,15 +29,7 @@ class PatientAppoinmentController extends Controller
             'phone' => 'nullable|string|max:100',
         ]);
 
-        $data = [
-            'appointments' => $this->patientAppoinmentService->getPatientAppoinments([
-                'patientName' => $request->patient_name ?? null,
-                'phone' => $request->phone,
-            ]),
-            'patients' => $this->patientService->getPatientCollections([], ['id', 'first_name', 'last_name']),
-            'doctors' => $this->doctorService->getDoctorsCollection([], ['id', 'full_name']),
-            'oldInputs' => $request->all(),
-        ];
+        $data = $this->patientAppoinmentService->getIndexPageData($request);
 
         return view('admin.pages.patient-appoinment.index', compact('data'));
     }

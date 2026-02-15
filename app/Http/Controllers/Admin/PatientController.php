@@ -24,14 +24,7 @@ class PatientController extends Controller
             'email' => 'nullable|email|max:100',
         ]);
 
-        $data = [
-            'patients' => $this->patientService->getPatients([
-                'firstName' => $request->first_name ?? null,
-                'email' => $request->email ?? null,
-            ]),
-            'doctors' => $this->doctorService->getDoctorsCollection([], ['id', 'full_name']),
-            'oldInputs' => $request->all(),
-        ];
+        $data = $this->patientService->getIndexPageData($request);
 
         return view('admin.pages.patient.index', compact('data'));
     }

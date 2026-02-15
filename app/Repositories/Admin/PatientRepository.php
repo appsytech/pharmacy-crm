@@ -60,6 +60,12 @@ class PatientRepository implements PatientRepositoryInterface
                 }
             )
             ->when(
+                isset($filterData['doctorId']),
+                function ($query) use ($filterData) {
+                    return $query->where('doctor_id', $filterData['doctorId']);
+                }
+            )
+            ->when(
                 isset($selectedcolumns) && count($selectedcolumns) >= 1,
                 function ($query) use ($selectedcolumns) {
                     return $query->select($selectedcolumns);
