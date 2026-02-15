@@ -15,11 +15,13 @@ use App\Http\Controllers\Admin\MedicineListController;
 use App\Http\Controllers\Admin\PatientAppoinmentController;
 use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\PatientReportController;
+use App\Http\Controllers\Admin\PharmacyBranchController;
 use App\Http\Controllers\Admin\StaffAuthController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\StaffSalaryController;
 use App\Http\Controllers\Admin\SupplierController;
+use App\Http\Controllers\Admin\SupplierPaymentController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -152,6 +154,13 @@ Route::delete('dashboard/supplier/delete', [SupplierController::class, 'delete']
 Route::get('dashboard/supplier/edit/{id}', [SupplierController::class, 'edit'])->name('supplier.edit')->middleware('auth');
 Route::put('dashboard/supplier/update', [SupplierController::class, 'update'])->name('supplier.update')->middleware('auth');
 
+/* ====================== Dashboard > Supplier Payment ====================== */
+Route::get('dashboard/supplier-payment', [SupplierPaymentController::class, 'index'])->name('supplier-payment.index')->middleware('auth');
+Route::post('dashboard/supplier-payment/store', [SupplierPaymentController::class, 'store'])->name('supplier-payment.store')->middleware('auth');
+Route::delete('dashboard/supplier-payment/delete', [SupplierPaymentController::class, 'delete'])->name('supplier-payment.delete')->middleware('auth');
+Route::get('dashboard/supplier-payment/edit/{id}', [SupplierPaymentController::class, 'edit'])->name('supplier-payment.edit')->middleware('auth');
+Route::put('dashboard/supplier-payment/update', [SupplierPaymentController::class, 'update'])->name('supplier-payment.update')->middleware('auth');
+
 
 /* ====================== Dashboard > Manufacturer ====================== */
 Route::get('dashboard/manufacturer', [ManufacturerController::class, 'index'])->name('manufacturer.index')->middleware('auth');
@@ -167,3 +176,11 @@ Route::post('dashboard/medicine/store', [MedicineController::class, 'store'])->n
 Route::delete('dashboard/medicine/delete', [MedicineController::class, 'delete'])->name('medicine.delete')->middleware('auth');
 Route::get('dashboard/medicine/edit/{id}', [MedicineController::class, 'edit'])->name('medicine.edit')->middleware('auth');
 Route::put('dashboard/medicine/update', [MedicineController::class, 'update'])->name('medicine.update')->middleware('auth');
+
+
+/* ====================== Dashboard > Pharmacy Branch ====================== */
+Route::get('dashboard/pharmacy-branch', [PharmacyBranchController::class, 'index'])->name('pharmacy-branch.index')->middleware('auth');
+Route::post('dashboard/pharmacy-branch/store', [PharmacyBranchController::class, 'store'])->name('pharmacy-branch.store')->middleware('auth');
+Route::delete('dashboard/pharmacy-branch/delete', [PharmacyBranchController::class, 'delete'])->name('pharmacy-branch.delete')->middleware('auth');
+Route::get('dashboard/pharmacy-branch/edit/{id}', [PharmacyBranchController::class, 'edit'])->name('pharmacy-branch.edit')->middleware('auth');
+Route::put('dashboard/pharmacy-branch/update', [PharmacyBranchController::class, 'update'])->name('pharmacy-branch.update')->middleware('auth');

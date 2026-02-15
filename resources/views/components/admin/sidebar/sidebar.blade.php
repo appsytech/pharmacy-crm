@@ -41,9 +41,10 @@
          </x-admin.sidebar.nav-item-group>
 
          <!--========Manage Money ========-->
-         <x-admin.sidebar.nav-item-group title="Manage Money" :svgUrl="asset('assets/svg/dollar-sign.svg')" :activeRoutes="['expense-type.index', 'expense-type.edit', 'expense.index', 'expense.edit']">
+         <x-admin.sidebar.nav-item-group title="Manage Money" :svgUrl="asset('assets/svg/dollar-sign.svg')" :activeRoutes="['expense-type.index', 'expense-type.edit', 'expense.index', 'expense.edit', 'supplier-payment.index', 'supplier-payment.edit']">
              <x-admin.sidebar.nav-sub-item title="Expense type" url="{{ route('expense-type.index') }}" :activeRoutes="['expense-type.index', 'expense-type.edit']" />
              <x-admin.sidebar.nav-sub-item title="Expense" url="{{ route('expense.index') }}" :activeRoutes="['expense.index', 'expense.edit']" />
+             <x-admin.sidebar.nav-sub-item title="Supplier Payment" url="{{ route('supplier-payment.index') }}" :activeRoutes="['supplier-payment.index', 'supplier-payment.edit']" />
          </x-admin.sidebar.nav-item-group>
 
          <!--========Staff Management ========-->
@@ -60,9 +61,10 @@
          </x-admin.sidebar.nav-item-group>
 
          <!--======== Setting  ========-->
-         <x-admin.sidebar.nav-item-group title="Setting" :svgUrl="asset('assets/svg/setting.svg')" :activeRoutes="['admin.index', 'admin.edit',  'homepage-slider.index', 'homepage-slider.edit']">
+         <x-admin.sidebar.nav-item-group title="Setting" :svgUrl="asset('assets/svg/setting.svg')" :activeRoutes="['admin.index', 'admin.edit',  'homepage-slider.index', 'homepage-slider.edit', 'pharmacy-branch.index', 'pharmacy-branch.edit']">
              <x-admin.sidebar.nav-sub-item title="Admin" :url="route('admin.index')" :activeRoutes="['admin.index', 'admin.edit']" />
              <x-admin.sidebar.nav-sub-item title="Homepage Slider" :url="route('homepage-slider.index')" :activeRoutes="['homepage-slider.index', 'homepage-slider.edit']" />
+             <x-admin.sidebar.nav-sub-item title="Pharmacy Branch" :url="route('pharmacy-branch.index')" :activeRoutes="['pharmacy-branch.index', 'pharmacy-branch.edit']" />
          </x-admin.sidebar.nav-item-group>
 
      </nav>
