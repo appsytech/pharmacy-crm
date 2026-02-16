@@ -205,4 +205,5 @@ export {
     updateStatus,
     toggleVoucherRequirement,
     showAlert,
+    handleAlertAutoDismiss
 };

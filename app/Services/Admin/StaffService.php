@@ -30,11 +30,13 @@ class StaffService
             'email' => $request->email,
             'phone' => $request->phone ?? null,
             'gender' => $request->gender ?? null,
+            'password' => bcrypt($request->password),
             'date_of_birth' => $request->date_of_birth ?? null,
             'join_date' => $request->join_date,
             'job_title' => $request->job_title ?? null,
             'department' => $request->department ?? null,
             'salary' => $request->salary ?? null,
+            'role' => $request->role,
             'status' => $request->status,
             'address' => $request->address ?? null,
             'created_by' => Auth::user()->name,
@@ -92,10 +94,15 @@ class StaffService
             'job_title' => $request->job_title ?? null,
             'department' => $request->department ?? null,
             'salary' => $request->salary ?? null,
+            'role' => $request->role,
             'status' => $request->status,
             'address' => $request->address ?? null,
             'updated_at' => Carbon::now(),
         ];
+
+        if (! empty($request->password)) {
+            $data['password'] = bcrypt($request->password); // Hash it before saving
+        }
 
         $isUpdated =  $this->staffRepo->updateColumns($staffId, $data);
 

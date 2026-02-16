@@ -24,6 +24,20 @@ $statusMap = [
 'bg' => 'bg-yellow-100',
 'textColor' => 'text-yellow-700'
 ],
+'ACTIVE' => [
+'text' => 'Active',
+'dot' => 'bg-green-500',
+'bg' => 'bg-green-100',
+'textColor' => 'text-green-700',
+],
+
+'INACTIVE' => [
+'text' => 'Inactive',
+'dot' => 'bg-red-500',
+'bg' => 'bg-red-100',
+'textColor' => 'text-red-700',
+],
+
 ];
 @endphp
 
@@ -55,6 +69,9 @@ $statusMap = [
                 </td>
 
                 <td class="px-5 py-3 text-sm text-gray-700 font-medium">
+
+
+
                     @if(($field['type'] ?? null) === 'badge')
 
                     @php
@@ -71,6 +88,15 @@ $statusMap = [
                     @else
                     --
                     @endif
+
+                    @elseif(($field['type'] ?? null) === 'link')
+                    <a
+                        href="{{ $field['value'] ?? '#' }}"
+                        target="_blank"
+                        class="text-blue-600 hover:text-blue-800 underline">
+                        {{ isset($field['type']) ? 'Visit Link' : '--' }}
+                    </a>
+
 
                     @else
                     {{ $field['value'] ?? '--' }}

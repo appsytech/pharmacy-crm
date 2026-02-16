@@ -49,6 +49,13 @@
                 <x-admin.globals.forms.field type="password" label="Confirm Password" name="password_confirmation" placeholder="Enter confirm password"
                     :svgUrl="asset('assets/svg/lock.svg')" />
 
+                {{-- ====== Role ====== --}}
+                <x-admin.globals.forms.field type="select" label="Role" name="role" required
+                    :svgUrl="asset('assets/svg/shield-check.svg')">
+                    <x-slot>
+                        <option value="DOCTOR">Doctor</option>
+                    </x-slot>
+                </x-admin.globals.forms.field>
 
                 {{-- ====== Consultation Fee ====== --}}
                 <x-admin.globals.forms.field type="numeric" label="Consultation Fee" value="{{ $data['doctor']->consultation_fee ?? '' }}" name="consultation_fee" placeholder="Enter Consultation Fee"
@@ -101,7 +108,7 @@
                     :svgUrl="asset('assets/svg/clock.svg')" />
 
                 {{-- ====== Location ====== --}}
-                <x-admin.globals.forms.field type="date" label="Location" value="{{ $data['doctor']->location ?? '' }}" name="location" placeholder="Enter Location"
+                <x-admin.globals.forms.field type="text" label="Location" value="{{ $data['doctor']->location ?? '' }}" name="location" placeholder="Enter Location"
                     :svgUrl="asset('assets/svg/map-pin.svg')" />
 
 

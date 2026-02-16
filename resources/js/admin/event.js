@@ -4,6 +4,8 @@ import { closeModal, handleMediaUpload, openModal } from "./modal";
 import { handleMenuClick, markActiveMenu, toggleSidebar } from "./sidebar";
 import {
     handleAjaxForm,
+    handleAlertAutoDismiss,
+    showAlert,
     togglePasswordField,
     toggleVoucherRequirement,
     updateStatus,
@@ -100,3 +102,5 @@ document.addEventListener("submit", function (event) {
 
 // Highlight active sidebar menu item on page load
 markActiveMenu();
+
+handleAlertAutoDismiss();

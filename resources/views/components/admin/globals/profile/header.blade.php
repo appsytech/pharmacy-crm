@@ -10,7 +10,7 @@ if (isset($admin)){
 
 $profileImageExists =
 !empty($admin->profile_image) && Storage::disk('public')->exists($admin->profile_image);
-$firstLetter = strtoupper(substr($admin->name, 0, 1));
+$firstLetter = strtoupper(substr($admin->name ?? $admin->full_name, 0, 1));
 }
 
 
@@ -32,7 +32,7 @@ $firstLetter = strtoupper(substr($admin->name, 0, 1));
 
     {{-- === Info ==== --}}
     <div>
-        <h1 class="text-xl font-bold leading-tight">{{ $admin->name ?? '' }}</h1>
+        <h1 class="text-xl font-bold leading-tight">{{ $admin->name ?? $admin->full_name ?? '' }}</h1>
         <p class="text-sm mt-0.5">{{ $admin->email ?? '' }}</p>
         <div class="flex items-center gap-2 mt-2">
             <span
@@ -48,7 +48,7 @@ $firstLetter = strtoupper(substr($admin->name, 0, 1));
             3 => 'EDITOR',
             ];
 
-            $roleLabel = $roles[$admin->admin_role] ?? 'UNKNOWN';
+            $roleLabel = $roles[$admin->admin_role] ?? $admin->role ?? '';
             @endphp
 
             <span

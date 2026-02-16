@@ -65,11 +65,11 @@ Route::post('dashboard/activity/status/update', [ActivityController::class, 'upd
 
 
 /* ====================== Dashboard > Doctors ====================== */
-Route::get('dashboard/doctor', [DoctorController::class, 'index'])->name('doctor.index')->middleware('auth');
-Route::post('dashboard/doctor/store', [DoctorController::class, 'store'])->name('doctor.store')->middleware('auth');
-Route::delete('dashboard/doctor/delete', [DoctorController::class, 'delete'])->name('doctor.delete')->middleware('auth');
-Route::get('dashboard/doctor/edit/{id}', [DoctorController::class, 'edit'])->name('doctor.edit')->middleware('auth');
-Route::put('dashboard/doctor/update', [DoctorController::class, 'update'])->name('doctor.update')->middleware('auth');
+Route::get('dashboard/doctor', [DoctorController::class, 'index'])->name('doctor.index')->middleware(['multiAuth:web,staffs']);
+Route::post('dashboard/doctor/store', [DoctorController::class, 'store'])->name('doctor.store')->middleware(['multiAuth:web,staffs']);
+Route::delete('dashboard/doctor/delete', [DoctorController::class, 'delete'])->name('doctor.delete')->middleware(['multiAuth:web,staffs']);
+Route::get('dashboard/doctor/edit/{id}', [DoctorController::class, 'edit'])->name('doctor.edit')->middleware(['multiAuth:web,staffs']);
+Route::put('dashboard/doctor/update', [DoctorController::class, 'update'])->name('doctor.update')->middleware(['multiAuth:web,staffs']);
 
 
 /* ====================== Dashboard > Patients ====================== */
@@ -90,11 +90,11 @@ Route::post('dashboard/patient-appointment/status/update', [PatientAppoinmentCon
 
 
 /* ====================== Dashboard > Patient Report ====================== */
-Route::get('dashboard/patient-report', [PatientReportController::class, 'index'])->name('patient-report.index')->middleware('auth');
-Route::post('dashboard/patient-report/store', [PatientReportController::class, 'store'])->name('patient-report.store')->middleware('auth');
-Route::delete('dashboard/patient-report/delete', [PatientReportController::class, 'delete'])->name('patient-report.delete')->middleware('auth');
-Route::get('dashboard/patient-report/edit/{id}', [PatientReportController::class, 'edit'])->name('patient-report.edit')->middleware('auth');
-Route::put('dashboard/patient-report/update', [PatientReportController::class, 'update'])->name('patient-report.update')->middleware('auth');
+Route::get('dashboard/patient-report', [PatientReportController::class, 'index'])->name('patient-report.index')->middleware(['multiAuth:web,staffs,doctors']);
+Route::post('dashboard/patient-report/store', [PatientReportController::class, 'store'])->name('patient-report.store')->middleware(['multiAuth:web,staffs,doctors']);
+Route::delete('dashboard/patient-report/delete', [PatientReportController::class, 'delete'])->name('patient-report.delete')->middleware(['multiAuth:web,staffs,doctors']);
+Route::get('dashboard/patient-report/edit/{id}', [PatientReportController::class, 'edit'])->name('patient-report.edit')->middleware(['multiAuth:web,staffs,doctors']);
+Route::put('dashboard/patient-report/update', [PatientReportController::class, 'update'])->name('patient-report.update')->middleware(['multiAuth:web,staffs,doctors']);
 
 
 
@@ -146,11 +146,11 @@ Route::post('dashboard/staff-salary/amounts', [StaffSalaryController::class, 'ge
 
 
 /* ====================== Dashboard > Supplier ====================== */
-Route::get('dashboard/supplier', [SupplierController::class, 'index'])->name('supplier.index')->middleware('auth');
-Route::post('dashboard/supplier/store', [SupplierController::class, 'store'])->name('supplier.store')->middleware('auth');
-Route::delete('dashboard/supplier/delete', [SupplierController::class, 'delete'])->name('supplier.delete')->middleware('auth');
-Route::get('dashboard/supplier/edit/{id}', [SupplierController::class, 'edit'])->name('supplier.edit')->middleware('auth');
-Route::put('dashboard/supplier/update', [SupplierController::class, 'update'])->name('supplier.update')->middleware('auth');
+Route::get('dashboard/supplier', [SupplierController::class, 'index'])->name('supplier.index')->middleware(['multiAuth:web,staffs']);
+Route::post('dashboard/supplier/store', [SupplierController::class, 'store'])->name('supplier.store')->middleware(['multiAuth:web,staffs']);
+Route::delete('dashboard/supplier/delete', [SupplierController::class, 'delete'])->name('supplier.delete')->middleware(['multiAuth:web,staffs']);
+Route::get('dashboard/supplier/edit/{id}', [SupplierController::class, 'edit'])->name('supplier.edit')->middleware(['multiAuth:web,staffs']);
+Route::put('dashboard/supplier/update', [SupplierController::class, 'update'])->name('supplier.update')->middleware(['multiAuth:web,staffs']);
 
 /* ====================== Dashboard > Supplier Payment ====================== */
 Route::get('dashboard/supplier-payment', [SupplierPaymentController::class, 'index'])->name('supplier-payment.index')->middleware('auth');
@@ -161,19 +161,19 @@ Route::put('dashboard/supplier-payment/update', [SupplierPaymentController::clas
 
 
 /* ====================== Dashboard > Manufacturer ====================== */
-Route::get('dashboard/manufacturer', [ManufacturerController::class, 'index'])->name('manufacturer.index')->middleware('auth');
-Route::post('dashboard/manufacturer/store', [ManufacturerController::class, 'store'])->name('manufacturer.store')->middleware('auth');
-Route::delete('dashboard/manufacturer/delete', [ManufacturerController::class, 'delete'])->name('manufacturer.delete')->middleware('auth');
-Route::get('dashboard/manufacturer/edit/{id}', [ManufacturerController::class, 'edit'])->name('manufacturer.edit')->middleware('auth');
-Route::put('dashboard/manufacturer/update', [ManufacturerController::class, 'update'])->name('manufacturer.update')->middleware('auth');
+Route::get('dashboard/manufacturer', [ManufacturerController::class, 'index'])->name('manufacturer.index')->middleware(['multiAuth:web,staffs']);
+Route::post('dashboard/manufacturer/store', [ManufacturerController::class, 'store'])->name('manufacturer.store')->middleware(['multiAuth:web,staffs']);
+Route::delete('dashboard/manufacturer/delete', [ManufacturerController::class, 'delete'])->name('manufacturer.delete')->middleware(['multiAuth:web,staffs']);
+Route::get('dashboard/manufacturer/edit/{id}', [ManufacturerController::class, 'edit'])->name('manufacturer.edit')->middleware(['multiAuth:web,staffs']);
+Route::put('dashboard/manufacturer/update', [ManufacturerController::class, 'update'])->name('manufacturer.update')->middleware(['multiAuth:web,staffs']);
 
 
 /* ====================== Dashboard > Medicine ====================== */
-Route::get('dashboard/medicine', [MedicineController::class, 'index'])->name('medicine.index')->middleware('auth');
-Route::post('dashboard/medicine/store', [MedicineController::class, 'store'])->name('medicine.store')->middleware('auth');
-Route::delete('dashboard/medicine/delete', [MedicineController::class, 'delete'])->name('medicine.delete')->middleware('auth');
-Route::get('dashboard/medicine/edit/{id}', [MedicineController::class, 'edit'])->name('medicine.edit')->middleware('auth');
-Route::put('dashboard/medicine/update', [MedicineController::class, 'update'])->name('medicine.update')->middleware('auth');
+Route::get('dashboard/medicine', [MedicineController::class, 'index'])->name('medicine.index')->middleware(['multiAuth:web,staffs']);
+Route::post('dashboard/medicine/store', [MedicineController::class, 'store'])->name('medicine.store')->middleware(['multiAuth:web,staffs']);
+Route::delete('dashboard/medicine/delete', [MedicineController::class, 'delete'])->name('medicine.delete')->middleware(['multiAuth:web,staffs']);
+Route::get('dashboard/medicine/edit/{id}', [MedicineController::class, 'edit'])->name('medicine.edit')->middleware(['multiAuth:web,staffs']);
+Route::put('dashboard/medicine/update', [MedicineController::class, 'update'])->name('medicine.update')->middleware(['multiAuth:web,staffs']);
 
 
 /* ====================== Dashboard > Pharmacy Branch ====================== */

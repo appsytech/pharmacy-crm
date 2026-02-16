@@ -50,7 +50,7 @@
 
         <x-slot name="action_buttons">
             <x-admin.buttons.primary type="reset" label="Clear Filter" :svgUrl="asset('assets/svg/setting-vertical.svg')" />
-            
+
             <x-admin.buttons.secondary type="button" label="Add Doctor" class="open-modal"
                 data-targetModalId="doctor-add-modal" :svgUrl="asset('assets/svg/plus-white.svg')" />
         </x-slot>
@@ -111,6 +111,14 @@
                     :svgUrl="asset('assets/svg/lock.svg')" />
 
 
+                {{-- ====== Role ====== --}}
+                <x-admin.globals.forms.field type="select" label="Role" name="role" required
+                    :svgUrl="asset('assets/svg/shield-check.svg')">
+                    <x-slot>
+                        <option value="DOCTOR">Doctor</option>
+                    </x-slot>
+                </x-admin.globals.forms.field>
+
                 {{-- ====== Consultation Fee ====== --}}
                 <x-admin.globals.forms.field type="numeric" label="Consultation Fee" name="consultation_fee" placeholder="Enter Consultation Fee"
                     :svgUrl="asset('assets/svg/dollar-sign.svg')" />
@@ -127,15 +135,7 @@
                 <x-admin.globals.forms.field type="number" label="Experience" name="experience" placeholder="Enter Experience"
                     :svgUrl="asset('assets/svg/clock.svg')" />
 
-                {{-- ====== Role ====== --}}
-                <x-admin.globals.forms.field type="select" label="Role" name="admin_role" required
-                    :svgUrl="asset('assets/svg/shield-user.svg')">
-                    <x-slot>
-                        <option value="1">Super Admin</option>
-                        <option value="2">Admin</option>
-                        <option value="3">Editor</option>
-                    </x-slot>
-                </x-admin.globals.forms.field>
+
 
                 {{-- ====== Status ====== --}}
                 <x-admin.globals.forms.field type="select" label="Status" name="status" required

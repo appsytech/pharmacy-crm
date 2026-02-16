@@ -100,6 +100,23 @@
                     :svgUrl="asset('assets/svg/phone.svg')" />
 
 
+                {{-- ====== Password ====== --}}
+                <x-admin.globals.forms.field type="password" label="Password" name="password" required placeholder="Enter password"
+                    :svgUrl="asset('assets/svg/lock.svg')" />
+
+                {{-- ====== Confirm Password ====== --}}
+                <x-admin.globals.forms.field type="password" label="Confirm Password" required name="password_confirmation" placeholder="Enter confirm password"
+                    :svgUrl="asset('assets/svg/lock.svg')" />
+
+                {{-- ====== Role ====== --}}
+                <x-admin.globals.forms.field type="select" label="Role" name="role" required
+                    :svgUrl="asset('assets/svg/shield-check.svg')">
+                    <x-slot>
+                        <option value="STAFF">Staff</option>
+                    </x-slot>
+                </x-admin.globals.forms.field>
+
+
                 {{-- ====== Gender ====== --}}
                 <x-admin.globals.forms.field type="select" label="Gender" name="gender" required
                     :svgUrl="asset('assets/svg/venus.svg')">
@@ -119,7 +136,7 @@
                     :svgUrl="asset('assets/svg/calendar.svg')" />
 
                 {{-- ====== Join Date ====== --}}
-                <x-admin.globals.forms.field type="date" label="Join Birth" name="join_date" required
+                <x-admin.globals.forms.field type="date" label="Join Date" name="join_date" required
                     :svgUrl="asset('assets/svg/calendar-check.svg')" />
 
 

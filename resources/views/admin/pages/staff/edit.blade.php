@@ -33,13 +33,30 @@
                 <x-admin.globals.forms.field type="text" label="Full Name" value="{{ $data['staff']->full_name ?? '' }}" name="full_name" required
                     placeholder="Enter Full Name" :svgUrl="asset('assets/svg/user-check.svg')" />
 
+                {{-- ====== Email ====== --}}
+                <x-admin.globals.forms.field type="text" value="{{ $data['staff']->email ?? '' }}" label="Email" name="email" required
+                    placeholder="Enter Email" :svgUrl="asset('assets/svg/mail.svg')" />
+
                 {{-- ====== Phone ====== --}}
                 <x-admin.globals.forms.field type="text" value="{{ $data['staff']->phone ?? '' }}" label="Phone" name="phone" placeholder="Enter Phone No"
                     :svgUrl="asset('assets/svg/phone.svg')" />
 
-                {{-- ====== Email ====== --}}
-                <x-admin.globals.forms.field type="text" value="{{ $data['staff']->email ?? '' }}" label="Email" name="email" required
-                    placeholder="Enter Email" :svgUrl="asset('assets/svg/mail.svg')" />
+
+                {{-- ====== Password ====== --}}
+                <x-admin.globals.forms.field type="password" label="Password" name="password" placeholder="Enter password"
+                    :svgUrl="asset('assets/svg/lock.svg')" />
+
+                {{-- ====== Confirm Password ====== --}}
+                <x-admin.globals.forms.field type="password" label="Confirm Password" name="password_confirmation" placeholder="Enter confirm password"
+                    :svgUrl="asset('assets/svg/lock.svg')" />
+
+                {{-- ====== Role ====== --}}
+                <x-admin.globals.forms.field type="select" label="Role" name="role" required
+                    :svgUrl="asset('assets/svg/shield-check.svg')">
+                    <x-slot>
+                        <option value="STAFF">Staff</option>
+                    </x-slot>
+                </x-admin.globals.forms.field>
 
 
                 {{-- ====== Gender ====== --}}
