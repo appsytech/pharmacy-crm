@@ -2,6 +2,7 @@
 
 use App\Models\Admin;
 use App\Models\Doctor;
+use App\Models\Patient;
 use App\Models\Staff;
 
 return [
@@ -54,6 +55,10 @@ return [
             'driver' => 'session',
             'provider' => 'staffs',
         ],
+        'patients' => [
+            'driver' => 'session',
+            'provider' => 'patients',
+        ],
 
     ],
 
@@ -88,6 +93,11 @@ return [
         'staffs' => [
             'driver' => 'eloquent',
             'model' => Staff::class,
+        ],
+
+        'patients' => [
+            'driver' => 'eloquent',
+            'model' => Patient::class,
         ],
 
         // 'users' => [

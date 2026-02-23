@@ -173,6 +173,12 @@ class PatientAppoinmentService
                 'phone' => $request->phone,
                 'doctorId' => Auth::user()->id,
             ]);
+        } elseif (Auth::guard('patients')->check()) {
+            $appointments = $this->patientAppoinmentRepo->getPatientAppoinments([
+                'patientName' => $request->patient_name ?? null,
+                'phone' => $request->phone,
+                'patientId' => Auth::user()->id,
+            ]);
         }
 
         $data = [

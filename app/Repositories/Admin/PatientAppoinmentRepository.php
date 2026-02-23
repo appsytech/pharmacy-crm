@@ -71,6 +71,12 @@ class PatientAppoinmentRepository implements PatientAppoinmentRepositoryInterfac
                 }
             )
             ->when(
+                isset($filterData['patientId']),
+                function ($query) use ($filterData) {
+                    return $query->where('patient_id', $filterData['patientId']);
+                }
+            )
+            ->when(
                 isset($filterData['phone']),
                 function ($query) use ($filterData) {
                     $query->where('phone',  'LIKE', '%' . $filterData['phone'] . '%');

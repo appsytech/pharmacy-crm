@@ -10,7 +10,7 @@
      <nav class="p-4 space-y-1 flex-1 overflow-y-auto">
 
          <!--======== Home  ========-->
-         @multiAuth('web', 'doctors', 'staffs')
+         @multiAuth('web', 'doctors', 'staffs', 'patients')
          <x-admin.sidebar.nav-item title="Home" :svgUrl="asset('assets/svg/home.svg')" :url="route('dashboard')" :activeRoutes="['dashboard']" />
          @endmultiAuth
 
@@ -74,10 +74,16 @@
 
 
          <!--======== Patients  ========-->
-         @multiAuth('web', 'staffs', 'doctors')
+         @multiAuth('web', 'staffs', 'doctors', 'patients')
          <x-admin.sidebar.nav-item-group title="Patients" :svgUrl="asset('assets/svg/user-group.svg')" :activeRoutes="['patient.index', 'patient.edit', 'patient-appointment.index', 'patient-appointment.edit', 'patient-report.index', 'patient-report.edit']">
+             @multiAuth('web', 'staffs', 'doctors')
              <x-admin.sidebar.nav-sub-item title="Patient List" :url="route('patient.index')" :activeRoutes="['patient.index', 'patient.edit']" />
+             @endmultiAuth
+
+             @multiAuth('web', 'staffs', 'doctors', 'patients')
              <x-admin.sidebar.nav-sub-item title="Patient Appointment" :url="route('patient-appointment.index')" :activeRoutes="['patient-appointment.index', 'patient-appointment.edit']" />
+             @endmultiAuth
+
              @multiAuth('web', 'staffs')
              <x-admin.sidebar.nav-sub-item title="Patient Report" :url="route('patient-report.index')" :activeRoutes="['patient-report.index', 'patient-report.edit']" />
              @endmultiAuth

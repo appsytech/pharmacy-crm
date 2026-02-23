@@ -30,6 +30,10 @@ class AuthController extends Controller
             return redirect()->intended(route('dashboard'));
         }
 
+        if (Auth::guard('patients')->check()) {
+            return redirect()->intended(route('dashboard'));
+        }
+
         return view('admin.pages.auth.login');
     }
 
@@ -68,7 +72,7 @@ class AuthController extends Controller
             }
         }
 
-    
+
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 

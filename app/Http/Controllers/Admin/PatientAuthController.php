@@ -3,17 +3,17 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Services\Admin\StaffAuthService;
+use App\Services\Admin\PatientAuthService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class StaffAuthController extends Controller
+class PatientAuthController extends Controller
 {
-    public function __construct(
-        protected StaffAuthService $staffAuthService
-    ) {}
 
+    public function __construct(
+        protected PatientAuthService $patientAuthService
+    ) {}
 
     public function login()
     {
@@ -34,7 +34,7 @@ class StaffAuthController extends Controller
             return redirect()->intended(route('dashboard'));
         }
 
-        return view('admin.pages.auth.staff.login');
+        return view('admin.pages.auth.patient.login');
     }
 
 
@@ -42,12 +42,11 @@ class StaffAuthController extends Controller
     public function authenticate(Request $request): RedirectResponse
     {
         $request->validate([
-            'role' => 'required|in:doctor,staff',
             'credential' => 'required|string|max:255',
             'password' => 'required|string|min:8|max:40',
         ]);
 
-        $authenticationResponse = $this->staffAuthService->authenticate($request);
+        $authenticationResponse = $this->patientAuthService->authenticate($request);
 
         if ($authenticationResponse['status']) {
             return redirect()->intended(route('dashboard'))->with('success', $authenticationResponse['message']);
