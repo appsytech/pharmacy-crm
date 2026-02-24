@@ -55,7 +55,7 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        $guards = ['web', 'doctors', 'staffs'];
+        $guards = ['web', 'doctors', 'staffs', 'patients'];
         $redirectRoute = 'login';
 
         foreach ($guards as $guard) {
@@ -64,6 +64,8 @@ class AuthController extends Controller
 
                 if (in_array($guard, ['doctors', 'staffs'])) {
                     $redirectRoute = 'staff.login';
+                } elseif (in_array($guard, ['patients'])) {
+                    $redirectRoute = 'patient.login';
                 } else {
                     $redirectRoute = 'login';
                 }

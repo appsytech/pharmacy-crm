@@ -6,11 +6,17 @@
 
 $admin = $admin ?? Auth::user();
 
-if (isset($admin)){
+if (isset($admin)) {
+$profileImageExists = !empty($admin->profile_image) && Storage::disk('public')->exists($admin->profile_image);
 
-$profileImageExists =
-!empty($admin->profile_image) && Storage::disk('public')->exists($admin->profile_image);
+
+if (!empty($admin->name ?? $admin->full_name)) {
 $firstLetter = strtoupper(substr($admin->name ?? $admin->full_name, 0, 1));
+} elseif (!empty($admin->first_name ?? $admin->last_name)) {
+$firstLetter = strtoupper(substr(($admin->first_name ?? '') . ($admin->last_name ?? ''), 0, 1));
+} else {
+$firstLetter = '?';
+}
 }
 
 
@@ -48,13 +54,15 @@ $firstLetter = strtoupper(substr($admin->name ?? $admin->full_name, 0, 1));
             3 => 'EDITOR',
             ];
 
-            $roleLabel = $roles[$admin->admin_role] ?? $admin->role ?? '';
+            $roleLabel = $roles[$admin->admin_role] ?? $admin->role ?? null;
             @endphp
 
+            @isset($roleLabel)
             <span
                 class="bg-blue-200 bg-opacity-15 text-blue-500 text-xs font-semibold px-2.5 py-0.5 rounded-full">
                 {{ $roleLabel }}
             </span>
+            @endisset
         </div>
     </div>
 </div>

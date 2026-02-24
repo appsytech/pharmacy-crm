@@ -31,7 +31,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::post('login/proceed', [AuthController::class, 'authenticate'])->name('login.proceed');
-Route::post('logout', [AuthController::class, 'logout'])->name('logout')->middleware(['multiAuth:web,doctors,staffs']);
+Route::post('logout', [AuthController::class, 'logout'])->name('logout')->middleware(['multiAuth:web,doctors,staffs,patients']);
 
 /* ====================== Dashboard > Staff Auth  ====================== */
 Route::get('staff/login', [StaffAuthController::class, 'login'])->name('staff.login');

@@ -19,7 +19,8 @@ class ProfileService
         protected DoctorRepositoryInterface $doctorRepo,
         protected AdminService $adminService,
         protected StaffService $staffService,
-        protected DoctorService $doctorService
+        protected DoctorService $doctorService,
+        protected PatientService $patientService
     ) {
         //
     }
@@ -55,6 +56,7 @@ class ProfileService
                 'message' => 'Profile Updated Successfully',
             ];
         } elseif (Auth::guard('staffs')->check()) {
+
             $validator = Validator::make($request->all(), [
                 'id' => 'required|integer',
                 'full_name'     => 'required|string|max:50',
@@ -87,7 +89,7 @@ class ProfileService
                 'status' => $isUpdated ?  true : false,
                 'message' => $isUpdated ? 'Profile Updated Successfully' : 'Something went wrong',
             ];
-        } else {
+        } elseif (Auth::guard('doctors')->check()) {
 
             $validator = Validator::make($request->all(), [
                 'id' => 'required|integer',
@@ -128,6 +130,43 @@ class ProfileService
                 'status' => $isUpdated ?  true : false,
                 'message' => $isUpdated ? 'Profile Updated Successfully' : 'Something went wrong',
             ];
+        } else {
+
+            $validator = Validator::make($request->all(), [
+                'id' => 'required|integer',
+                'first_name' => 'required|string|max:100',
+                'last_name' => 'required|string|max:100',
+                'date_of_birth' => 'required|date|before:today',
+                'gender' => 'required|in:MALE,FEMALE,OTHER',
+                'blood_group' => 'nullable|string|max:5',
+                'phone' => 'nullable|string|max:20',
+                'email' => 'required|email|max:150|unique:patients,email,' . $request->id,
+                'password' => 'nullable|string|min:8|confirmed',
+                'address' => 'nullable|string|max:255',
+                'city' => 'nullable|string|max:100',
+                'state' => 'nullable|string|max:100',
+                'doctor_id' => 'nullable|integer|exists:doctors,id',
+                'medical_conditions' => 'nullable|string',
+                'insurance_provider' => 'nullable|string|max:150',
+                'insurance_policy_number' => 'nullable|string|max:100',
+                'status' => 'nullable|in:ACTIVE,INACTIVE,SUSPENDED,BLOCKED',
+                'treatment_status' => 'nullable|in:NOT-STARTED,ONGOING,COMPLETED,DISCOUNTED',
+            ]);
+
+            if ($validator->fails()) {
+                return [
+                    'status' => false,
+                    'message' => 'Validation Fails',
+                    'errors' => $validator->errors(),
+                ];
+            }
+
+            $isUpdated = $this->patientService->update($request);
+
+            return [
+                'status' => $isUpdated ?  true : false,
+                'message' => $isUpdated ? 'Profile Updated Successfully' : 'Something went wrong',
+            ];
         }
     }
 
@@ -140,8 +179,13 @@ class ProfileService
             $data['admin'] = $this->adminRepo->find($loggedInUserId);
         } elseif (Auth::guard('staffs')->check()) {
             $data['staff'] = $this->staffRepo->find($loggedInUserId);
-        } else {
+        } elseif (Auth::guard('doctors')->check()) {
             $data['doctor'] = $this->doctorRepo->find($loggedInUserId);
+        } else {
+            $data = [
+                'patient' => $this->patientService->find($loggedInUserId),
+                'doctors' => $this->doctorService->getDoctorsCollection([], ['id', 'full_name']),
+            ];
         }
 
         return $data;

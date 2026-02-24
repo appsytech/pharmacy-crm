@@ -136,8 +136,6 @@ $doctor = $data['doctor'];
 @endif
 
 
-
-
 @if(isset($data['staff']))
 
 @php
@@ -157,7 +155,7 @@ $staff = $data['staff'];
     ]" :fields="[
     ['sn' => 1, 'svgUrl' => asset('assets/svg/user.svg') , 'label' => 'Name' , 'value' => $staff->full_name ?? '--'],
     ['sn' => 2, 'svgUrl' => asset('assets/svg/mail.svg') , 'label' => 'Email' , 'value' => $staff->email ?? '--'],
-    ['sn' => 4, 'svgUrl' => asset('assets/svg/phone.svg') , 'label' => 'Phone' , 'value' => $staff->phone_number ?? '--'],
+    ['sn' => 4, 'svgUrl' => asset('assets/svg/phone.svg') , 'label' => 'Phone' , 'value' => $staff->phone ?? '--'],
     ['sn' => 4, 'svgUrl' => asset('assets/svg/user-plus.svg') , 'label' => 'Gender' , 'value' => $staff->gender ?? '--'],
     ['sn' => 4, 'svgUrl' => asset('assets/svg/cake.svg') , 'label' => 'Date Of Birth' , 'value' => $staff->date_of_birth ?? '--'],
     ['sn' => 5, 'svgUrl' => asset('assets/svg/star.svg') , 'label' => 'Staff Role' , 'value' =>  $staff->role ?? '--'],
@@ -190,5 +188,64 @@ $staff = $data['staff'];
 </div>
 @endif
 
+
+@if(isset($data['patient']))
+
+@php
+$patient = $data['patient'];
+@endphp
+
+<div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+
+    {{-- -========  PROFILE HEADER BANNER ======== --}}
+    <x-admin.globals.profile.header :admin="$data['patient']" />
+
+    {{-- ======== PATIENT DETAILS TABLE ======== --}}
+    <x-admin.globals.tables.table-secondary
+        :columns="[
+            ['label' => '#'],
+            ['label' => 'Field'],
+            ['label' => 'Value'],
+        ]"
+        :fields="[
+            ['sn' => 1, 'svgUrl' => asset('assets/svg/user.svg'), 'label' => 'First Name', 'value' => $patient->first_name ?? '--'],
+            ['sn' => 2, 'svgUrl' => asset('assets/svg/user.svg'), 'label' => 'Last Name', 'value' => $patient->last_name ?? '--'],
+            ['sn' => 3, 'svgUrl' => asset('assets/svg/calendar.svg'), 'label' => 'Date of Birth', 'value' => $patient->date_of_birth ?? '--'],
+            ['sn' => 4, 'svgUrl' => asset('assets/svg/venus.svg'), 'label' => 'Gender', 'value' => $patient->gender ?? '--'],
+            ['sn' => 5, 'svgUrl' => asset('assets/svg/droplet.svg'), 'label' => 'Blood Group', 'value' => $patient->blood_group ?? '--'],
+            ['sn' => 6, 'svgUrl' => asset('assets/svg/phone.svg'), 'label' => 'Phone', 'value' => $patient->phone ?? '--'],
+            ['sn' => 7, 'svgUrl' => asset('assets/svg/mail.svg'), 'label' => 'Email', 'value' => $patient->email ?? '--'],
+            ['sn' => 8, 'svgUrl' => asset('assets/svg/home.svg'), 'label' => 'Address', 'value' => $patient->address ?? '--'],
+            ['sn' => 9, 'svgUrl' => asset('assets/svg/map-pin.svg'), 'label' => 'City', 'value' => $patient->city ?? '--'],
+            ['sn' => 10, 'svgUrl' => asset('assets/svg/map-pin.svg'), 'label' => 'State', 'value' => $patient->state ?? '--'],
+            ['sn' => 11, 'svgUrl' => asset('assets/svg/stethoscope.svg'), 'label' => 'Doctor Assigned', 'value' => $patient->doctor_name ?? '--'],
+            ['sn' => 12, 'svgUrl' => asset('assets/svg/heart-pulse.svg'), 'label' => 'Medical Conditions', 'value' => $patient->medical_conditions ?? '--'],
+            ['sn' => 13, 'svgUrl' => asset('assets/svg/shield-user.svg'), 'label' => 'Insurance Provider', 'value' => $patient->insurance_provider ?? '--'],
+            ['sn' => 14, 'svgUrl' => asset('assets/svg/tag.svg'), 'label' => 'Insurance Policy Number', 'value' => $patient->insurance_policy_number ?? '--'],
+            ['sn' => 15, 'svgUrl' => asset('assets/svg/tag.svg'), 'label' => 'Status', 'type' => 'badge', 'value' => $patient->status],
+            ['sn' => 16, 'svgUrl' => asset('assets/svg/clock.svg'), 'label' => 'Treatment Status', 'value' => $patient->treatment_status ?? '--'],
+        ]" />
+
+    {{-- ====== FOOTER ====== --}}
+    <div class="border-t border-gray-200 bg-gray-50 px-5 py-3 flex items-center justify-between">
+        <span class="text-xs text-gray-400">Read-only view</span>
+
+        <div class="flex items-center gap-2">
+            <a href="{{ route('profile.edit') }}"
+                class="inline-flex items-center justify-center w-7 h-7 rounded-md border border-gray-300 text-gray-500 hover:text-indigo-600 hover:border-indigo-300 hover:bg-indigo-50 transition"
+                title="Edit">
+                <img src="{{ asset('assets/svg/pencil.svg') }}" class="w-4 h-4 pointer-events-none">
+            </a>
+
+            @if (isset($patient->updated_at))
+            <span class="text-xs text-gray-400">
+                Last updated: {{ $patient->updated_at }}
+            </span>
+            @endif
+        </div>
+    </div>
+
+</div>
+@endif
 
 @endsection
