@@ -131,7 +131,7 @@
                     label="Award By"
                     name="award_by"
                     placeholder="Enter awarding organization"
-                    :svgUrl="asset('assets/svg/users.svg')" />
+                    :svgUrl="asset('assets/svg/user-check.svg')" />
 
                 {{-- ====== Award Year ====== --}}
                 <x-admin.globals.forms.field
@@ -155,7 +155,7 @@
                     type="file"
                     label="Upload Image"
                     name="image"
-                    class="image-upload-preview"
+                    class="image-upload&preview"
                     :svgUrl="asset('assets/svg/image-plus.svg')" />
             </x-slot>
 

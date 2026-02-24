@@ -54,7 +54,7 @@
                         type="file"
                         label="Upload Image"
                         name="images"
-                        class="image-upload-preview"
+                        class="image-upload&preview"
                         :svgUrl="asset('assets/svg/image-plus.svg')">
                         @if (isset($data['image']->images))
                         <x-slot:file_preview>
@@ -71,7 +71,7 @@
                         type="file"
                         label="Upload Big Image"
                         name="big_image"
-                        class="image-upload-preview"
+                        class="image-upload&preview"
                         :svgUrl="asset('assets/svg/image-plus.svg')">
                         @if (isset($data['image']->big_image))
                         <x-slot:file_preview>

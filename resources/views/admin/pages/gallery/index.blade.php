@@ -112,7 +112,7 @@
                     label="Upload Image"
                     name="images"
                     required
-                    class="image-upload-preview"
+                    class="image-upload&preview"
                     :svgUrl="asset('assets/svg/image-plus.svg')" />
 
                 {{-- ====== Big Image ====== --}}
@@ -120,7 +120,7 @@
                     type="file"
                     label="Upload Big Image"
                     name="big_image"
-                    class="image-upload-preview"
+                    class="image-upload&preview"
                     :svgUrl="asset('assets/svg/image-plus.svg')" />
 
                 {{-- ====== Status ====== --}}

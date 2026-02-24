@@ -64,7 +64,7 @@
                         name="award_by"
                         value="{{ $data['award']->award_by ?? '' }}"
                         placeholder="Enter awarding organization"
-                        :svgUrl="asset('assets/svg/users.svg')" />
+                        :svgUrl="asset('assets/svg/user-check.svg')" />
 
                     {{-- ====== Award Year ====== --}}
                     <x-admin.globals.forms.field
@@ -90,7 +90,7 @@
                         type="file"
                         label="Upload Image"
                         name="image"
-                        class="image-upload-preview"
+                        class="image-upload&preview"
                         :svgUrl="asset('assets/svg/image-plus.svg')">
                         @if (isset($data['award']->image))
                         <x-slot:file_preview>

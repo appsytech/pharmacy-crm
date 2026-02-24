@@ -77,6 +77,8 @@ document.addEventListener("input", function (event) {
 });
 
 document.addEventListener("change", function (event) {
+
+    console.log(event.target);
     if (event.target.classList.contains("image-upload&preview")) {
         handleMediaUpload(event.target);
     }
@@ -93,6 +95,8 @@ document.addEventListener("change", function (event) {
         handleAjaxInput(event.target);
     }
 });
+
+
 
 document.addEventListener("submit", function (event) {
     if (event.target.classList.contains("ajax-form")) {
