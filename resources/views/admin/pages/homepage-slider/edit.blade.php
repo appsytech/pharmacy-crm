@@ -81,7 +81,7 @@
                 </x-admin.globals.forms.field>
 
                 {{-- ====== Image ====== --}}
-                <x-admin.globals.forms.field id="voucherInput" type="file" class="image-upload&preview" label="Upload Image" name="images" 
+                <x-admin.globals.forms.field id="voucherInput" type="file" class="image-upload&preview" label="Upload Image" name="images"
                     :svgUrl="asset('assets/svg/image-plus.svg')">
 
                     @if (isset($data['slider']->images))

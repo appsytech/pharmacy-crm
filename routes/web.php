@@ -3,11 +3,14 @@
 use App\Http\Controllers\Admin\ActivityController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\AwardController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\ExpenseController;
 use App\Http\Controllers\Admin\ExpenseTypeController;
+use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\HomeSliderController;
+use App\Http\Controllers\Admin\InquiryController;
 use App\Http\Controllers\Admin\JobApplicationController;
 use App\Http\Controllers\Admin\ManufacturerController;
 use App\Http\Controllers\Admin\MedicineController;
@@ -17,6 +20,7 @@ use App\Http\Controllers\Admin\PatientAuthController;
 use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\PatientReportController;
 use App\Http\Controllers\Admin\PharmacyBranchController;
+use App\Http\Controllers\Admin\PharmacyStatisticController;
 use App\Http\Controllers\Admin\StaffAuthController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\StaffController;
@@ -44,6 +48,9 @@ Route::post('patient/login/proceed', [PatientAuthController::class, 'authenticat
 /* ====================== Dashboard  ====================== */
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard')->middleware(['multiAuth:web,doctors,staffs,patients']);
 Route::get('medicine-list', [MedicineListController::class, 'index'])->name('medicine-list.index')->middleware('auth');
+
+
+
 
 
 /* ====================== Dashboard > Profile ====================== */
@@ -100,7 +107,6 @@ Route::post('dashboard/patient-report/store', [PatientReportController::class, '
 Route::delete('dashboard/patient-report/delete', [PatientReportController::class, 'delete'])->name('patient-report.delete')->middleware(['multiAuth:web,staffs,doctors']);
 Route::get('dashboard/patient-report/edit/{id}', [PatientReportController::class, 'edit'])->name('patient-report.edit')->middleware(['multiAuth:web,staffs,doctors']);
 Route::put('dashboard/patient-report/update', [PatientReportController::class, 'update'])->name('patient-report.update')->middleware(['multiAuth:web,staffs,doctors']);
-
 
 
 /* ====================== Dashboard > Staffs ====================== */
@@ -187,3 +193,31 @@ Route::post('dashboard/pharmacy-branch/store', [PharmacyBranchController::class,
 Route::delete('dashboard/pharmacy-branch/delete', [PharmacyBranchController::class, 'delete'])->name('pharmacy-branch.delete')->middleware('auth');
 Route::get('dashboard/pharmacy-branch/edit/{id}', [PharmacyBranchController::class, 'edit'])->name('pharmacy-branch.edit')->middleware('auth');
 Route::put('dashboard/pharmacy-branch/update', [PharmacyBranchController::class, 'update'])->name('pharmacy-branch.update')->middleware('auth');
+
+
+/* ====================== Dashboard > Gallery Images====================== */
+Route::get('dashboard/gallery', [GalleryController::class, 'index'])->name('gallery.index')->middleware('auth');
+Route::get('dashboard/gallery/edit/{id}', [GalleryController::class, 'edit'])->name('gallery.edit')->middleware('auth');
+Route::put('dashboard/gallery/update', [GalleryController::class, 'update'])->name('gallery.update')->middleware('auth');
+Route::post('dashboard/gallery/store', [GalleryController::class, 'store'])->name('gallery.store')->middleware('auth');
+Route::delete('dashboard/gallery/delete', [GalleryController::class, 'delete'])->name('gallery.delete')->middleware('auth');
+
+
+/* ====================== Dashboard > Inquiries ====================== */
+Route::get('dashboard/inquiries', [InquiryController::class, 'index'])->name('inquiry.index')->middleware('auth');
+Route::delete('dashboard/inquiry/delete', [InquiryController::class, 'delete'])->name('inquiry.delete')->middleware('auth');
+
+
+/* ====================== Dashboard >  Award ====================== */
+Route::get('dashboard/award', [AwardController::class, 'index'])->name('award.index')->middleware('auth');
+Route::post('dashboard/award/store', [AwardController::class, 'store'])->name('award.store')->middleware('auth');
+Route::delete('dashboard/award/delete', [AwardController::class, 'delete'])->name('award.delete')->middleware('auth');
+Route::get('dashboard/award/edit/{id}', [AwardController::class, 'edit'])->name('award.edit')->middleware('auth');
+Route::put('dashboard/award/update', [AwardController::class, 'update'])->name('award.update')->middleware('auth');
+
+
+
+/* ====================== Dashboard > Statistic ====================== */
+Route::get('dashboard/statistic', [PharmacyStatisticController::class, 'index'])->name('statistic.index')->middleware('auth');
+Route::post('dashboard/statistic/store', [PharmacyStatisticController::class, 'store'])->name('statistic.store')->middleware('auth');
+Route::post('dashboard/statistic/status/update', [PharmacyStatisticController::class, 'updateStatus'])->name('statistic.status.update')->middleware('auth');

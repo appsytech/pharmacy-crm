@@ -4,16 +4,22 @@ namespace App\Providers;
 
 use App\Repositories\Admin\ActivityRepository;
 use App\Repositories\Admin\AdminRepository;
+use App\Repositories\Admin\AwardRepository;
 use App\Repositories\Admin\DoctorRepository;
 use App\Repositories\Admin\ExpenseRepository;
 use App\Repositories\Admin\ExpenseTypeRepository;
+use App\Repositories\Admin\GalleryRepository;
 use App\Repositories\Admin\HomeSliderRepository;
+use App\Repositories\Admin\InquiryRepository;
 use App\Repositories\Admin\Interfaces\ActivityRepositoryInterface;
 use App\Repositories\Admin\Interfaces\AdminRepositoryInterface;
+use App\Repositories\Admin\Interfaces\AwardRepositoryInterface;
 use App\Repositories\Admin\Interfaces\DoctorRepositoryInterface;
 use App\Repositories\Admin\Interfaces\ExpenseRepositoryInterface;
 use App\Repositories\Admin\Interfaces\ExpenseTypeRepositoryInterface;
+use App\Repositories\Admin\Interfaces\GalleryRepositoryInterface;
 use App\Repositories\Admin\Interfaces\HomeSliderRepositoryInterface;
+use App\Repositories\Admin\Interfaces\InquiryRepositoryInterface;
 use App\Repositories\Admin\Interfaces\JobApplicationRepositoryInterface;
 use App\Repositories\Admin\Interfaces\ManufacturerRepositoryInterface;
 use App\Repositories\Admin\Interfaces\MedicineRepositoryInterface;
@@ -21,6 +27,7 @@ use App\Repositories\Admin\Interfaces\PatientAppoinmentRepositoryInterface;
 use App\Repositories\Admin\Interfaces\PatientReportRepositoryInterface;
 use App\Repositories\Admin\Interfaces\PatientRepositoryInterface;
 use App\Repositories\Admin\Interfaces\PharmacyBranchRepositoryInterface;
+use App\Repositories\Admin\Interfaces\PharmacyStatisticRepositoryInterface;
 use App\Repositories\Admin\Interfaces\StaffRepositoryInterface;
 use App\Repositories\Admin\Interfaces\StaffSalaryRepositoryInterface;
 use App\Repositories\Admin\Interfaces\SupplierPaymentRepositoryInterface;
@@ -32,6 +39,7 @@ use App\Repositories\Admin\PatientAppoinmentRepository;
 use App\Repositories\Admin\PatientReportRepository;
 use App\Repositories\Admin\PatientRepository;
 use App\Repositories\Admin\PharmacyBranchRepository;
+use App\Repositories\Admin\PharmacyStatisticRepository;
 use App\Repositories\Admin\StaffRepository;
 use App\Repositories\Admin\StaffSalaryRepository;
 use App\Repositories\Admin\SupplierPaymentRepository;
@@ -68,7 +76,11 @@ class AppServiceProvider extends ServiceProvider
             MedicineRepositoryInterface::class => MedicineRepository::class,
             PatientReportRepositoryInterface::class => PatientReportRepository::class,
             PharmacyBranchRepositoryInterface::class => PharmacyBranchRepository::class,
-            SupplierPaymentRepositoryInterface::class => SupplierPaymentRepository::class
+            SupplierPaymentRepositoryInterface::class => SupplierPaymentRepository::class,
+            GalleryRepositoryInterface::class => GalleryRepository::class,
+            InquiryRepositoryInterface::class => InquiryRepository::class,
+            AwardRepositoryInterface::class => AwardRepository::class,
+            PharmacyStatisticRepositoryInterface::class => PharmacyStatisticRepository::class
         ];
 
         foreach ($bindings as $interface => $repository) {

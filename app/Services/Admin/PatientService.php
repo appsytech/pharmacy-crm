@@ -5,6 +5,7 @@ namespace App\Services\Admin;
 use App\Models\Patient;
 use App\Repositories\Admin\Interfaces\DoctorRepositoryInterface;
 use App\Repositories\Admin\Interfaces\PatientRepositoryInterface;
+use App\Repositories\Admin\Interfaces\PharmacyStatisticRepositoryInterface;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -17,7 +18,9 @@ class PatientService
      */
     public function __construct(
         protected PatientRepositoryInterface $patientRepo,
-        protected DoctorRepositoryInterface $doctorRepo
+        protected DoctorRepositoryInterface $doctorRepo,
+        protected PharmacyStatisticRepositoryInterface $statisticRepo
+
     ) {}
 
 
@@ -59,6 +62,8 @@ class PatientService
         $createdPatient = $this->patientRepo->create($data);
 
         if ($createdPatient) {
+            $this->statisticRepo->incrementTotalForType('PATIENT');
+
             return [
                 'status' => true,
                 'message' => ['Patient Created successfully']
@@ -162,7 +167,13 @@ class PatientService
     ==============================================================================*/
     public function delete(int $id): bool
     {
-        return $this->patientRepo->delete($id);
+        $isDeleted =  $this->patientRepo->delete($id);
+
+        if ($isDeleted) {
+            $this->statisticRepo->decrementTotalForType('PATIENT');
+        }
+
+        return $isDeleted;
     }
 
 

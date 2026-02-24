@@ -91,11 +91,21 @@
          @endmultiAuth
 
 
+         <!--======== Web  ========-->
+         @multiAuth('web')
+         <x-admin.sidebar.nav-item-group title="Web " :svgUrl="asset('assets/svg/globe.svg')" :activeRoutes="['homepage-slider.index', 'homepage-slider.edit','gallery.index', 'gallery.edit', 'inquiry.index', 'inquiry.edit', 'statistic.index', 'statistic.edit']">
+             <x-admin.sidebar.nav-sub-item title="Homepage Slider" :url="route('homepage-slider.index')" :activeRoutes="['homepage-slider.index', 'homepage-slider.edit']" />
+             <x-admin.sidebar.nav-sub-item title="Gallery" :url="route('gallery.index')" :activeRoutes="['gallery.index', 'gallery.edit']" />
+             <x-admin.sidebar.nav-sub-item title="Inquiry" :url="route('inquiry.index')" :activeRoutes="['inquiry.index', 'inquiry.edit']" />
+             <x-admin.sidebar.nav-sub-item title="Award" :url="route('award.index')" :activeRoutes="['award.index', 'award.edit']" />
+             <x-admin.sidebar.nav-sub-item title="Pharmacy Statistic" :url="route('statistic.index')" :activeRoutes="['statistic.index', 'statistic.edit']" />
+         </x-admin.sidebar.nav-item-group>
+         @endmultiAuth
+
          <!--======== Setting  ========-->
          @multiAuth('web')
-         <x-admin.sidebar.nav-item-group title="Setting" :svgUrl="asset('assets/svg/setting.svg')" :activeRoutes="['admin.index', 'admin.edit',  'homepage-slider.index', 'homepage-slider.edit', 'pharmacy-branch.index', 'pharmacy-branch.edit']">
+         <x-admin.sidebar.nav-item-group title="Setting" :svgUrl="asset('assets/svg/setting.svg')" :activeRoutes="['admin.index', 'admin.edit',  'pharmacy-branch.index', 'pharmacy-branch.edit']">
              <x-admin.sidebar.nav-sub-item title="Admin" :url="route('admin.index')" :activeRoutes="['admin.index', 'admin.edit']" />
-             <x-admin.sidebar.nav-sub-item title="Homepage Slider" :url="route('homepage-slider.index')" :activeRoutes="['homepage-slider.index', 'homepage-slider.edit']" />
              <x-admin.sidebar.nav-sub-item title="Pharmacy Branch" :url="route('pharmacy-branch.index')" :activeRoutes="['pharmacy-branch.index', 'pharmacy-branch.edit']" />
          </x-admin.sidebar.nav-item-group>
          @endmultiAuth

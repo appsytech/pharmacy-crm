@@ -157,6 +157,41 @@ $statusMap = [
 'dot' => 'bg-red-600',
 ],
 
+'NEW' => [
+'label' => 'New',
+'bg' => 'bg-blue-100',
+'text' => 'text-blue-800',
+'dot' => 'bg-blue-600',
+],
+
+'READ' => [
+'label' => 'Read',
+'bg' => 'bg-gray-100',
+'text' => 'text-gray-800',
+'dot' => 'bg-gray-600',
+],
+
+'IN_REVIEW' => [
+'label' => 'In Review',
+'bg' => 'bg-yellow-100',
+'text' => 'text-yellow-800',
+'dot' => 'bg-yellow-600',
+],
+
+'RESPONDED' => [
+'label' => 'Responded',
+'bg' => 'bg-green-100',
+'text' => 'text-green-800',
+'dot' => 'bg-green-600',
+],
+
+'ARCHIVED' => [
+'label' => 'Archived',
+'bg' => 'bg-purple-100',
+'text' => 'text-purple-800',
+'dot' => 'bg-purple-600',
+],
+
 ];
 
 $badge = $statusMap[$value] ?? [

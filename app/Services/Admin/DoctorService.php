@@ -4,6 +4,7 @@ namespace App\Services\Admin;
 
 use App\Models\Doctor;
 use App\Repositories\Admin\Interfaces\DoctorRepositoryInterface;
+use App\Repositories\Admin\Interfaces\PharmacyStatisticRepositoryInterface;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -15,7 +16,9 @@ class DoctorService
      * Create a new class instance.
      */
     public function __construct(
-        protected DoctorRepositoryInterface $doctorRepo
+        protected DoctorRepositoryInterface $doctorRepo,
+        protected PharmacyStatisticRepositoryInterface $statisticRepo
+
     ) {}
 
 
@@ -55,6 +58,7 @@ class DoctorService
         $createdDcotor = $this->doctorRepo->create($data);
 
         if ($createdDcotor) {
+            $this->statisticRepo->incrementTotalForType('DOCTORS');
             return [
                 'status' => true,
                 'message' => ['Doctor Created successfully']
@@ -167,6 +171,10 @@ class DoctorService
         }
 
         $isDeleted = $this->doctorRepo->delete($id);
+
+        if ($isDeleted) {
+            $this->statisticRepo->decrementTotalForType('DOCTORS');
+        }
 
         return $isDeleted;
     }
