@@ -4,18 +4,16 @@
 @section('content')
 
 <!--===== Summary Cards ======-->
-<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
 
-    <x-admin.globals.cards.summary-card label="Total Doctors" value="1,284" subLabel="Active Doctors" :svgUrl="asset('assets/svg/stethoscope-white.svg')" />
 
-    <x-admin.globals.cards.summary-card label="Total Patients" value="1,284" badge="+124"
-        subLabel="new patients this month" :svgUrl="asset('assets/svg/user-group-white.svg')" />
+    <x-admin.globals.cards.summary-card label="Total Doctors" :value="$data['totalDoctors'] ?? 0" subLabel="Active Doctors" :svgUrl="asset('assets/svg/stethoscope-white.svg')" />
 
-    <x-admin.globals.cards.summary-card label="Admins" value="1,284" badge="+12" subLabel="active admins"
-        :svgUrl="asset('assets/svg/shield-user-white.svg')" />
+    <x-admin.globals.cards.summary-card label="Total Patients" :value="$data['totalPatients'] ?? 0" :svgUrl="asset('assets/svg/user-group-white.svg')" />
 
-    <x-admin.globals.cards.summary-card label="Total Login Time" value="1,284" badge="+124 hrs " subLabel="this month"
-        :svgUrl="asset('assets/svg/clock-white.svg')" />
+    <x-admin.globals.cards.summary-card label="Awards" :value="$data['totalAwards'] ?? 0"
+        :svgUrl="asset('assets/svg/award.svg')" />
+
 </div>
 
 <div class="py-5">
