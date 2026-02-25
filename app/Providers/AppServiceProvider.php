@@ -38,6 +38,7 @@ use App\Repositories\Admin\Interfaces\StaffRepositoryInterface;
 use App\Repositories\Admin\Interfaces\StaffSalaryRepositoryInterface;
 use App\Repositories\Admin\Interfaces\SupplierPaymentRepositoryInterface;
 use App\Repositories\Admin\Interfaces\SupplierRepositoryInterface;
+use App\Repositories\Admin\Interfaces\TestimonialRepositoryInterface;
 use App\Repositories\Admin\JobApplicationRepository;
 use App\Repositories\Admin\LogMoneyRepository;
 use App\Repositories\Admin\ManufacturerRepository;
@@ -52,6 +53,7 @@ use App\Repositories\Admin\StaffRepository;
 use App\Repositories\Admin\StaffSalaryRepository;
 use App\Repositories\Admin\SupplierPaymentRepository;
 use App\Repositories\Admin\SupplierRepository;
+use App\Repositories\Admin\TestimonialRepository;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
@@ -92,7 +94,8 @@ class AppServiceProvider extends ServiceProvider
             LogMoneyRepositoryInterface::class => LogMoneyRepository::class,
             PharmacyScheduleRepositoryInterface::class => PharmacyScheduleRepository::class,
             CheckupProcessRepositoryInterface::class => CheckupProcessRepository::class,
-            FaqRepositoryInterface::class => FaqRepository::class
+            FaqRepositoryInterface::class => FaqRepository::class,
+            TestimonialRepositoryInterface::class => TestimonialRepository::class
         ];
 
         foreach ($bindings as $interface => $repository) {

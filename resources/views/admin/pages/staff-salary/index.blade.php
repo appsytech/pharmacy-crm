@@ -24,7 +24,7 @@
     <x-admin.globals.tables.table :filterFormAction="route('staff-salary.index')" :columns="[
             ['key' => 'sn', 'label' => 'S.N', 'type' => null],
             ['key' => 'staff_name', 'label' => 'staff Name', 'type' => null],
-            ['key' => 'academic_year', 'label' => 'Academic Year', 'type' => null],
+            ['key' => 'academic_year', 'label' => 'Year', 'type' => null],
             ['key' => 'month', 'label' => 'Month', 'type' => null],
             ['key' => 'base_salary', 'label' => 'Base Salary', 'type' => null],
             ['key' => 'bonuses', 'label' => 'Bonus', 'type' => null],
@@ -50,7 +50,7 @@
             </x-admin.globals.forms.field>
 
             <!-- Academic Year -->
-            <x-admin.globals.forms.field label="Academic Year" type="text" placeholder="yyyy-yyyy" name="academic_year"
+            <x-admin.globals.forms.field label="Year" type="text" placeholder="yyyy-yyyy" name="academic_year"
                 value="{{ $data['oldInputs']['academic_year'] ?? '' }}" :svgUrl="asset('assets/svg/calendar.svg')" />
 
             <!--====== Month  ======-->
@@ -195,8 +195,8 @@
                     @endforeach
                 </x-admin.globals.forms.field>
 
-                <!--====== Academic Year ======-->
-                <x-admin.globals.forms.field label="Academic Year" type="text" placeholder="yyyy-yyyy" name="academic_year" required
+                <!--====== Year ======-->
+                <x-admin.globals.forms.field label="Year" type="text" placeholder="yyyy-yyyy" name="academic_year" required
                     :svgUrl="asset('assets/svg/calendar.svg')" />
 
                 <!--====== Month  ======-->

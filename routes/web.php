@@ -31,6 +31,7 @@ use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\StaffSalaryController;
 use App\Http\Controllers\Admin\SupplierController;
 use App\Http\Controllers\Admin\SupplierPaymentController;
+use App\Http\Controllers\Admin\TestimonialController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -253,3 +254,12 @@ Route::delete('dashboard/faq/delete', [FaqController::class, 'delete'])->name('f
 Route::get('dashboard/faq/edit/{id}', [FaqController::class, 'edit'])->name('faq.edit')->middleware('auth');
 Route::put('dashboard/faq/update', [FaqController::class, 'update'])->name('faq.update')->middleware('auth');
 Route::post('dashboard/faq/status/update', [FaqController::class, 'updateStatus'])->name('faq.status.update')->middleware('auth');
+
+
+/* ====================== Dashboard > Testimonial ====================== */
+Route::get('dashboard/testimonial', [TestimonialController::class, 'index'])->name('testimonial.index')->middleware('auth');
+Route::post('dashboard/testimonial/store', [TestimonialController::class, 'store'])->name('testimonial.store')->middleware('auth');
+Route::delete('dashboard/testimonial/delete', [TestimonialController::class, 'delete'])->name('testimonial.delete')->middleware('auth');
+Route::get('dashboard/testimonial/edit/{id}', [TestimonialController::class, 'edit'])->name('testimonial.edit')->middleware('auth');
+Route::put('dashboard/testimonial/update', [TestimonialController::class, 'update'])->name('testimonial.update')->middleware('auth');
+Route::post('dashboard/testimonial/status/update', [TestimonialController::class, 'updateStatus'])->name('testimonial.status.update')->middleware('auth');
