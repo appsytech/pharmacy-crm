@@ -18,7 +18,7 @@ class StaffSalaryService
     public function __construct(
         protected StaffSalaryRepositoryInterface $staffSalaryRepo,
         protected StaffRepositoryInterface $staffRepo,
-        // protected LogMoneyRepositoryInterface $logMoneyRepo
+        protected LogMoneyRepositoryInterface $logMoneyRepo
     ) {
         //
     }
@@ -72,17 +72,17 @@ class StaffSalaryService
         $createdSalary = $this->staffSalaryRepo->create($data);
 
         if ($createdSalary) {
-            // $this->logMoneyRepo->create([
-            //     'type' => 'EXPENSE',
-            //     'method_type' => 'TEACHER-SALARY',
-            //     'amount' => $paidAmount,
-            //     'payment_method' => 'CASH',
-            //     'user_id' => $staffId,
-            //     'description' => "Paid amount {$paidAmount} to {$teacherName}",
-            //     'transaction_date' => $request->payment_date ?? Carbon::now(),
-            //     'created_by' => Auth::user()->name,
-            //     'created_at' => Carbon::now(),
-            // ]);
+            $this->logMoneyRepo->create([
+                'type' => 'EXPENSE',
+                'method_type' => 'STAFF-SALARY',
+                'amount' => $paidAmount,
+                'payment_method' => 'CASH',
+                'user_id' => $staffId,
+                'description' => "Paid amount {$paidAmount} to {$staffName}",
+                'transaction_date' => $request->payment_date ?? Carbon::now(),
+                'created_by' => Auth::user()->name,
+                'created_at' => Carbon::now(),
+            ]);
         }
 
         return $createdSalary;

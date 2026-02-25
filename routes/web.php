@@ -4,14 +4,17 @@ use App\Http\Controllers\Admin\ActivityController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\AwardController;
+use App\Http\Controllers\Admin\CheckupProcessController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\ExpenseController;
 use App\Http\Controllers\Admin\ExpenseTypeController;
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\HomeSliderController;
 use App\Http\Controllers\Admin\InquiryController;
 use App\Http\Controllers\Admin\JobApplicationController;
+use App\Http\Controllers\Admin\LogMoneyController;
 use App\Http\Controllers\Admin\ManufacturerController;
 use App\Http\Controllers\Admin\MedicineController;
 use App\Http\Controllers\Admin\MedicineListController;
@@ -20,6 +23,7 @@ use App\Http\Controllers\Admin\PatientAuthController;
 use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\PatientReportController;
 use App\Http\Controllers\Admin\PharmacyBranchController;
+use App\Http\Controllers\Admin\PharmacyScheduleController;
 use App\Http\Controllers\Admin\PharmacyStatisticController;
 use App\Http\Controllers\Admin\StaffAuthController;
 use App\Http\Controllers\Admin\ProfileController;
@@ -48,9 +52,6 @@ Route::post('patient/login/proceed', [PatientAuthController::class, 'authenticat
 /* ====================== Dashboard  ====================== */
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard')->middleware(['multiAuth:web,doctors,staffs,patients']);
 Route::get('medicine-list', [MedicineListController::class, 'index'])->name('medicine-list.index')->middleware('auth');
-
-
-
 
 
 /* ====================== Dashboard > Profile ====================== */
@@ -221,3 +222,34 @@ Route::put('dashboard/award/update', [AwardController::class, 'update'])->name('
 Route::get('dashboard/statistic', [PharmacyStatisticController::class, 'index'])->name('statistic.index')->middleware('auth');
 Route::post('dashboard/statistic/store', [PharmacyStatisticController::class, 'store'])->name('statistic.store')->middleware('auth');
 Route::post('dashboard/statistic/status/update', [PharmacyStatisticController::class, 'updateStatus'])->name('statistic.status.update')->middleware('auth');
+
+
+/* ====================== Dashboard > Log Money ====================== */
+Route::get('dashboard/log-money', [LogMoneyController::class, 'index'])->name('log-money.index')->middleware('auth');
+
+
+/* ====================== Dashboard > Pharmacy Schedule ====================== */
+Route::get('dashboard/pharmacy-schedule', [PharmacyScheduleController::class, 'index'])->name('pharmacy-schedule.index')->middleware('auth');
+Route::post('dashboard/pharmacy-schedule/store', [PharmacyScheduleController::class, 'store'])->name('pharmacy-schedule.store')->middleware('auth');
+Route::delete('dashboard/pharmacy-schedule/delete', [PharmacyScheduleController::class, 'delete'])->name('pharmacy-schedule.delete')->middleware('auth');
+Route::get('dashboard/pharmacy-schedule/edit/{id}', [PharmacyScheduleController::class, 'edit'])->name('pharmacy-schedule.edit')->middleware('auth');
+Route::put('dashboard/pharmacy-schedule/update', [PharmacyScheduleController::class, 'update'])->name('pharmacy-schedule.update')->middleware('auth');
+Route::post('dashboard/pharmacy-schedule/status/update', [PharmacyScheduleController::class, 'updateStatus'])->name('pharmacy-schedule.status.update')->middleware('auth');
+
+
+/* ====================== Dashboard > Checkup Process ====================== */
+Route::get('dashboard/checkup-process', [CheckupProcessController::class, 'index'])->name('checkup-process.index')->middleware('auth');
+Route::post('dashboard/checkup-process/store', [CheckupProcessController::class, 'store'])->name('checkup-process.store')->middleware('auth');
+Route::delete('dashboard/checkup-process/delete', [CheckupProcessController::class, 'delete'])->name('checkup-process.delete')->middleware('auth');
+Route::get('dashboard/checkup-process/edit/{id}', [CheckupProcessController::class, 'edit'])->name('checkup-process.edit')->middleware('auth');
+Route::put('dashboard/checkup-process/update', [CheckupProcessController::class, 'update'])->name('checkup-process.update')->middleware('auth');
+Route::post('dashboard/checkup-process/status/update', [CheckupProcessController::class, 'updateStatus'])->name('checkup-process.status.update')->middleware('auth');
+
+
+/* ====================== Dashboard > Pharmacy Schedule ====================== */
+Route::get('dashboard/faq', [FaqController::class, 'index'])->name('faq.index')->middleware('auth');
+Route::post('dashboard/faq/store', [FaqController::class, 'store'])->name('faq.store')->middleware('auth');
+Route::delete('dashboard/faq/delete', [FaqController::class, 'delete'])->name('faq.delete')->middleware('auth');
+Route::get('dashboard/faq/edit/{id}', [FaqController::class, 'edit'])->name('faq.edit')->middleware('auth');
+Route::put('dashboard/faq/update', [FaqController::class, 'update'])->name('faq.update')->middleware('auth');
+Route::post('dashboard/faq/status/update', [FaqController::class, 'updateStatus'])->name('faq.status.update')->middleware('auth');

@@ -78,7 +78,6 @@ document.addEventListener("input", function (event) {
 
 document.addEventListener("change", function (event) {
 
-    console.log(event.target);
     if (event.target.classList.contains("image-upload&preview")) {
         handleMediaUpload(event.target);
     }

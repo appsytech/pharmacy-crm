@@ -27,6 +27,7 @@
             ['key' => 'email', 'label' => 'Email', 'type' => null],
             ['key' => 'phone', 'label' => 'Phone no', 'type' => null],
             ['key' => 'gender', 'label' => 'Gender', 'type' => null],
+            ['key' => 'salary', 'label' => 'Salary', 'type' => null],
             ['key' => 'join_date', 'label' => 'Join Date', 'type' => null],
             ['key' => 'job_title', 'label' => 'Job Title', 'type' => null],
             ['key' => 'department', 'label' => 'Department', 'type' => null],

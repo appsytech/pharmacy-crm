@@ -14,6 +14,14 @@
          <x-admin.sidebar.nav-item title="Home" :svgUrl="asset('assets/svg/home.svg')" :url="route('dashboard')" :activeRoutes="['dashboard']" />
          @endmultiAuth
 
+         <!--======== Platform  ========-->
+         @multiAuth('web')
+         <x-admin.sidebar.nav-item-group title="Platform" :svgUrl="asset('assets/svg/server.svg')" :activeRoutes="['job-application.index', 'job-application.edit']">
+             <x-admin.sidebar.nav-sub-item title="Job Applications" url="{{ route('job-application.index') }}" :activeRoutes="['job-application.index', 'job-application.edit']" />
+
+         </x-admin.sidebar.nav-item-group>
+         @endmultiAuth
+
          <!--======== Medicine  ========-->
          @multiAuth('web', 'staffs')
          <x-admin.sidebar.nav-item-group title="Medicine" :svgUrl="asset('assets/svg/pill.svg')" :activeRoutes="['medicine.index', 'medicine.edit', 'supplier.index', 'supplier.edit', 'manufacturer.index', 'manufacturer.edit']">
@@ -47,19 +55,19 @@
 
          <!--======== Extra Events  ========-->
          @multiAuth('web')
-         <x-admin.sidebar.nav-item-group title="Extra Events" :svgUrl="asset('assets/svg/calendar-check.svg')" :activeRoutes="['activity.index', 'activity.edit', 'job-application.index', 'job-application.edit']">
+         <x-admin.sidebar.nav-item-group title="Extra Events" :svgUrl="asset('assets/svg/calendar-check.svg')" :activeRoutes="['activity.index', 'activity.edit']">
              <x-admin.sidebar.nav-sub-item title="Activities" url="{{ route('activity.index') }}" :activeRoutes="['activity.index', 'activity.edit']" />
-             <x-admin.sidebar.nav-sub-item title="Job Applications" url="{{ route('job-application.index') }}" :activeRoutes="['job-application.index', 'job-application.edit']" />
          </x-admin.sidebar.nav-item-group>
          @endmultiAuth
 
 
          <!--========Manage Money ========-->
          @multiAuth('web')
-         <x-admin.sidebar.nav-item-group title="Manage Money" :svgUrl="asset('assets/svg/dollar-sign.svg')" :activeRoutes="['expense-type.index', 'expense-type.edit', 'expense.index', 'expense.edit', 'supplier-payment.index', 'supplier-payment.edit']">
+         <x-admin.sidebar.nav-item-group title="Manage Money" :svgUrl="asset('assets/svg/dollar-sign.svg')" :activeRoutes="['expense-type.index', 'expense-type.edit', 'expense.index', 'expense.edit', 'supplier-payment.index', 'supplier-payment.edit', 'log-money.index', 'log-money.edit']">
              <x-admin.sidebar.nav-sub-item title="Expense type" url="{{ route('expense-type.index') }}" :activeRoutes="['expense-type.index', 'expense-type.edit']" />
              <x-admin.sidebar.nav-sub-item title="Expense" url="{{ route('expense.index') }}" :activeRoutes="['expense.index', 'expense.edit']" />
              <x-admin.sidebar.nav-sub-item title="Supplier Payment" url="{{ route('supplier-payment.index') }}" :activeRoutes="['supplier-payment.index', 'supplier-payment.edit']" />
+             <x-admin.sidebar.nav-sub-item title="Money Log" url="{{ route('log-money.index') }}" :activeRoutes="['log-money.index', 'log-money.edit']" />
          </x-admin.sidebar.nav-item-group>
          @endmultiAuth
 
@@ -93,12 +101,15 @@
 
          <!--======== Web  ========-->
          @multiAuth('web')
-         <x-admin.sidebar.nav-item-group title="Web " :svgUrl="asset('assets/svg/globe.svg')" :activeRoutes="['homepage-slider.index', 'homepage-slider.edit','gallery.index', 'gallery.edit', 'inquiry.index', 'inquiry.edit', 'statistic.index', 'statistic.edit']">
+         <x-admin.sidebar.nav-item-group title="Web " :svgUrl="asset('assets/svg/globe.svg')" :activeRoutes="['homepage-slider.index', 'homepage-slider.edit','gallery.index', 'gallery.edit' , 'faq.index', 'faq.edit', 'inquiry.index', 'inquiry.edit',  'statistic.index', 'statistic.edit', 'pharmacy-schedule.index', 'pharmacy-schedule.edit', 'checkup-process.index', 'checkup-process.edit']">
              <x-admin.sidebar.nav-sub-item title="Homepage Slider" :url="route('homepage-slider.index')" :activeRoutes="['homepage-slider.index', 'homepage-slider.edit']" />
              <x-admin.sidebar.nav-sub-item title="Gallery" :url="route('gallery.index')" :activeRoutes="['gallery.index', 'gallery.edit']" />
              <x-admin.sidebar.nav-sub-item title="Inquiry" :url="route('inquiry.index')" :activeRoutes="['inquiry.index', 'inquiry.edit']" />
              <x-admin.sidebar.nav-sub-item title="Award" :url="route('award.index')" :activeRoutes="['award.index', 'award.edit']" />
              <x-admin.sidebar.nav-sub-item title="Pharmacy Statistic" :url="route('statistic.index')" :activeRoutes="['statistic.index', 'statistic.edit']" />
+             <x-admin.sidebar.nav-sub-item title="Pharmacy Schedule" :url="route('pharmacy-schedule.index')" :activeRoutes="['pharmacy-schedule.index', 'pharmacy-schedule.edit']" />
+             <x-admin.sidebar.nav-sub-item title="Checkup Process" :url="route('checkup-process.index')" :activeRoutes="['checkup-process.index', 'checkup-process.edit']" />
+             <x-admin.sidebar.nav-sub-item title="Faq" :url="route('faq.index')" :activeRoutes="['faq.index', 'faq.edit']" />
          </x-admin.sidebar.nav-item-group>
          @endmultiAuth
 
