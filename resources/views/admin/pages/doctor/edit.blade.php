@@ -57,6 +57,14 @@
                     </x-slot>
                 </x-admin.globals.forms.field>
 
+                {{-- ====== Monthly Salary ====== --}}
+                <x-admin.globals.forms.field type="numeric" label="Montly salary" value="{{ $data['doctor']->monthly_salary ?? 0 }}" name="monthly_salary" placeholder="Enter Montly Salary"
+                    :svgUrl="asset('assets/svg/dollar-sign.svg')" />
+
+                {{-- ====== Pharmacy Commision Percentage ====== --}}
+                <x-admin.globals.forms.field type="numeric" label="Pharmacy Commision Percentage" value="{{ $data['doctor']->pharmacy_commision_percentage ?? 0 }}" name="pharmacy_commision_percentage" placeholder="Enter Pharmacy Commision Percentage"
+                    :svgUrl="asset('assets/svg/percent.svg')" />
+
                 {{-- ====== Consultation Fee ====== --}}
                 <x-admin.globals.forms.field type="numeric" label="Consultation Fee" value="{{ $data['doctor']->consultation_fee ?? '' }}" name="consultation_fee" placeholder="Enter Consultation Fee"
                     :svgUrl="asset('assets/svg/=dollar-sign.svg')" />

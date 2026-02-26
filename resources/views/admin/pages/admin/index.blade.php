@@ -144,7 +144,7 @@
                     </x-slot>
                 </x-admin.globals.forms.field>
 
-                
+
 
                 {{-- ====== Profile ====== --}}
                 <x-admin.globals.forms.field type="file" class="image-upload&preview" label="Profile" name="profile_image"

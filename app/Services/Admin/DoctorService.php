@@ -47,6 +47,8 @@ class DoctorService
             'linkedin_profile' => $request->linkedin_profile,
             'twitter_profile' => $request->twitter_profile,
             'availability' => $request->availability,
+            'monthly_salary' => $request->monthly_salary,
+            'pharmacy_commision_percentage' => $request->pharmacy_commision_percentage,
             'location' => $request->location,
             'created_at' => Carbon::now()
         ];
@@ -127,6 +129,8 @@ class DoctorService
             'fb_profile' => $request->fb_profile,
             'linkedin_profile' => $request->linkedin_profile,
             'twitter_profile' => $request->twitter_profile,
+            'monthly_salary' => $request->monthly_salary,
+            'pharmacy_commision_percentage' => $request->pharmacy_commision_percentage,
             'updated_at' => Carbon::now(),
         ];
 

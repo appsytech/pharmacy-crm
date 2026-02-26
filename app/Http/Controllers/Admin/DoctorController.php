@@ -48,7 +48,7 @@ class DoctorController extends Controller
             'speciality' => 'nullable|string|max:100',
             'department' => 'nullable|string|max:100',
             'experience' => 'nullable|integer|min:0',
-            'description' => 'nullable|string', //
+            'description' => 'nullable|string',
             'status' => 'required|in:ACTIVE,INACTIVE,ONLEAVE',
             'position' => 'required|in:JUNIOR,SENIOR,CONSULTANT,HEAD',
             'license_number' => 'required|string|max:50|unique:doctors,license_number',
@@ -58,6 +58,8 @@ class DoctorController extends Controller
             'linkedin_profile' => 'nullable|url|max:255',
             'twitter_profile' => 'nullable|url|max:255',
             'location' => 'nullable|string|max:150',
+            'monthly_salary' => 'nullable|numeric|min:0|max:99999999.99|regex:/^\d{1,8}(\.\d{1,2})?$/',
+            'pharmacy_commision_percentage' => 'nullable|numeric|min:0|max:999.99|regex:/^\d{1,3}(\.\d{1,2})?$/',
         ]);
 
         if ($validator->fails()) {
@@ -116,6 +118,8 @@ class DoctorController extends Controller
             'linkedin_profile' => 'nullable|url|max:255',
             'twitter_profile' => 'nullable|url|max:255',
             'location' => 'nullable|string|max:150',
+            'monthly_salary' => 'nullable|numeric|min:0|max:99999999.99|regex:/^\d{1,8}(\.\d{1,2})?$/',
+            'pharmacy_commision_percentage' => 'nullable|numeric|min:0|max:999.99|regex:/^\d{1,3}(\.\d{1,2})?$/'
         ]);
 
         $response = $this->doctorService->update($request);
