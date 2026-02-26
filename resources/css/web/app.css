@@ -1,0 +1,6 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "magnific-popup/dist/magnific-popup.css";
+@import "swiper/css";
+@import "jquery-datetimepicker/build/jquery.datetimepicker.min.css";
+
+@import "./style.css";

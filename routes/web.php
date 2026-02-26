@@ -32,6 +32,11 @@ use App\Http\Controllers\Admin\StaffSalaryController;
 use App\Http\Controllers\Admin\SupplierController;
 use App\Http\Controllers\Admin\SupplierPaymentController;
 use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Web\AppointmentController;
+use App\Http\Controllers\Web\BlogController;
+use App\Http\Controllers\Web\PageController;
+use App\Http\Controllers\Web\ServiceController;
+use App\Http\Controllers\Web\TeamController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -51,7 +56,7 @@ Route::get('patient/login', [PatientAuthController::class, 'login'])->name('pati
 Route::post('patient/login/proceed', [PatientAuthController::class, 'authenticate'])->name('patient.login.proceed');
 
 /* ====================== Dashboard  ====================== */
-Route::get('/', [DashboardController::class, 'index'])->name('dashboard')->middleware(['multiAuth:web,doctors,staffs,patients']);
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware(['multiAuth:web,doctors,staffs,patients']);
 Route::get('medicine-list', [MedicineListController::class, 'index'])->name('medicine-list.index')->middleware('auth');
 
 
@@ -263,3 +268,35 @@ Route::delete('dashboard/testimonial/delete', [TestimonialController::class, 'de
 Route::get('dashboard/testimonial/edit/{id}', [TestimonialController::class, 'edit'])->name('testimonial.edit')->middleware('auth');
 Route::put('dashboard/testimonial/update', [TestimonialController::class, 'update'])->name('testimonial.update')->middleware('auth');
 Route::post('dashboard/testimonial/status/update', [TestimonialController::class, 'updateStatus'])->name('testimonial.status.update')->middleware('auth');
+
+
+/* ====================== Web  ====================== */
+Route::get('/', [PageController::class, 'homePage'])->name('web.homepage.index');
+
+
+/* ====================== Web > pages  ====================== */
+Route::get('about-us', [PageController::class, 'aboutUs'])->name('web.about.index');
+Route::get('galleries', [PageController::class, 'gallery'])->name('web.gallery.index');
+
+
+/* ====================== Web > Service  ====================== */
+Route::get('services', [ServiceController::class, 'index'])->name('web.service.index');
+Route::get('service/details', [ServiceController::class, 'show'])->name('web.service.show');
+
+
+/* ====================== Web > Team  ====================== */
+Route::get('teams', [TeamController::class, 'index'])->name('web.team.index');
+Route::get('team/details', [TeamController::class, 'show'])->name('web.team.show');
+
+
+/* ====================== Web > Appointment  ====================== */
+Route::get('appointment', [AppointmentController::class, 'index'])->name('web.appointment.index');
+
+
+/* ====================== Web > Blog  ====================== */
+Route::get('blog', [BlogController::class, 'index'])->name('web.blog.index');
+Route::get('blog/details', [BlogController::class, 'show'])->name('web.blog.show');
+
+
+/* ====================== Web > Contact  ====================== */
+Route::get('contact', [PageController::class, 'contact'])->name('web.contact.index');
