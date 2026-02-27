@@ -5,17 +5,10 @@
 <!--==============================
     Breadcumb
 ============================== -->
-<div class="breadcumb-wrapper " data-bg-src="assets/img/bg/breadcumb-bg.jpg">
-    <div class="container">
-        <div class="breadcumb-content">
-            <h1 class="breadcumb-title">Service Details</h1>
-            <ul class="breadcumb-menu">
-                <li><a href="home-medical-clinic.html">Home</a></li>
-                <li>Service Details</li>
-            </ul>
-        </div>
-    </div>
-</div><!--==============================
+<x-web.breadcrumb.default-breadcrumb label="Services" :items="[['label' => 'Home', 'url' => route('web.homepage.index')], ['label' => 'Services', 'url' => route('web.service.index')], ['label' => 'Services Detail', 'active' => true]]" />
+
+
+<!--==============================
     Service Area
 ==============================-->
 <section class="space-top space-extra-bottom">
@@ -121,6 +114,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-xxl-4 col-lg-4">
                 <aside class="sidebar-area">
                     <div class="widget widget_search  ">

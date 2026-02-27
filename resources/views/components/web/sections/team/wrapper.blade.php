@@ -1,4 +1,11 @@
-<section class="bg-top-center space-top" id="team-sec" data-bg-src="{{ asset('assets/img/bg/team_bg_1.jpg') }}">
+@props([
+'bgImgUrl' => null,
+])
+
+<section {{ $attributes->class([
+    'bg-top-center space-top'
+    ])->merge() }}
+    id="team-sec" @if(!empty($bgImgUrl)) data-bg-src="{{ $bgImgUrl }}" @endif>
     <div class="container z-index-common">
         <div class="title-area text-center">
             <span class="sub-title">

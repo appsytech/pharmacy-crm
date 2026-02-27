@@ -15,7 +15,7 @@
 <!--==============================
 Service Area
 ==============================-->
-<x-web.sections.service.wrapper :bgImg="asset('assets/img/bg/service_bg_1.png')" sectionTitle="Our Tata Medical D S Pvt specialties Technical service" sectionSubTitle="Our Services" />
+<x-web.sections.service.wrapper :bgImg="asset('assets/img/bg/service_bg_1.png')" sectionTitle="Our Tata Medical D S Pvt specialties Technical service" sectionSubTitle="Our Services"  class="bg-smoke"/>
 
 <!--==============================
 Cta Area
@@ -35,7 +35,7 @@ Counter Area
 <!--==============================
 Team Area
 ==============================-->
-<x-web.sections.team.wrapper />
+<x-web.sections.team.wrapper :bgImgUrl="asset('assets/img/bg/team_bg_1.jpg')" />
 
 <!--==============================
 Appointment Area

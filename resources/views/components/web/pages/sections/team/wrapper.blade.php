@@ -1,0 +1,21 @@
+<section class="space">
+    <div class="container">
+        <div class="title-area text-center">
+            <span class="sub-title">
+                <img src="{{ asset('assets/img/theme-img/title_icon.svg') }}" alt="Icon">Expert doctors</span>
+            <h2 class="sec-title">Meet our professional Doctors</h2>
+        </div>
+        <div class="row gy-40 justify-content-center">
+            <!-- Single Item -->
+            <x-web.pages.sections.team.partials.card />
+            <x-web.pages.sections.team.partials.card />
+            <x-web.pages.sections.team.partials.card />
+            <x-web.pages.sections.team.partials.card />
+            <x-web.pages.sections.team.partials.card />
+            <x-web.pages.sections.team.partials.card />
+            <x-web.pages.sections.team.partials.card />
+            <x-web.pages.sections.team.partials.card />
+
+        </div>
+    </div>
+</section>
