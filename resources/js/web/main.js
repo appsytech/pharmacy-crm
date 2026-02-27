@@ -6,9 +6,6 @@ import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 
 const jQuery = $;
 
-
-
-
 import 'magnific-popup';
 import 'magnific-popup/dist/magnific-popup.css';
 

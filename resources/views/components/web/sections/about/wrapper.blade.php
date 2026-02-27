@@ -1,0 +1,105 @@
+@props([
+'sectionTitle' => null,
+'sectionSubTitle' => null
+])
+
+
+<!--==============================
+About Area
+==============================-->
+<div class="overflow-hidden space" id="about-sec">
+    <div class="shape-mockup" data-top="0" data-right="0">
+        <img src="{{ asset('assets/img/shape/pattern_shape_1.png') }}" alt="shape">
+    </div>
+    <div class="shape-mockup jump" data-bottom="10%" data-right="3%">
+        <img src="{{ asset('assets/img/shape/medicine_1.png') }}" alt="shape">
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7 col-md-8">
+                <div class="title-area text-center">
+                    <span class="sub-title">
+                        <img src="{{ asset('assets/img/theme-img/title_icon.svg') }}" alt="shape">
+                        {{ $sectionSubTitle ?? '' }}
+                    </span>
+                    <h2 class="sec-title"> {{ $sectionTitle ?? '' }}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-xl-6 mb-30 mb-xl-0">
+                <div class="img-box1">
+                    <div class="img1">
+                        <img src="{{ asset('assets/img/normal/about_1_3.png') }}" alt="About">
+                    </div>
+                    <div class="about-info style2">
+                        <h3 class="box-title">Dr. Esita Jabed</h3>
+                        <p class="box-text">Mention the languages <br> in which the staff.</p>
+                        <div class="box-review">
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                        </div>
+                        <a href="tel:+16356478965" class="box-link"><i class="fa-solid fa-phone"></i> +163 564
+                            78965</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="ps-xxl-4 ms-xl-2 text-center text-xl-start">
+                    <div class="title-area mb-32">
+                        <p class="sec-text mt-n2">
+                            A brief statement outlining the purpose and mission of the clinic.
+                            This can include the commitment to patient care, community health, and any specifical
+                            goals for our values.</p>
+                    </div>
+                    <div class="mb-25 mt-n1">
+                        <div class="checklist style2 list-two-column">
+                            <ul>
+                                <li><i class="fas fa-heart-pulse"></i> Medical Professionals</li>
+                                <li><i class="fas fa-heart-pulse"></i> Facilities and Equipment</li>
+                                <li><i class="fas fa-heart-pulse"></i> Emergency Care</li>
+                                <li><i class="fas fa-heart-pulse"></i> Medical Consulting</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="{{ route('web.about.index') }}" class="th-btn">More About Us</a>
+                    </div>
+                    <div class="about-video-wrap">
+                        <div class="th-video about-video">
+                            <img src="{{ asset('assets/img/normal/about_1_4.jpg') }}" alt="video">
+                            <a href="https://www.youtube.com/watch?v=_sI_Ps7JSEk" class="play-btn popup-video">
+                                <i class="fas fa-play"></i></a>
+                        </div>
+                        <div class="box-content">
+                            <p class="box-text">
+                                We offer flexible appointment scheduling options to accommodate your
+                                busy lifestyle. Whether you prefer to book in advance or need. Your health and
+                                well-being are our top priorities.
+                            </p>
+                            <div class="about-contact-wrap">
+                                <div class="about-contact">
+                                    <p class="box-label">Support Line 24/7</p>
+                                    <h3 class="box-title">
+                                        <i class="fal fa-envelope"></i>
+                                        <a href="mailto:info@contact.com">info@contact.com</a>
+                                    </h3>
+                                </div>
+                                <div class="about-contact">
+                                    <p class="box-label">Online Schedule</p>
+                                    <h3 class="box-title">
+                                        <i class="fal fa-calendar-alt"></i>
+                                        <a href="{{ route('web.contact.index') }}">Book Here</a>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
