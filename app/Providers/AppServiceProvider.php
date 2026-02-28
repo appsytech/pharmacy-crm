@@ -54,6 +54,12 @@ use App\Repositories\Admin\StaffSalaryRepository;
 use App\Repositories\Admin\SupplierPaymentRepository;
 use App\Repositories\Admin\SupplierRepository;
 use App\Repositories\Admin\TestimonialRepository;
+use App\Repositories\Web\FaqRepository as WebFaqRepository;
+use App\Repositories\Web\HomeSliderRepository as WebHomeSliderRepository;
+use App\Repositories\Web\Interfaces\FaqRepositoryInterface as InterfacesFaqRepositoryInterface;
+use App\Repositories\Web\Interfaces\HomeSliderRepositoryInterface as InterfaceHomeSliderRepositoryInterface;
+use App\Repositories\Web\Interfaces\TestimonialRepositoryInterface as InterfacesTestimonialRepositoryInterface;
+use App\Repositories\Web\TestimonialRepository as WebTestimonialRepository;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
@@ -95,7 +101,14 @@ class AppServiceProvider extends ServiceProvider
             PharmacyScheduleRepositoryInterface::class => PharmacyScheduleRepository::class,
             CheckupProcessRepositoryInterface::class => CheckupProcessRepository::class,
             FaqRepositoryInterface::class => FaqRepository::class,
-            TestimonialRepositoryInterface::class => TestimonialRepository::class
+            TestimonialRepositoryInterface::class => TestimonialRepository::class,
+
+
+            /* ============ Web bindings ============ */
+            InterfaceHomeSliderRepositoryInterface::class => WebHomeSliderRepository::class,
+            InterfacesTestimonialRepositoryInterface::class => WebTestimonialRepository::class,
+            InterfacesFaqRepositoryInterface::class => WebFaqRepository::class
+
         ];
 
         foreach ($bindings as $interface => $repository) {

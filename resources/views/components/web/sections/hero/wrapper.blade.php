@@ -1,24 +1,20 @@
+@props([
+'sliders' => collect([])
+])
+
 <div class="th-hero-wrapper hero-1" id="hero" data-bg-src="{{ asset('assets/img/hero/hero_bg_1_1.jpg') }}">
     <div class="swiper th-slider" id="heroSlide1" data-slider-options='{"effect":"fade","autoHeight":true}'>
         <div class="swiper-wrapper">
 
-            <x-web.sections.hero.partials.slide title="Advanced Clinical Care"
-                subtitle="Trusted Care for Indian Families"
-                heading="Consult Experienced Doctors Today"
-                description="Our clinic provides ethical, affordable and evidence-based medical treatment with a focus on patient safety, hygiene and personalized care for all age groups."
-                :imageUrl="asset('assets/img/hero/hero_1_1.png')" />
-
-            <x-web.sections.hero.partials.slide title="Advanced Clinical Care"
-                subtitle="Trusted Care for Indian Families"
-                heading="Consult Experienced Doctors Today"
-                description="Our clinic provides ethical, affordable and evidence-based medical treatment with a focus on patient safety, hygiene and personalized care for all age groups."
-                :imageUrl="asset('assets/img/hero/hero_1_2.png')" />
-
-            <x-web.sections.hero.partials.slide title="Advanced Clinical Care"
-                subtitle="Trusted Care for Indian Families"
-                heading="Consult Experienced Doctors Today"
-                description="Our clinic provides ethical, affordable and evidence-based medical treatment with a focus on patient safety, hygiene and personalized care for all age groups."
-                :imageUrl="asset('assets/img/hero/hero_1_3.png')" />
+            @if($sliders->isNotEmpty())
+            @foreach($sliders as $slider)
+            <x-web.sections.hero.partials.slide :title="$slider->title ?? ''"
+                subtitle="Not Present in Db"
+                heading="Not Present in Db"
+                :description="$slider->description ?? ''"
+                :imageUrl="asset('storage/' . $slider->images)" />
+            @endforeach
+            @endif
         </div>
     </div>
 

@@ -5,7 +5,7 @@
 <!--==============================
     Hero Area
  ==============================-->
-<x-web.sections.hero.wrapper />
+<x-web.sections.hero.wrapper :sliders="$data['sliders']" />
 
 <!--==============================
     About Area
@@ -15,7 +15,7 @@
 <!--==============================
 Service Area
 ==============================-->
-<x-web.sections.service.wrapper :bgImg="asset('assets/img/bg/service_bg_1.png')" sectionTitle="Our Tata Medical D S Pvt specialties Technical service" sectionSubTitle="Our Services"  class="bg-smoke"/>
+<x-web.sections.service.wrapper :bgImg="asset('assets/img/bg/service_bg_1.png')" sectionTitle="Our Tata Medical D S Pvt specialties Technical service" sectionSubTitle="Our Services" class="bg-smoke" />
 
 <!--==============================
 Cta Area
@@ -50,13 +50,13 @@ Process Area
 <!--==============================
 Faq Area
 ==============================-->
-<x-web.sections.faq.wrapper />
+<x-web.sections.faq.wrapper :faqs="$data['faqs']" />
 
 
 <!--==============================
 Testimonial Area
 ==============================-->
-<x-web.sections.testimonial.wrapper />
+<x-web.sections.testimonial.wrapper :testimonials="$data['testimonials']" />
 
 
 <!--==============================

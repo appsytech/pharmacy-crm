@@ -1,3 +1,7 @@
+@props([
+'faqs' => collect([])
+])
+
 <div class="overflow-hidden" id="faq-sec" data-bg-src="{{ asset('assets/img/bg/faq_bg_1.jpg') }}">
     <div class="container">
         <div class="row justify-content-center">
@@ -10,10 +14,11 @@
                     </div>
                     <div class="accordion" id="faqAccordion">
 
-                        <x-web.sections.faq.partials.card question="01. What services does the clinic offer?" answer="Our clinic is strategically located for easy access, ensuring that you can reach us conveniently from various parts of the community. We also provide accessibility." />
-                        <x-web.sections.faq.partials.card question="01. What services does the clinic offer?" answer="Our clinic is strategically located for easy access, ensuring that you can reach us conveniently from various parts of the community. We also provide accessibility." />
-                        <x-web.sections.faq.partials.card question="01. What services does the clinic offer?" answer="Our clinic is strategically located for easy access, ensuring that you can reach us conveniently from various parts of the community. We also provide accessibility." />
-
+                        @if($faqs->isNotEmpty())
+                        @foreach($faqs as $faq)
+                        <x-web.sections.faq.partials.card :question="$faq->question ?? ''" :answer="$faq->answer" />
+                        @endforeach
+                        @endif
                     </div>
                 </div>
             </div>

@@ -10,4 +10,4 @@ window.jQuery = $;
 // import "magnific-popup/dist/jquery.magnific-popup.min.js";
 
 // import "./jquery.magnific-popup.min.js";
-import "./main.js";
+// import "./main.js";
