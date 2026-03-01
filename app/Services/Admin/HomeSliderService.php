@@ -32,6 +32,8 @@ class HomeSliderService
             'device_type' => $request->device_type,
             'description' => $request->description,
             'jump_type' => $request->jump_type,
+            'subtitle' => $request->subtitle,
+            'heading' => $request->heading,
             'created_by' => Auth::user()->name,
             'created_at' => Carbon::now(),
         ];
@@ -71,9 +73,13 @@ class HomeSliderService
             'title' => $request->title,
             'type' => $request->type,
             'status' => $request->status,
+            'subtitle' => $request->subtitle,
+            'heading' => $request->heading,
             'device_type' => $request->device_type,
             'description' => $request->description,
             'jump_type' => $request->jump_type,
+            'subtitle' => $request->subtitle,
+            'heading' => $request->heading,
             'updated_at' => Carbon::now(),
         ];
 

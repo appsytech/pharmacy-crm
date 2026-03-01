@@ -1,3 +1,7 @@
+@props([
+'teams' => collect([])
+])
+
 <section class="space">
     <div class="container">
         <div class="title-area text-center">
@@ -7,15 +11,11 @@
         </div>
         <div class="row gy-40 justify-content-center">
             <!-- Single Item -->
-            <x-web.pages.sections.team.partials.card />
-            <x-web.pages.sections.team.partials.card />
-            <x-web.pages.sections.team.partials.card />
-            <x-web.pages.sections.team.partials.card />
-            <x-web.pages.sections.team.partials.card />
-            <x-web.pages.sections.team.partials.card />
-            <x-web.pages.sections.team.partials.card />
-            <x-web.pages.sections.team.partials.card />
-
+            @if($teams->isNotEmpty())
+            @foreach($teams as $team)
+            <x-web.pages.sections.team.partials.card :team="$team" />
+            @endforeach
+            @endif
         </div>
     </div>
 </section>

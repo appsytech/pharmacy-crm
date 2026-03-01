@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Repositories\Admin;
+namespace App\Repositories\Web;
 
 use App\Models\Gallery;
-use App\Repositories\Admin\Interfaces\GalleryRepositoryInterface;
+use App\Repositories\Web\Interfaces\GalleryRepositoryInterface;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class GalleryRepository implements GalleryRepositoryInterface
@@ -13,17 +13,9 @@ class GalleryRepository implements GalleryRepositoryInterface
      */
     public function __construct()
     {
-    
+        //
     }
 
-
-    /* ============================================================================
-    | Create a new gallery image record in the database and returns the created record.
-    ==============================================================================*/
-    public function create(array $data): ?Gallery
-    {
-        return Gallery::create($data);
-    }
 
     /* ============================================================================
     |   Fetch a single gallery image record by its primary ID.
@@ -57,23 +49,8 @@ class GalleryRepository implements GalleryRepositoryInterface
                     return $query->select($selectedcolumns);
                 }
             )
+            ->where('status', 'ACTIVE')
             ->orderBy('created_at', 'desc')
             ->paginate($filterData['paginateLimit'] ?? 10);
-    }
-
-    /* ============================================================================
-    |Update specific columns of an existing gallery image record.
-    ==============================================================================*/
-    public function updateColumns(int $id, array $data): bool
-    {
-        return Gallery::where('id', $id)->update($data);
-    }
-
-    /* ================================================
-    |Delete existing gallery image record by its id.
-    ==================================================*/
-    public function delete(int $id): bool
-    {
-        return Gallery::where('id', $id)->delete();
     }
 }

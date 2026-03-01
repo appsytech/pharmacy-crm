@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Services\Web\CheckupProcessService;
+use App\Services\Web\DoctorService;
 use App\Services\Web\FaqService;
+use App\Services\Web\GalleryService;
 use App\Services\Web\HomeSliderService;
 use App\Services\Web\TestimonialService;
 use Illuminate\Http\Request;
@@ -13,7 +16,10 @@ class PageController extends Controller
     public function __construct(
         protected HomeSliderService $homeSliderService,
         protected TestimonialService $testimonialService,
-        protected FaqService $faqService
+        protected FaqService $faqService,
+        protected DoctorService $doctorService,
+        protected CheckupProcessService $checkupProcessService,
+        protected GalleryService $galleryService
     ) {}
 
 
@@ -27,7 +33,12 @@ class PageController extends Controller
             'testimonials' => $this->testimonialService->getTestimonials([
                 'status' => 'APPROVED'
             ]),
-            'faqs' => $this->faqService->getFaqs([], ['question', 'answer'])
+            'faqs' => $this->faqService->getFaqs([], ['question', 'answer']),
+
+            'doctors' => $this->doctorService->getDoctorsCollection([
+                'status' => 'ACTIVE'
+            ]),
+            'checkupProcesses' => $this->checkupProcessService->getCheckupProcesss()
         ];
 
 
@@ -45,7 +56,9 @@ class PageController extends Controller
 
     public function gallery()
     {
-        $data = [];
+        $data = [
+            'images' => $this->galleryService->getGallerys([], ['id', 'title', 'description', 'images'])
+        ];
 
         return view('web.pages.gallery', compact('data'));
     }

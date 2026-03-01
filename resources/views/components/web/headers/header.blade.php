@@ -73,7 +73,6 @@
                                     <a href="{{ route('web.team.index') }}">Doctors</a>
                                     <ul class="sub-menu">
                                         <li><a href="{{ route('web.team.index') }}">Team</a></li>
-                                        <li><a href="{{ route('web.team.show') }}">Team Details</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="{{ route('web.gallery.index') }}">Gallerys</a></li>

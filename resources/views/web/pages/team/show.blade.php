@@ -17,5 +17,5 @@
 <!--==============================
 Team Area
 ==============================-->
-<x-web.pages.sections.team.team-details.wrapper />
+<x-web.pages.sections.team.team-details.wrapper :team="$data['team']" />
 @endsection

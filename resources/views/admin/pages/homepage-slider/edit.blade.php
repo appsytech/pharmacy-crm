@@ -33,6 +33,14 @@
                 <x-admin.globals.forms.field type="text" label="Title" value="{{ $data['slider']->title ?? '' }}" placeholder="Enter title" name="title" required
                     :svgUrl="asset('assets/svg/hash.svg')" />
 
+                {{-- ====== Subtitle ====== --}}
+                <x-admin.globals.forms.field type="text" label="Sub Title" value="{{ $data['slider']->subtitle ?? '' }}" placeholder="Enter Subtitle" name="subtitle"
+                    :svgUrl="asset('assets/svg/caption.svg')" />
+
+                {{-- ====== heading ====== --}}
+                <x-admin.globals.forms.field type="text" label="Heading" value="{{ $data['slider']->heading ?? '' }}" placeholder="Enter heading" name="heading"
+                    :svgUrl="asset('assets/svg/heading.svg')" />
+
                 {{-- ====== Type====== --}}
                 <x-admin.globals.forms.field type="text" label="Type" value="{{ $data['slider']->type ?? '' }}" placeholder="Enter Type" name="type" required
                     :svgUrl="asset('assets/svg/layers.svg')" />

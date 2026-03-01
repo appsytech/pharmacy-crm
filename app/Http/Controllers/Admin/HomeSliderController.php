@@ -44,6 +44,8 @@ class HomeSliderController extends Controller
             'device_type' => 'required|integer|in:0,1,2', // 0 = web , 1 = android 2 = h5
             'description' => 'nullable|string',
             'jump_type' => 'nullable|string|in:ABOUT,ACTIVITY,ADMISSION',
+            'subtitle' => 'required|string|max:255',
+            'heading' => 'required|string|max:255',
         ]);
 
         if ($validator->fails()) {
@@ -99,6 +101,8 @@ class HomeSliderController extends Controller
             'device_type' => 'required|integer|in:0,1,2', // 0 = web , 1 = android 2 = h5
             'description' => 'nullable|string',
             'jump_type' => 'nullable|string|in:ABOUT,ACTIVITY,ADMISSION',
+            'subtitle' => 'nullable|string|max:255',
+            'heading' => 'nullable|string|max:255',
         ]);
 
         $isUpdated = $this->homeSliderService->update($request);

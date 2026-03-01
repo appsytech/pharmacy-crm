@@ -54,9 +54,15 @@ use App\Repositories\Admin\StaffSalaryRepository;
 use App\Repositories\Admin\SupplierPaymentRepository;
 use App\Repositories\Admin\SupplierRepository;
 use App\Repositories\Admin\TestimonialRepository;
+use App\Repositories\Web\CheckupProcessRepository as WebCheckupProcessRepository;
+use App\Repositories\Web\DoctorRepository as WebDoctorRepository;
 use App\Repositories\Web\FaqRepository as WebFaqRepository;
+use App\Repositories\Web\GalleryRepository as WebGalleryRepository;
 use App\Repositories\Web\HomeSliderRepository as WebHomeSliderRepository;
+use App\Repositories\Web\Interfaces\CheckupProcessRepositoryInterface as InterfacesCheckupProcessRepositoryInterface;
+use App\Repositories\Web\Interfaces\DoctorRepositoryInterface as InterfacesDoctorRepositoryInterface;
 use App\Repositories\Web\Interfaces\FaqRepositoryInterface as InterfacesFaqRepositoryInterface;
+use App\Repositories\Web\Interfaces\GalleryRepositoryInterface as InterfacesGalleryRepositoryInterface;
 use App\Repositories\Web\Interfaces\HomeSliderRepositoryInterface as InterfaceHomeSliderRepositoryInterface;
 use App\Repositories\Web\Interfaces\TestimonialRepositoryInterface as InterfacesTestimonialRepositoryInterface;
 use App\Repositories\Web\TestimonialRepository as WebTestimonialRepository;
@@ -107,7 +113,10 @@ class AppServiceProvider extends ServiceProvider
             /* ============ Web bindings ============ */
             InterfaceHomeSliderRepositoryInterface::class => WebHomeSliderRepository::class,
             InterfacesTestimonialRepositoryInterface::class => WebTestimonialRepository::class,
-            InterfacesFaqRepositoryInterface::class => WebFaqRepository::class
+            InterfacesFaqRepositoryInterface::class => WebFaqRepository::class,
+            InterfacesDoctorRepositoryInterface::class => WebDoctorRepository::class,
+            InterfacesCheckupProcessRepositoryInterface::class => WebCheckupProcessRepository::class,
+            InterfacesGalleryRepositoryInterface::class => WebGalleryRepository::class
 
         ];
 

@@ -5,7 +5,7 @@
 <!--==============================
 Gallery Area
 ================================-->
-<x-web.pages.sections.gallery.wrapper />
+<x-web.pages.sections.gallery.wrapper :images="$data['images']" />
 
 <!--==============================
 Feature Area

@@ -87,6 +87,14 @@
                 <x-admin.globals.forms.field type="text" label="Title" placeholder="Enter title" name="title" required
                     :svgUrl="asset('assets/svg/hash.svg')" />
 
+                {{-- ====== Subtitle ====== --}}
+                <x-admin.globals.forms.field type="text" label="Sub Title" placeholder="Enter Subtitle" name="subtitle"
+                    :svgUrl="asset('assets/svg/caption.svg')" />
+
+                {{-- ====== heading ====== --}}
+                <x-admin.globals.forms.field type="text" label="Heading" placeholder="Enter heading" name="heading"
+                    :svgUrl="asset('assets/svg/heading.svg')" />
+
                 {{-- ====== Type====== --}}
                 <x-admin.globals.forms.field type="text" label="Type" placeholder="Enter Type" name="type" required
                     :svgUrl="asset('assets/svg/layers.svg')" />

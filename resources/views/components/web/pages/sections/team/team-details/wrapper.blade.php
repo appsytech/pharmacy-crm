@@ -1,88 +1,21 @@
+@props([
+'team'
+])
+
 <section class="space">
     <div class="container">
         <div class="row gy-40">
             <div class="col-xl-4 position-relative">
                 <div class="team-sticky">
 
-                    <x-web.pages.sections.team.team-details.partials.team-detail />
-                    <x-web.pages.sections.team.team-details.partials.team-info />
+                    <x-web.pages.sections.team.team-details.partials.team-detail :team="$team" />
+                    <x-web.pages.sections.team.team-details.partials.team-info :team="$team" />
 
                 </div>
             </div>
             <div class="col-xl-8">
                 <div class="team-details">
-                    <h2 class="sec-title mb-4">Introduction</h2>
-                    <p class="mb-20">Dr. Douglas Lyphe is a private individual or a professional who gained prominence in a specific field after January 2022, I recommend checking recent and credible online sources, such as professional profiles, healthcare directories, or the official website of the relevant institution or clinic where this person works. Social media platforms or professional networking sites may also provide up-to-date information.</p>
-                    <p class="mb-20">Your health and well-being are our top priorities. We take the time to listen to your concerns, answer your questions, and involve you in the decision-making process for your healthcare. We believe in empowering our patients to make informed choices about their health.</p>
-                    <h4 class="sec-title mb-4 mt-40">Specialties</h4>
-                    <p class="mb-4">Our clinic is equipped with modern facilities and advanced medical technology to ensure accurate diagnoses and effective treatments. This enables us to provide you with the highest standard of care.</p>
-                    <div class="row gy-2">
-                        <div class="col-md-6">
-                            <div class="checklist body-color">
-                                <ul>
-                                    <li><i class="fas fa-circle-arrow-right"></i><b>Cardiology </b>D.N.Sc.</li>
-                                    <li><i class="fas fa-circle-arrow-right"></i><b>Family Medicine </b>D.N.Sc. - M.B.B.S,Ph.D</li>
-                                    <li><i class="fas fa-circle-arrow-right"></i><b>Oncology </b>M.B.B.S,Ph.D</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="checklist body-color">
-                                <ul>
-                                    <li><i class="fas fa-circle-arrow-right"></i><b>Dermatology </b>M.B.B.S,Ph.D</li>
-                                    <li><i class="fas fa-circle-arrow-right"></i><b>Obstetrics & Gynecology </b>Ph.D</li>
-                                    <li><i class="fas fa-circle-arrow-right"></i><b>Orthopedic Surgery </b>M.B.B.S,Ph.D</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <h4 class="sec-title mb-4 mt-40">Educational Info</h4>
-                    <p class="mb-4">We understand that every patient is unique, and their healthcare needs may vary. That's why we create individualized treatment plans tailored to your specific condition, lifestyle, and preferences.</p>
-                    <div class="checklist body-color">
-                        <ul>
-                            <li><i class="text-theme2 far fa-circle-dot"></i><b>Medical College Of California </b>(Doctor of Medicine 2005)</li>
-                            <li><i class="text-theme2 far fa-circle-dot"></i><b>Center Of Medicine Anthology </b>(Medicine Doctorate Aid 2010)</li>
-                            <li><i class="text-theme2 far fa-circle-dot"></i><b>Cambridge School Of Medicine </b>(MBBS Ph.D. 2014)</li>
-                        </ul>
-                    </div>
-
-                    <h4 class="sec-title mb-4 mt-40">Memberships</h4>
-                    <p class="mb-4">We understand that every patient is unique, and their healthcare needs may vary. That's why we create individualized treatment plans tailored to your specific condition, lifestyle, and preferences.</p>
-                    <div class="checklist body-color">
-                        <ul>
-                            <li><i class="text-theme2 far fa-circle-dot"></i>European Society Of Cardiology</li>
-                            <li><i class="text-theme2 far fa-circle-dot"></i>Fellow Royal Society Of Medicine</li>
-                            <li><i class="text-theme2 far fa-circle-dot"></i>British Cardiovascular Society</li>
-                        </ul>
-                    </div>
-
-                    <h4 class="sec-title mb-4 mt-40">Professional Skills</h4>
-                    <p class="mb-4">My offer flexible appointment scheduling options to accommodate your busy lifestyle. Whether you prefer to book in advance or need a same-day appointment.</p>
-                    <div class="skill-feature">
-                        <h5 class="skill-feature_title">Surgery</h5>
-                        <div class="progress">
-                            <div class="progress-bar bg-theme2" style="width: 80%;">
-                                <div class="progress-value">80%</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill-feature">
-                        <h5 class="skill-feature_title">Medical Research</h5>
-                        <div class="progress">
-                            <div class="progress-bar bg-theme2" style="width: 90%;">
-                                <div class="progress-value">90%</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill-feature">
-                        <h5 class="skill-feature_title">Professionalism</h5>
-                        <div class="progress">
-                            <div class="progress-bar bg-theme2" style="width: 75%;">
-                                <div class="progress-value">75%</div>
-                            </div>
-                        </div>
-                    </div>
+                    {{ $team->description ?? '' }}
 
                     <x-web.pages.sections.team.team-details.partials.team-contact />
                 </div>

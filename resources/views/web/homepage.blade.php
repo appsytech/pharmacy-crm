@@ -35,7 +35,7 @@ Counter Area
 <!--==============================
 Team Area
 ==============================-->
-<x-web.sections.team.wrapper :bgImgUrl="asset('assets/img/bg/team_bg_1.jpg')" />
+<x-web.sections.team.wrapper :teams="$data['doctors']" :bgImgUrl="asset('assets/img/bg/team_bg_1.jpg')" />
 
 <!--==============================
 Appointment Area
@@ -45,7 +45,7 @@ Appointment Area
 <!--==============================
 Process Area
 ==============================-->
-<x-web.sections.process.wrapper />
+<x-web.sections.process.wrapper :processes="$data['checkupProcesses']" />
 
 <!--==============================
 Faq Area

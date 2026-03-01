@@ -286,7 +286,7 @@ Route::get('service/details', [ServiceController::class, 'show'])->name('web.ser
 
 /* ====================== Web > Team  ====================== */
 Route::get('teams', [TeamController::class, 'index'])->name('web.team.index');
-Route::get('team/details', [TeamController::class, 'show'])->name('web.team.show');
+Route::get('team/details/{id}', [TeamController::class, 'show'])->name('web.team.show');
 
 
 /* ====================== Web > Appointment  ====================== */

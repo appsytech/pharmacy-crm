@@ -9,8 +9,8 @@
             @if($sliders->isNotEmpty())
             @foreach($sliders as $slider)
             <x-web.sections.hero.partials.slide :title="$slider->title ?? ''"
-                subtitle="Not Present in Db"
-                heading="Not Present in Db"
+                :subtitle="$slider->subtitle ?? ''"
+                :heading="$slider->heading ?? ''"
                 :description="$slider->description ?? ''"
                 :imageUrl="asset('storage/' . $slider->images)" />
             @endforeach
