@@ -34,6 +34,7 @@ use App\Repositories\Admin\Interfaces\PatientRepositoryInterface;
 use App\Repositories\Admin\Interfaces\PharmacyBranchRepositoryInterface;
 use App\Repositories\Admin\Interfaces\PharmacyScheduleRepositoryInterface;
 use App\Repositories\Admin\Interfaces\PharmacyStatisticRepositoryInterface;
+use App\Repositories\Admin\Interfaces\ServiceRepositoryInterface;
 use App\Repositories\Admin\Interfaces\StaffRepositoryInterface;
 use App\Repositories\Admin\Interfaces\StaffSalaryRepositoryInterface;
 use App\Repositories\Admin\Interfaces\SupplierPaymentRepositoryInterface;
@@ -49,6 +50,7 @@ use App\Repositories\Admin\PatientRepository;
 use App\Repositories\Admin\PharmacyBranchRepository;
 use App\Repositories\Admin\PharmacyScheduleRepository;
 use App\Repositories\Admin\PharmacyStatisticRepository;
+use App\Repositories\Admin\ServiceRepository;
 use App\Repositories\Admin\StaffRepository;
 use App\Repositories\Admin\StaffSalaryRepository;
 use App\Repositories\Admin\SupplierPaymentRepository;
@@ -64,7 +66,9 @@ use App\Repositories\Web\Interfaces\DoctorRepositoryInterface as InterfacesDocto
 use App\Repositories\Web\Interfaces\FaqRepositoryInterface as InterfacesFaqRepositoryInterface;
 use App\Repositories\Web\Interfaces\GalleryRepositoryInterface as InterfacesGalleryRepositoryInterface;
 use App\Repositories\Web\Interfaces\HomeSliderRepositoryInterface as InterfaceHomeSliderRepositoryInterface;
+use App\Repositories\Web\Interfaces\ServiceRepositoryInterface as InterfacesServiceRepositoryInterface;
 use App\Repositories\Web\Interfaces\TestimonialRepositoryInterface as InterfacesTestimonialRepositoryInterface;
+use App\Repositories\Web\ServiceRepository as WebServiceRepository;
 use App\Repositories\Web\TestimonialRepository as WebTestimonialRepository;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -116,7 +120,9 @@ class AppServiceProvider extends ServiceProvider
             InterfacesFaqRepositoryInterface::class => WebFaqRepository::class,
             InterfacesDoctorRepositoryInterface::class => WebDoctorRepository::class,
             InterfacesCheckupProcessRepositoryInterface::class => WebCheckupProcessRepository::class,
-            InterfacesGalleryRepositoryInterface::class => WebGalleryRepository::class
+            InterfacesGalleryRepositoryInterface::class => WebGalleryRepository::class,
+            ServiceRepositoryInterface::class => ServiceRepository::class,
+            InterfacesServiceRepositoryInterface::class => WebServiceRepository::class
 
         ];
 

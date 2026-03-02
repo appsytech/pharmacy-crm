@@ -15,7 +15,7 @@
 <!--==============================
 Service Area
 ==============================-->
-<x-web.sections.service.wrapper :bgImg="asset('assets/img/bg/service_bg_1.png')" sectionTitle="Our Tata Medical D S Pvt specialties Technical service" sectionSubTitle="Our Services" class="bg-smoke" />
+<x-web.sections.service.wrapper :services="$data['services']" :bgImg="asset('assets/img/bg/service_bg_1.png')" sectionTitle="Our Tata Medical D S Pvt specialties Technical service" sectionSubTitle="Our Services" class="bg-smoke" />
 
 <!--==============================
 Cta Area

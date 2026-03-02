@@ -8,6 +8,7 @@ use App\Services\Web\DoctorService;
 use App\Services\Web\FaqService;
 use App\Services\Web\GalleryService;
 use App\Services\Web\HomeSliderService;
+use App\Services\Web\ServiceService;
 use App\Services\Web\TestimonialService;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,8 @@ class PageController extends Controller
         protected FaqService $faqService,
         protected DoctorService $doctorService,
         protected CheckupProcessService $checkupProcessService,
-        protected GalleryService $galleryService
+        protected GalleryService $galleryService,
+        protected ServiceService $serviceService
     ) {}
 
 
@@ -38,7 +40,9 @@ class PageController extends Controller
             'doctors' => $this->doctorService->getDoctorsCollection([
                 'status' => 'ACTIVE'
             ]),
-            'checkupProcesses' => $this->checkupProcessService->getCheckupProcesss()
+            'checkupProcesses' => $this->checkupProcessService->getCheckupProcesss(),
+            'services' => $this->serviceService->getServices(),
+
         ];
 
 

@@ -27,6 +27,7 @@ use App\Http\Controllers\Admin\PharmacyScheduleController;
 use App\Http\Controllers\Admin\PharmacyStatisticController;
 use App\Http\Controllers\Admin\StaffAuthController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\StaffSalaryController;
 use App\Http\Controllers\Admin\SupplierController;
@@ -270,6 +271,15 @@ Route::put('dashboard/testimonial/update', [TestimonialController::class, 'updat
 Route::post('dashboard/testimonial/status/update', [TestimonialController::class, 'updateStatus'])->name('testimonial.status.update')->middleware('auth');
 
 
+/* ====================== Dashboard > Service ====================== */
+Route::get('dashboard/service', [AdminServiceController::class, 'index'])->name('service.index')->middleware('auth');
+Route::post('dashboard/service/store', [AdminServiceController::class, 'store'])->name('service.store')->middleware('auth');
+Route::delete('dashboard/service/delete', [AdminServiceController::class, 'delete'])->name('service.delete')->middleware('auth');
+Route::get('dashboard/service/edit/{id}', [AdminServiceController::class, 'edit'])->name('service.edit')->middleware('auth');
+Route::put('dashboard/service/update', [AdminServiceController::class, 'update'])->name('service.update')->middleware('auth');
+Route::post('dashboard/service/status/update', [AdminServiceController::class, 'updateStatus'])->name('service.status.update')->middleware('auth');
+
+
 /* ====================== Web  ====================== */
 Route::get('/', [PageController::class, 'homePage'])->name('web.homepage.index');
 
@@ -281,7 +291,7 @@ Route::get('galleries', [PageController::class, 'gallery'])->name('web.gallery.i
 
 /* ====================== Web > Service  ====================== */
 Route::get('services', [ServiceController::class, 'index'])->name('web.service.index');
-Route::get('service/details', [ServiceController::class, 'show'])->name('web.service.show');
+Route::get('service/details/{id}', [ServiceController::class, 'show'])->name('web.service.show');
 
 
 /* ====================== Web > Team  ====================== */

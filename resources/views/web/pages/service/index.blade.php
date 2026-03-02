@@ -11,7 +11,7 @@
 <!--==============================
 Service Area
 ==============================-->
-<x-web.sections.service.wrapper :paginate=true sectionTitle="Our Tata Medical D S Pvt specialties Technical service" sectionSubTitle="Our Services" />
+<x-web.sections.service.wrapper :services="$data['services']" :paginate=true sectionTitle="Our Tata Medical D S Pvt specialties Technical service" sectionSubTitle="Our Services" />
 
 <!--==============================
 Cta Area

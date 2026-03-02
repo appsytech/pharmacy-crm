@@ -101,7 +101,7 @@
 
          <!--======== Web  ========-->
          @multiAuth('web')
-         <x-admin.sidebar.nav-item-group title="Web " :svgUrl="asset('assets/svg/globe.svg')" :activeRoutes="['homepage-slider.index', 'homepage-slider.edit','gallery.index', 'gallery.edit' , 'testimonial.index', 'testimonial.edit', 'faq.index', 'faq.edit', 'inquiry.index', 'inquiry.edit',  'statistic.index', 'statistic.edit', 'pharmacy-schedule.index', 'pharmacy-schedule.edit', 'checkup-process.index', 'checkup-process.edit']">
+         <x-admin.sidebar.nav-item-group title="Web " :svgUrl="asset('assets/svg/globe.svg')" :activeRoutes="['homepage-slider.index', 'homepage-slider.edit','gallery.index', 'gallery.edit' , 'service.index', 'service.edit', 'testimonial.index', 'testimonial.edit', 'faq.index', 'faq.edit', 'inquiry.index', 'inquiry.edit',  'statistic.index', 'statistic.edit', 'pharmacy-schedule.index', 'pharmacy-schedule.edit', 'checkup-process.index', 'checkup-process.edit']">
              <x-admin.sidebar.nav-sub-item title="Homepage Slider" :url="route('homepage-slider.index')" :activeRoutes="['homepage-slider.index', 'homepage-slider.edit']" />
              <x-admin.sidebar.nav-sub-item title="Gallery" :url="route('gallery.index')" :activeRoutes="['gallery.index', 'gallery.edit']" />
              <x-admin.sidebar.nav-sub-item title="Inquiry" :url="route('inquiry.index')" :activeRoutes="['inquiry.index', 'inquiry.edit']" />
@@ -111,6 +111,7 @@
              <x-admin.sidebar.nav-sub-item title="Checkup Process" :url="route('checkup-process.index')" :activeRoutes="['checkup-process.index', 'checkup-process.edit']" />
              <x-admin.sidebar.nav-sub-item title="Faq" :url="route('faq.index')" :activeRoutes="['faq.index', 'faq.edit']" />
              <x-admin.sidebar.nav-sub-item title="Testimonial" :url="route('testimonial.index')" :activeRoutes="['testimonial.index', 'testimonial.edit']" />
+             <x-admin.sidebar.nav-sub-item title="Services" :url="route('service.index')" :activeRoutes="['service.index', 'service.edit']" />
          </x-admin.sidebar.nav-item-group>
          @endmultiAuth
 

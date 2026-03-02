@@ -14,7 +14,6 @@
                     <a href="{{ route('web.service.index') }}">Service</a>
                     <ul class="sub-menu">
                         <li><a href="{{ route('web.service.index') }}">Service</a></li>
-                        <li><a href="{{ route('web.service.show') }}">Service Details</a></li>
                     </ul>
                 </li>
                 <li class="menu-item-has-children">

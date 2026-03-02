@@ -2,10 +2,11 @@
 'bgImg' => null,
 'sectionSubTitle' => null,
 'sectionTitle' => null,
-'paginate' => false
+'paginate' => false,
+'services' => collect([])
 ])
 
-<section {{ $attributes->class(['overflow-hidden space'])->merge() }}  id="service-sec" {{ isset($bgImg) ? 'data-bg-src="assets/img/bg/service_bg_1.png"' : '' }}>
+<section {{ $attributes->class(['overflow-hidden space'])->merge() }} id="service-sec" {{ isset($bgImg) ? 'data-bg-src="assets/img/bg/service_bg_1.png"' : '' }}>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6 col-md-8">
@@ -17,20 +18,12 @@
             </div>
         </div>
         <div class="row gy-4 justify-content-center">
-            <x-web.sections.service.partials.card />
-            <x-web.sections.service.partials.card />
-            <x-web.sections.service.partials.card />
-            <x-web.sections.service.partials.card />
-            <x-web.sections.service.partials.card />
-            <x-web.sections.service.partials.card />
-            <x-web.sections.service.partials.card />
-            <x-web.sections.service.partials.card />
-            <x-web.sections.service.partials.card />
-            <x-web.sections.service.partials.card />
-            <x-web.sections.service.partials.card />
-            <x-web.sections.service.partials.card />
-            <x-web.sections.service.partials.card />
-            <x-web.sections.service.partials.card />
+            @if($services->isNotEmpty())
+            @foreach($services as $service)
+            <x-web.sections.service.partials.card :service="$service" />
+            @endforeach
+            @endif
+
 
         </div>
 
@@ -49,7 +42,7 @@
         <div class="mt-5 pt-2 space-extra-bottom">
             <p class="round-text">
                 <span class="text">You Get Our 20+ More services...
-                    <a href="{{ route('web.service.show') }}" class="line-btn">Explore All Services</a>
+                    <a href="{{ route('web.service.index') }}" class="line-btn">Explore All Services</a>
                 </span>
             </p>
         </div>
