@@ -33,10 +33,9 @@
                 <li><a href="{{ route('web.appointment.index') }}">Appointments</a></li>
                 <li><a href="{{ route('web.gallery.index') }}">Gallerys</a></li>
                 <li class="menu-item-has-children">
-                    <a href="{{ route('web.blog.index') }}">Blog</a>
+                    <a href="{{ route('web.activity.index') }}">Activity</a>
                     <ul class="sub-menu">
-                        <li><a href="{{ route('web.blog.index') }}">Blog</a></li>
-                        <li><a href="{{ route('web.blog.show') }}">Blog Details</a></li>
+                        <li><a href="{{ route('web.activity.index') }}">Activity</a></li>
                     </ul>
                 </li>
                 <li>

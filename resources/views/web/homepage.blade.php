@@ -60,7 +60,7 @@ Testimonial Area
 
 
 <!--==============================
-Blog Area
+Activity Area
 ==============================-->
-<x-web.sections.blog.wrapper />
+<x-web.sections.activity.wrapper :activities="$data['activities']" />
 @endsection

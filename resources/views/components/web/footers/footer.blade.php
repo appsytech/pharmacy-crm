@@ -51,7 +51,7 @@
                                 <li><a href="{{ route('web.about.index') }}">Terms of Use</a></li>
                                 <li><a href="{{ route('web.service.index') }}">Our Services</a></li>
                                 <li><a href="#">Help & FAQs</a></li>
-                                <li><a href="{{ route('web.blog.index') }}">Blog</a></li>
+                                <li><a href="{{ route('web.activity.index') }}">Activity</a></li>
                                 <li><a href="{{ route('web.about.index') }}">Privacy policy</a></li>
                                 <li><a href="{{ route('web.contact.index') }}">Contact Us</a></li>
                             </ul>
@@ -80,23 +80,23 @@
                         <div class="recent-post-wrap">
                             <div class="recent-post">
                                 <div class="media-img">
-                                    <a href="{{ route('web.blog.show') }}"><img src="{{ asset('assets/img/blog/recent-post-2-1.jpg') }}" alt="Blog Image"></a>
+                                    <a href="#"><img src="{{ asset('assets/img/blog/recent-post-2-1.jpg') }}" alt="Blog Image"></a>
                                 </div>
                                 <div class="media-body">
-                                    <h4 class="post-title"><a class="text-inherit" href="{{ route('web.blog.show') }}">How Business Is Taking Over & What to Do About It</a></h4>
+                                    <h4 class="post-title"><a class="text-inherit" href="#">How Business Is Taking Over & What to Do About It</a></h4>
                                     <div class="recent-post-meta">
-                                        <a href="{{ route('web.blog.index') }}"><i class="fal fa-calendar"></i>21 Jun, 2024</a>
+                                        <a href="{{ route('web.activity.index') }}"><i class="fal fa-calendar"></i>21 Jun, 2024</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="recent-post">
                                 <div class="media-img">
-                                    <a href="{{ route('web.blog.show') }}"><img src="{{ asset('assets/img/blog/recent-post-2-2.jpg') }}" alt="Blog Image"></a>
+                                    <a href="#"><img src="{{ asset('assets/img/blog/recent-post-2-2.jpg') }}" alt="Blog Image"></a>
                                 </div>
                                 <div class="media-body">
-                                    <h4 class="post-title"><a class="text-inherit" href="{{ route('web.blog.show') }}">Health vs. Wealth Navigate Business in Medicine</a></h4>
+                                    <h4 class="post-title"><a class="text-inherit" href="#">Health vs. Wealth Navigate Business in Medicine</a></h4>
                                     <div class="recent-post-meta">
-                                        <a href="{{ route('web.blog.index') }}"><i class="fal fa-calendar"></i>22 Jun, 2024</a>
+                                        <a href="{{ route('web.activity.index') }}"><i class="fal fa-calendar"></i>22 Jun, 2024</a>
                                     </div>
                                 </div>
                             </div>

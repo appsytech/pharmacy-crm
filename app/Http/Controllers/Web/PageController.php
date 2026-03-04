@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Services\Web\ActivityService;
 use App\Services\Web\CheckupProcessService;
 use App\Services\Web\DoctorService;
 use App\Services\Web\FaqService;
@@ -21,7 +22,8 @@ class PageController extends Controller
         protected DoctorService $doctorService,
         protected CheckupProcessService $checkupProcessService,
         protected GalleryService $galleryService,
-        protected ServiceService $serviceService
+        protected ServiceService $serviceService,
+        protected ActivityService $activityService
     ) {}
 
 
@@ -42,6 +44,7 @@ class PageController extends Controller
             ]),
             'checkupProcesses' => $this->checkupProcessService->getCheckupProcesss(),
             'services' => $this->serviceService->getServices(),
+            'activities' => $this->activityService->getActivities()
 
         ];
 

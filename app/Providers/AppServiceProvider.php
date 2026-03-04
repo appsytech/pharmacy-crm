@@ -56,11 +56,13 @@ use App\Repositories\Admin\StaffSalaryRepository;
 use App\Repositories\Admin\SupplierPaymentRepository;
 use App\Repositories\Admin\SupplierRepository;
 use App\Repositories\Admin\TestimonialRepository;
+use App\Repositories\Web\ActivityRepository as WebActivityRepository;
 use App\Repositories\Web\CheckupProcessRepository as WebCheckupProcessRepository;
 use App\Repositories\Web\DoctorRepository as WebDoctorRepository;
 use App\Repositories\Web\FaqRepository as WebFaqRepository;
 use App\Repositories\Web\GalleryRepository as WebGalleryRepository;
 use App\Repositories\Web\HomeSliderRepository as WebHomeSliderRepository;
+use App\Repositories\Web\Interfaces\ActivityRepositoryInterface as InterfacesActivityRepositoryInterface;
 use App\Repositories\Web\Interfaces\CheckupProcessRepositoryInterface as InterfacesCheckupProcessRepositoryInterface;
 use App\Repositories\Web\Interfaces\DoctorRepositoryInterface as InterfacesDoctorRepositoryInterface;
 use App\Repositories\Web\Interfaces\FaqRepositoryInterface as InterfacesFaqRepositoryInterface;
@@ -122,7 +124,8 @@ class AppServiceProvider extends ServiceProvider
             InterfacesCheckupProcessRepositoryInterface::class => WebCheckupProcessRepository::class,
             InterfacesGalleryRepositoryInterface::class => WebGalleryRepository::class,
             ServiceRepositoryInterface::class => ServiceRepository::class,
-            InterfacesServiceRepositoryInterface::class => WebServiceRepository::class
+            InterfacesServiceRepositoryInterface::class => WebServiceRepository::class,
+            InterfacesActivityRepositoryInterface::class => WebActivityRepository::class
 
         ];
 

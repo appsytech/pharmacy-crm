@@ -1,13 +1,17 @@
+@props([
+'activities' => collect([])
+])
+
 <section class="th-blog-wrapper space-top space-extra-bottom">
     <div class="container">
         <div class="row">
             <div class="col-xxl-8 col-lg-7">
 
-                <x-web.pages.sections.blog.partials.card />
-                <x-web.pages.sections.blog.partials.card />
-                <x-web.pages.sections.blog.partials.card />
-                <x-web.pages.sections.blog.partials.card />
-                <x-web.pages.sections.blog.partials.card />
+                @if($activities->isNotEmpty())
+                @foreach($activities as $activity)
+                <x-web.pages.sections.activity.partials.card :activity="$activity" />
+                @endforeach
+                @endif
 
 
                 <div class="th-pagination text-center">

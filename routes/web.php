@@ -33,6 +33,7 @@ use App\Http\Controllers\Admin\StaffSalaryController;
 use App\Http\Controllers\Admin\SupplierController;
 use App\Http\Controllers\Admin\SupplierPaymentController;
 use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Web\ActivityController as WebActivityController;
 use App\Http\Controllers\Web\AppointmentController;
 use App\Http\Controllers\Web\BlogController;
 use App\Http\Controllers\Web\PageController;
@@ -304,8 +305,8 @@ Route::get('appointment', [AppointmentController::class, 'index'])->name('web.ap
 
 
 /* ====================== Web > Blog  ====================== */
-Route::get('blog', [BlogController::class, 'index'])->name('web.blog.index');
-Route::get('blog/details', [BlogController::class, 'show'])->name('web.blog.show');
+Route::get('activities', [WebActivityController::class, 'index'])->name('web.activity.index');
+Route::get('activity/details/{id}', [WebActivityController::class, 'show'])->name('web.activity.show');
 
 
 /* ====================== Web > Contact  ====================== */

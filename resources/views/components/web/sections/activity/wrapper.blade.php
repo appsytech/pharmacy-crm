@@ -1,3 +1,7 @@
+@props([
+'activities' => collect([])
+])
+
 <section class="space" id="blog-sec" data-bg-src="{{ asset('assets/img/bg/blog_bg_1.jpg') }}">
     <div class="container">
         <div class="row justify-content-lg-between justify-content-center align-items-center">
@@ -5,14 +9,14 @@
                 <div class="title-area text-center text-lg-start">
                     <span class="sub-title">
                         <img src="{{ asset('assets/img/theme-img/title_icon.svg') }}" alt="shape">
-                        Our Blog
+                        Our Activities =
                     </span>
-                    <h2 class="sec-title">Our Latest News & Blogs</h2>
+                    <h2 class="sec-title">Our Latest Activities</h2>
                 </div>
             </div>
             <div class="col-lg-auto d-none d-lg-block">
                 <div class="sec-btn">
-                    <a href="blog.html" class="th-btn style4">View All Post</a>
+                    <a href="{{ route('web.activity.index') }}" class="th-btn style4">View All Activities</a>
                 </div>
             </div>
         </div>
@@ -20,10 +24,11 @@
             <div class="swiper th-slider has-shadow" id="blogSlider1" data-slider-options='{"breakpoints":{"0":{"slidesPerView":1},"576":{"slidesPerView":"1"},"768":{"slidesPerView":"2"},"992":{"slidesPerView":"2"},"1200":{"slidesPerView":"3"}}}'>
                 <div class="swiper-wrapper">
 
-                    <x-web.sections.blog.partials.slide />
-                    <x-web.sections.blog.partials.slide />
-                    <x-web.sections.blog.partials.slide />
-                    <x-web.sections.blog.partials.slide />
+                    @if($activities->isNotEmpty())
+                    @foreach($activities as $activity)
+                    <x-web.sections.activity.partials.slide :activity="$activity" />
+                    @endforeach
+                    @endif
 
                 </div>
             </div>

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components\Web\Pages\Sections\Blog;
+namespace App\View\Components\Web\Pages\Sections\Activity\Partials;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Wrapper extends Component
+class Card extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class Wrapper extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.web.pages.sections.blog.wrapper');
+        return view('components.web.pages.sections.activity.partials.card');
     }
 }

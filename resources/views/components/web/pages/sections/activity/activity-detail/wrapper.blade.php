@@ -8,18 +8,18 @@
                     </div>
                     <div class="blog-content">
                         <div class="blog-meta">
-                            <a class="author" href="{{ route('web.blog.index') }}">
+                            <!-- <a class="author" href="#">
                                 <i class="fal fa-user"></i>
                                 By Tata Medical
-                            </a>
-                            <a href="{{ route('web.blog.index') }}">
+                            </a> -->
+                            <a href="{{ route('web.activity.index') }}">
                                 <i class="fal fa-calendar"></i>
                                 21 June, 2024
                             </a>
-                            <a href="{{ route('web.blog.show') }}">
+                            <!-- <a href="#">
                                 <i class="fal fa-comments"></i>
                                 Comments (3)
-                            </a>
+                            </a> -->
                         </div>
 
                         <h2 class="blog-title">How Business Is Taking Over & What to Do About It</h2>

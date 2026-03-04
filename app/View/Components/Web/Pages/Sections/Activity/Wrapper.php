@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components\Web\Sections\Blog\Partials;
+namespace App\View\Components\Web\Pages\Sections\Activity;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Slide extends Component
+class Wrapper extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class Slide extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.web.sections.blog.partials.slide');
+        return view('components.web.pages.sections.activity.wrapper');
     }
 }

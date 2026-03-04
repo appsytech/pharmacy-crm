@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\Web\Sections\Blog;
+namespace App\View\Components\Web\Pages\Sections\Activity\ActivityDetail;
 
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -21,6 +21,6 @@ class Wrapper extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.web.sections.blog.wrapper');
+        return view('components.web.pages.sections.activity.activity-detail.wrapper');
     }
 }
