@@ -14,7 +14,7 @@
      </div>
      <div id="{{ $collapseId }}" class="accordion-collapse collapse show" aria-labelledby="{{ $collapseItemId }}" data-bs-parent="#faqAccordion">
          <div class="accordion-body">
-             <p class="faq-text">{{ $answer ?? '' }}</p>
+             <p class="faq-text">{!! $answer ?? '' !!}</p>
          </div>
      </div>
  </div>

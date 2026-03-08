@@ -11,6 +11,9 @@ import {
     updateStatus,
 } from "./utility";
 
+import Quill from "quill";
+import "quill/dist/quill.snow.css";
+
 document.addEventListener("DOMContentLoaded", () => {
     //hide preloader once the page is ready
     let preloader = document.getElementById("loader");
@@ -26,6 +29,89 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         sessionStorage.removeItem("success_messages");
+    }
+
+    // description
+    const descriptionEditorEl = document.querySelector("#descriptionEditor");
+    let quillDescription;
+    if (descriptionEditorEl) {
+        quillDescription = new Quill(descriptionEditorEl, {
+            theme: "snow",
+            modules: {
+                toolbar: [
+                    [{ header: [1, 2, 3, false] }],
+                    ["bold", "italic", "underline", "strike"],
+                    [{ color: [] }, { background: [] }],
+                    [{ list: "ordered" }, { list: "bullet" }],
+                    [{ align: [] }],
+                    ["blockquote", "code-block"],
+                    ["link", "image", "video"],
+                    ["clean"],
+                ],
+                history: {
+                    delay: 1000,
+                    maxStack: 50,
+                    userOnly: true,
+                },
+            },
+        });
+
+        quillDescription.on("text-change", function () {
+            const content = document.querySelector("#description");
+            const text = quillDescription.getText().trim();
+
+            console.log(content, text);
+            if (content) {
+                if (content.required && text.length === 0) {
+                    e.preventDefault();
+                    document.querySelector(".ql-container").style.borderColor =
+                        "red";
+
+                    return false;
+                }
+                content.value = quillDescription.root.innerHTML;
+            }
+        });
+    }
+
+    // content
+    const contentEditorEl = document.querySelector("#contentEditor");
+    if (contentEditorEl) {
+        let quillContent = new Quill(contentEditorEl, {
+            theme: "snow",
+            modules: {
+                toolbar: [
+                    [{ header: [1, 2, 3, false] }],
+                    ["bold", "italic", "underline", "strike"],
+                    [{ color: [] }, { background: [] }],
+                    [{ list: "ordered" }, { list: "bullet" }],
+                    [{ align: [] }],
+                    ["blockquote", "code-block"],
+                    ["link", "image", "video"],
+                    ["clean"],
+                ],
+                history: {
+                    delay: 1000,
+                    maxStack: 50,
+                    userOnly: true,
+                },
+            },
+        });
+
+        quillContent.on("text-change", function () {
+            const content = document.querySelector("#content");
+            const text = quillContent.getText().trim();
+            if (content) {
+                if (content.required && text.length === 0) {
+                    e.preventDefault();
+                    document.querySelector(".ql-container").style.borderColor =
+                        "red";
+
+                    return false;
+                }
+                content.value = quillContent.root.innerHTML;
+            }
+        });
     }
 });
 
@@ -77,7 +163,6 @@ document.addEventListener("input", function (event) {
 });
 
 document.addEventListener("change", function (event) {
-
     if (event.target.classList.contains("image-upload&preview")) {
         handleMediaUpload(event.target);
     }
@@ -94,8 +179,6 @@ document.addEventListener("change", function (event) {
         handleAjaxInput(event.target);
     }
 });
-
-
 
 document.addEventListener("submit", function (event) {
     if (event.target.classList.contains("ajax-form")) {

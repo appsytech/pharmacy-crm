@@ -31,12 +31,11 @@ class ServiceService
             'title'               => $request->title,
             'description'         => $request->description ?? null,
             'location'            => $request->location ?? null,
-            'mission_description' => $request->mission_description ?? null,
             'created_by'          => Auth::user()->name,
             'created_at'          => Carbon::now(),
             'status'              => $request->status ?? 1,
             'sort'               => (int) $request->sort,
-
+            'category_id'        => (int) $request->category_id,
         ];
 
 
@@ -107,9 +106,9 @@ class ServiceService
             'title'               => $request->title,
             'description'         => $request->description ?? null,
             'location'            => $request->location ?? null,
-            'mission_description' => $request->mission_description ?? null,
             'status'              => $request->status ?? 1,
-            'sort'               => $request->sort
+            'sort'               => $request->sort,
+            'category_id'        => (int) $request->category_id,
         ];
 
         if ($request->hasFile('icon')) {

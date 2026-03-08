@@ -156,7 +156,7 @@
                 </x-admin.globals.forms.field>
 
                 {{-- ====== notes ====== --}}
-                <x-admin.globals.forms.field type="textarea" label="Notes" name="notes" placeholder="Enter Notes"
+                <x-admin.globals.forms.field type="textarea" label="Notes" id="description" name="notes" placeholder="Enter Notes"
                     :svgUrl="asset('assets/svg/file-text.svg')" />
             </x-slot>
 

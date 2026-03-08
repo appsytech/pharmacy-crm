@@ -160,7 +160,7 @@
                 </x-admin.globals.forms.field>
 
                 {{-- ====== Description ====== --}}
-                <x-admin.globals.forms.field type="textarea" value="{{ $data['doctor']->description ?? '' }}" label="Description" name="description" placeholder="Enter Description"
+                <x-admin.globals.forms.field type="textarea" id="description" value="{!! $data['doctor']->description ?? '' !!}" label="Description" name="description" placeholder="Enter Description"
                     :svgUrl="asset('assets/svg/file-text.svg')" />
 
                 <x-admin.globals.forms.field type="hidden" name="id" value="{{ $data['doctor']->id }}" />

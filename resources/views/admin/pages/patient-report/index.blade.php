@@ -168,7 +168,7 @@
 
                 <!-- ====== Diagnosis ====== -->
                 <x-admin.globals.forms.field
-                    type="textarea"
+                    type="text"
                     label="Diagnosis"
                     name="diagnosis"
                     placeholder="Enter Diagnosis"
@@ -177,7 +177,7 @@
 
                 <!-- ====== Symptoms ====== -->
                 <x-admin.globals.forms.field
-                    type="textarea"
+                    type="text"
                     label="Symptoms"
                     name="symptoms"
                     placeholder="Enter Symptoms"
@@ -215,6 +215,7 @@
                     type="textarea"
                     label="Notes"
                     name="notes"
+                    id="description"
                     placeholder="Additional Notes"
                     :svgUrl="asset('assets/svg/file-badge.svg')" />
 

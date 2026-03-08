@@ -28,7 +28,7 @@
                 @method('put')
             </x-slot:extra_methods>
             <x-slot name="fields">
-                <!--  ====== Patient ====== --> 
+                <!--  ====== Patient ====== -->
                 <x-admin.globals.forms.field
                     type="select"
                     label="Patient"
@@ -78,7 +78,7 @@
 
                 <!-- ====== Diagnosis ====== -->
                 <x-admin.globals.forms.field
-                    type="textarea"
+                    type="text"
                     label="Diagnosis"
                     name="diagnosis"
                     value="{{ $data['report']->diagnosis ?? '' }}"
@@ -88,7 +88,7 @@
 
                 <!-- ====== Symptoms ====== -->
                 <x-admin.globals.forms.field
-                    type="textarea"
+                    type="text"
                     label="Symptoms"
                     name="symptoms"
                     value="{{ $data['report']->symptoms ?? '' }}"
@@ -128,7 +128,8 @@
                     type="textarea"
                     label="Notes"
                     name="notes"
-                    value="{{ $data['report']->notes ?? '' }}"
+                    id="description"
+                    value="{!! $data['report']->notes ?? '' !!}"
                     placeholder="Additional Notes"
                     :svgUrl="asset('assets/svg/file-badge.svg')" />
 

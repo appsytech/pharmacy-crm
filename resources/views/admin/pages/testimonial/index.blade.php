@@ -38,41 +38,45 @@
         ['key' => 'status', 'label' => 'Status', 'type' => 'badge'],
         ['key' => 'action', 'label' => 'Action', 'type' => null],
     ]"
-        :rows="$data['testimonials']" >
+        :rows="$data['testimonials']">
 
-    <x-slot name="filters">
-        <x-admin.globals.forms.field type="text" label="Testimonial By Name" value="{{ isset($data['oldInputs']['name']) ? $data['oldInputs']['name'] : '' }}" :svgUrl="asset('assets/svg/user-check.svg')" name="name"
-            placeholder="Enter Name" />
+        <x-slot name="filters">
+            <x-admin.globals.forms.field type="text" label="Testimonial By Name" value="{{ isset($data['oldInputs']['name']) ? $data['oldInputs']['name'] : '' }}" :svgUrl="asset('assets/svg/user-check.svg')" name="name"
+                placeholder="Enter Name" />
 
-        <x-admin.globals.forms.field type="text" value="{{ isset($data['oldInputs']['email']) ? $data['oldInputs']['email'] : '' }}" label="Testimonial By Email" :svgUrl="asset('assets/svg/user.svg')" name="email"
-            placeholder="Enter Email" />
+            <x-admin.globals.forms.field type="text" value="{{ isset($data['oldInputs']['email']) ? $data['oldInputs']['email'] : '' }}" label="Testimonial By Email" :svgUrl="asset('assets/svg/user.svg')" name="email"
+                placeholder="Enter Email" />
 
-        <div class="flex items-end">
-            <x-admin.buttons.secondary type="submit" class="px-6 py-2.5" label="Search" :svgUrl="asset('assets/svg/white-magnifier.svg')" />
+            <div class="flex items-end">
+                <x-admin.buttons.secondary type="submit" class="px-6 py-2.5" label="Search" :svgUrl="asset('assets/svg/white-magnifier.svg')" />
+            </div>
+        </x-slot>
+
+        <x-slot name="action_buttons">
+            <x-admin.buttons.primary type="reset" label="Clear Filter" :svgUrl="asset('assets/svg/setting-vertical.svg')" />
+            <x-admin.buttons.secondary type="button" label="Add Testimonial" class="open-modal"
+                data-targetModalId="testimonial-add-modal" :svgUrl="asset('assets/svg/plus-white.svg')" />
+        </x-slot>
+
+        @scopedslot('celldescription', ($row))
+        {!! \Illuminate\Support\Str::words(strip_tags($row->description), 20, '...') !!}
+        @endscopedslot
+
+        @scopedslot('cellaction', ($row))
+        <div class="flex items-center justify-center gap-1">
+            <x-admin.headers.icon-button :url="route('testimonial.edit', encrypt($row->id))" class="px-0!" :svgUrl="asset('assets/svg/pencil.svg')" />
+
+            <x-admin.globals.forms.form method="POST" class="flex items-center justify-center" :action="route('testimonial.delete')">
+                <x-slot:extra_methods>
+                    <input type="hidden" name="id" value="{{ $row->id }}">
+                    @method('delete')
+                </x-slot:extra_methods>
+                <x-slot:icon_button>
+                    <x-admin.headers.icon-button type="submit" class="px-0!" :svgUrl="asset('assets/svg/bin.svg')" />
+                </x-slot:icon_button>
+            </x-admin.globals.forms.form>
         </div>
-    </x-slot>
-
-    <x-slot name="action_buttons">
-        <x-admin.buttons.primary type="reset" label="Clear Filter" :svgUrl="asset('assets/svg/setting-vertical.svg')" />
-        <x-admin.buttons.secondary type="button" label="Add Testimonial" class="open-modal"
-            data-targetModalId="testimonial-add-modal" :svgUrl="asset('assets/svg/plus-white.svg')" />
-    </x-slot>
-
-    @scopedslot('cellaction', ($row))
-    <div class="flex items-center justify-center gap-1">
-        <x-admin.headers.icon-button :url="route('testimonial.edit', encrypt($row->id))" class="px-0!" :svgUrl="asset('assets/svg/pencil.svg')" />
-
-        <x-admin.globals.forms.form method="POST" class="flex items-center justify-center" :action="route('testimonial.delete')">
-            <x-slot:extra_methods>
-                <input type="hidden" name="id" value="{{ $row->id }}">
-                @method('delete')
-            </x-slot:extra_methods>
-            <x-slot:icon_button>
-                <x-admin.headers.icon-button type="submit" class="px-0!" :svgUrl="asset('assets/svg/bin.svg')" />
-            </x-slot:icon_button>
-        </x-admin.globals.forms.form>
-    </div>
-    @endscopedslot
+        @endscopedslot
 
     </x-admin.globals.tables.table>
 </div>
@@ -148,6 +152,7 @@
                 <x-admin.globals.forms.field
                     type="textarea"
                     label="Description"
+                    id="description"
                     name="description"
                     required
                     placeholder="Enter Description"

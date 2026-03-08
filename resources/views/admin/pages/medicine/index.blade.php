@@ -274,6 +274,7 @@
                     type="textarea"
                     label="Description"
                     name="description"
+                    id="description"
                     placeholder="Enter Description"
                     :svgUrl="asset('assets/svg/file-text.svg')" />
 

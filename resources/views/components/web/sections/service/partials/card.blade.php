@@ -14,7 +14,7 @@
         </div>
         <h3 class="box-title"><a href="{{ route('web.service.show', encrypt($service->id)) }}">{{ $service->title ?? '' }}</a></h3>
         <p class="box-text">
-            {{ \Illuminate\Support\Str::words($service->description ?? '', 5, '...') }}
+            {!! \Illuminate\Support\Str::words(strip_tags($service->description), 5, '...') !!}
         </p>
         <a href="{{ route('web.service.show', encrypt($service->id)) }}" class="th-btn btn-sm style2 theme-color">Read More</a>
     </div>

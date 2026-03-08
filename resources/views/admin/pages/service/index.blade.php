@@ -57,7 +57,9 @@
                 data-targetModalId="service-add-modal" :svgUrl="asset('assets/svg/plus-white.svg')" />
         </x-slot>
 
-
+        @scopedslot('celldescription', ($row))
+        {!! \Illuminate\Support\Str::words(strip_tags($row->description), 20, '...') !!}
+        @endscopedslot
 
 
         @scopedslot('cellaction', ($row))
@@ -103,6 +105,20 @@
                     placeholder="Enter Title"
                     :svgUrl="asset('assets/svg/hash.svg')" />
 
+                {{-- ====== Category ====== --}}
+                <x-admin.globals.forms.field
+                    type="select"
+                    label="Category"
+                    name="category_id"
+                    required
+                    :svgUrl="asset('assets/svg/tag.svg')">
+                    <x-slot>
+                        @foreach($data['categories'] ?? [] as $category)
+                        <option value="{{ $category->id }}">{{ $category->title ?? '' }}</option>
+                        @endforeach
+                    </x-slot>
+                </x-admin.globals.forms.field>
+
                 {{-- ====== Icon ====== --}}
                 <x-admin.globals.forms.field
                     type="file"
@@ -116,6 +132,7 @@
                 <x-admin.globals.forms.field
                     type="textarea"
                     label="Description"
+                    id="description"
                     name="description"
                     placeholder="Enter Description"
                     :svgUrl="asset('assets/svg/file-text.svg')" />
@@ -128,13 +145,7 @@
                     placeholder="Enter Location"
                     :svgUrl="asset('assets/svg/map-pin.svg')" />
 
-                {{-- ====== Mission Description ====== --}}
-                <x-admin.globals.forms.field
-                    type="textarea"
-                    label="Mission Description"
-                    name="mission_description"
-                    placeholder="Enter Mission Description"
-                    :svgUrl="asset('assets/svg/file-text.svg')" />
+
 
                 {{-- ====== Images 1 ====== --}}
                 <x-admin.globals.forms.field

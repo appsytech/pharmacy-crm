@@ -12,5 +12,8 @@
          <p class="box-number">{{ $process->sn ?? 0 }}</p>
      </div>
      <h3 class="box-title">{{ $process->title ?? '' }}</h3>
-     <p class="box-text">{{ $process->description ?? '' }}</p>
+     <p class="box-text">
+         {!! \Illuminate\Support\Str::words(strip_tags($process->description), 5, '...') !!}
+
+     </p>
  </div>

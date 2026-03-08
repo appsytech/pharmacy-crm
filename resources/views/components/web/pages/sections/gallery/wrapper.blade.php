@@ -13,7 +13,7 @@
 
             @if($images->isNotEmpty())
             @foreach($images as $image)
-            <x-web.pages.sections.gallery.partials.gallery-card :image="$image"/>
+            <x-web.pages.sections.gallery.partials.gallery-card :image="$image" />
             @endforeach
             @endif
 

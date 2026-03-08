@@ -12,7 +12,7 @@
             <div class="swiper-wrapper">
                 @if($testimonials->isNotEmpty())
                 @foreach($testimonials as $testimonial)
-                <x-web.sections.testimonial.partials.slide :testimonial="$testimonial"/>
+                <x-web.sections.testimonial.partials.slide :testimonial="$testimonial" />
                 @endforeach
                 @endif
             </div>

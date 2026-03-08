@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Services\Admin\ActivityCategoryService;
 use App\Services\Admin\ActivityService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -13,7 +14,8 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 class ActivityController extends Controller
 {
     public function __construct(
-        protected ActivityService $activityService
+        protected ActivityService $activityService,
+        protected ActivityCategoryService $activityCategoryService,
     ) {}
 
     public function index(Request $request): View
@@ -30,6 +32,7 @@ class ActivityController extends Controller
                 'type' => $request->type ?? null,
                 'author' => $request->author ?? null,
             ]),
+            'categories' => $this->activityCategoryService->getActivityCategoriesCollection(),
             'oldInputs' => $request->all(),
         ];
 
@@ -45,6 +48,8 @@ class ActivityController extends Controller
             'description' => 'required|string',
             'images' => 'required',
             'sort' => 'required|integer',
+            'category_id'         =>  'required|integer|exists:activity_categories,id',
+
         ]);
 
         if ($validator->fails()) {
@@ -84,6 +89,7 @@ class ActivityController extends Controller
     {
         $data = [
             'activity' => $this->activityService->find((int) decrypt($request->id)),
+            'categories' => $this->activityCategoryService->getActivityCategoriesCollection(),
         ];
 
         return view('admin.pages.activity.edit', compact('data'));
@@ -99,6 +105,7 @@ class ActivityController extends Controller
             'description' => 'required|string',
             'images' => 'nullable',
             'sort' => 'required|integer',
+            'category_id'   =>  'required|integer|exists:activity_categories,id',
         ]);
 
         $isUpdated = $this->activityService->update($request);

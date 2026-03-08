@@ -1,25 +1,35 @@
+@props([
+'testimonial'
+])
+
 <div class="swiper-slide">
     <div class="testi-card">
         <div class="box-review">
-            <i class="fa-sharp fa-solid fa-star"></i>
-            <i class="fa-sharp fa-solid fa-star"></i>
-            <i class="fa-sharp fa-solid fa-star"></i>
-            <i class="fa-sharp fa-solid fa-star"></i>
-            <i class="fa-sharp fa-solid fa-star"></i>
+            @php
+            $rating = $testimonial->stars ?? 0;
+            $maxStars = 5;
+            @endphp
+
+            @for ($i = 1; $i <= $maxStars; $i++)
+                <i class="fa-sharp fa-solid fa-star {{ $i <= $rating ? '' : 'text-muted' }}"></i>
+                @endfor
         </div>
         <div class="box-quote">
             <img src="{{ asset('assets/img/icon/quote_1.svg') }}" alt="Icon">
         </div>
-        <p class="box-text">“Objectively deploy open-source web-readiness impactful bandwidth.
-            Compellingly coordinate business deliverables rather equity invested technologies.
-            Phosfluorescently reinvent maintainable.”</p>
+        <p class="box-text">“
+            {!! $testimonial->description !!}
+
+            ”</p>
         <div class="box-profile">
             <div class="box-img">
-                <img src="{{ asset('assets/img/testimonial/testi_1_1.jpg') }}" alt="Avater">
+                @isset($testimonial->image)
+                <img src="{{ asset('storage/' . $testimonial->image) }}" alt="Avater">
+                @endisset
             </div>
             <div class="box-content">
-                <h3 class="box-title">Pelican Steve</h3>
-                <span class="box-desig">Neurologist</span>
+                <h3 class="box-title">{{ $testimonial->name ?? '' }}</h3>
+                <span class="box-desig">{{ $testimonial->position ?? '' }}</span>
             </div>
         </div>
     </div>

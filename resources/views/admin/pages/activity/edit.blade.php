@@ -52,7 +52,7 @@
                 </x-admin.globals.forms.field>
 
                 {{-- ====== Description ====== --}}
-                <x-admin.globals.forms.field type="textarea" value="{{ $data['activity']->description ?? '' }}" label="Description" name="description" placeholder="Enter Description" required
+                <x-admin.globals.forms.field type="textarea" id="description" value="{!! $data['activity']->description ?? '' !!}" label="Description" name="description" placeholder="Enter Description" required
                     :svgUrl="asset('assets/svg/file-text.svg')" />
 
                 {{-- ====== Image ====== --}}

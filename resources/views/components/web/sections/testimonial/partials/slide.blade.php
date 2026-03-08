@@ -12,12 +12,14 @@
 
             @for ($i = 1; $i <= $maxStars; $i++)
                 <i class="fa-sharp fa-solid fa-star {{ $i <= $rating ? '' : 'text-muted' }}"></i>
-            @endfor
+                @endfor
         </div>
         <div class="box-quote">
             <img src="{{ asset('assets/img/icon/quote_1.svg') }}" alt="Icon">
         </div>
-        <p class="box-text">“{{ $testimonial->description ?? '' }}”</p>
+        <p class="box-text">“
+            {!! $testimonial->description !!}
+            ”</p>
         <div class="box-profile">
             <div class="box-img">
                 @isset($testimonial->image)
@@ -25,8 +27,8 @@
                 @endisset
             </div>
             <div class="box-content">
-                <h3 class="box-title">Pelican Steve</h3>
-                <span class="box-desig">Neurologist</span>
+                <h3 class="box-title">{{ $testimonial->name ?? '' }}</h3>
+                <span class="box-desig">{{ $testimonial->position ?? '' }}</span>
             </div>
         </div>
     </div>

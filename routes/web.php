@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ActivityCategoryController;
 use App\Http\Controllers\Admin\ActivityController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AuthController;
@@ -27,6 +28,7 @@ use App\Http\Controllers\Admin\PharmacyScheduleController;
 use App\Http\Controllers\Admin\PharmacyStatisticController;
 use App\Http\Controllers\Admin\StaffAuthController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\ServiceCategoryController;
 use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\StaffSalaryController;
@@ -279,6 +281,26 @@ Route::delete('dashboard/service/delete', [AdminServiceController::class, 'delet
 Route::get('dashboard/service/edit/{id}', [AdminServiceController::class, 'edit'])->name('service.edit')->middleware('auth');
 Route::put('dashboard/service/update', [AdminServiceController::class, 'update'])->name('service.update')->middleware('auth');
 Route::post('dashboard/service/status/update', [AdminServiceController::class, 'updateStatus'])->name('service.status.update')->middleware('auth');
+
+
+
+/* ====================== Dashboard > Service Category ====================== */
+Route::get('dashboard/service-category', [ServiceCategoryController::class, 'index'])->name('service-category.index')->middleware('auth');
+Route::post('dashboard/service-category/store', [ServiceCategoryController::class, 'store'])->name('service-category.store')->middleware('auth');
+Route::delete('dashboard/service-category/delete', [ServiceCategoryController::class, 'delete'])->name('service-category.delete')->middleware('auth');
+Route::get('dashboard/service-category/edit/{id}', [ServiceCategoryController::class, 'edit'])->name('service-category.edit')->middleware('auth');
+Route::put('dashboard/service-category/update', [ServiceCategoryController::class, 'update'])->name('service-category.update')->middleware('auth');
+Route::post('dashboard/service-category/status/update', [ServiceCategoryController::class, 'updateStatus'])->name('service-category.status.update')->middleware('auth');
+
+
+
+/* ====================== Dashboard > Activity Category ====================== */
+Route::get('dashboard/activity-category', [ActivityCategoryController::class, 'index'])->name('activity-category.index')->middleware('auth');
+Route::post('dashboard/activity-category/store', [ActivityCategoryController::class, 'store'])->name('activity-category.store')->middleware('auth');
+Route::delete('dashboard/activity-category/delete', [ActivityCategoryController::class, 'delete'])->name('activity-category.delete')->middleware('auth');
+Route::get('dashboard/activity-category/edit/{id}', [ActivityCategoryController::class, 'edit'])->name('activity-category.edit')->middleware('auth');
+Route::put('dashboard/activity-category/update', [ActivityCategoryController::class, 'update'])->name('activity-category.update')->middleware('auth');
+Route::post('dashboard/activity-category/status/update', [ActivityCategoryController::class, 'updateStatus'])->name('activity-category.status.update')->middleware('auth');
 
 
 /* ====================== Web  ====================== */

@@ -1,3 +1,7 @@
+@props([
+'activity'
+])
+
 <section class="th-blog-wrapper blog-details space-top space-extra-bottom">
     <div class="container">
         <div class="row">
@@ -14,7 +18,7 @@
                             </a> -->
                             <a href="{{ route('web.activity.index') }}">
                                 <i class="fal fa-calendar"></i>
-                                21 June, 2024
+                                {{ $activity->created_at }}
                             </a>
                             <!-- <a href="#">
                                 <i class="fal fa-comments"></i>
@@ -22,35 +26,9 @@
                             </a> -->
                         </div>
 
-                        <h2 class="blog-title">How Business Is Taking Over & What to Do About It</h2>
+                        <h2 class="blog-title">{{ $activity->title ?? '' }}</h2>
 
-                        <p>We offer flexible appointment scheduling options to accommodate your busy lifestyle. Whether you prefer to book in advance or need a same-day appointment, we strive to make the process as seamless as possible.</p>
-                        <p>Especially in light of the ongoing COVID-19 pandemic, we maintain rigorous safety protocols and hygiene standards to ensure the well-being of our patients and staff. Your health and safety are our utmost priority.</p>
-
-                        <blockquote>
-                            <p>Choose organic food, not only for a healthier you but for a happier planet too. It's a conscious choice that nourishes both body and Earth.</p>
-                            <cite>Michel Clarck</cite>
-                        </blockquote>
-
-                        <div class="row pt-2 mt-5">
-                            <div class="col-md-6 mb-4">
-                                <img class="w-100 rounded-20" src="{{ asset('assets/img/blog/blog_inner_1.jpg') }}" alt="Blog Image">
-                            </div>
-                            <div class="col-md-6 mb-4">
-                                <img class="w-100 rounded-20" src="{{ asset('assets/img/blog/blog_inner_2.jpg') }}" alt="Blog Image">
-                            </div>
-                        </div>
-                        <h3 class="h5 mt-1">The medical experts transplant the heart</h3>
-                        <p class="mb-4">Our clinic is equipped with modern facilities and advanced medical technology to ensure accurate diagnoses and effective treatments. This enables us to provide you with the highest standard of care.</p>
-                        <div class="checklist mb-25">
-                            <ul>
-                                <li><i class="fas fa-check-circle"></i> That extremely painful or again is there anyone.</li>
-                                <li><i class="fas fa-check-circle"></i> Indignation and dislike men who are so beguiled and demoralized.</li>
-                                <li><i class="fas fa-check-circle"></i> Desires these cases are perfectly simple easy distinguish.</li>
-                                <li><i class="fas fa-check-circle"></i> That extremely painful or again that is there anyone.</li>
-                            </ul>
-                        </div>
-                        <p class="mb-n2">From primary care and pediatrics to specialized services like dermatology, orthopedics, and women's health, we offer a wide spectrum of medical services under one roof.</p>
+                        <p>{!! $activity->description ?? '' !!}</p>
 
                         <div class="share-links clearfix ">
                             <div class="row justify-content-between">
@@ -126,6 +104,7 @@
                         </li>
                     </ul>
                 </div> <!-- Comment end --> <!-- Comment Form -->
+
                 <div class="th-comment-form ">
                     <div class="form-title">
                         <h3 class="blog-inner-title h4 mb-2"><i class="fa-solid fa-reply"></i> Leave a Comment</h3>
@@ -158,7 +137,7 @@
             <div class="col-xxl-4 col-lg-5">
                 <x-web.pages.common-ui.side-category-widget.wrapper>
                     <x-slot>
-                        <x-web.pages.common-ui.recent-post.wrapper />
+                        <!-- <x-web.pages.common-ui.recent-post.wrapper /> -->
                         <x-web.pages.common-ui.tags.wrapper />
                     </x-slot>
                 </x-web.pages.common-ui.side-category-widget.wrapper>

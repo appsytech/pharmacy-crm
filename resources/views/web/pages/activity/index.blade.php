@@ -11,5 +11,5 @@
 <!--==============================
 Blog Area
 ==============================-->
-<x-web.pages.sections.activity.wrapper :activities="$data['activities']" />
+<x-web.pages.sections.activity.wrapper :activities="$data['activities']" :categories="$data['categories']" />
 @endsection

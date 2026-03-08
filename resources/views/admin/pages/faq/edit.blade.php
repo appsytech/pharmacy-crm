@@ -41,9 +41,10 @@
                 {{-- ====== Answer ====== --}}
                 <x-admin.globals.forms.field
                     type="textarea"
+                    id="description"
                     label="Answer"
                     name="answer"
-                    :value="old('answer', $data['faq']->answer ?? '')"
+                    value="{!! $data['faq']->answer ?? '' !!}"
                     required
                     placeholder="Enter Answer"
                     :svgUrl="asset('assets/svg/message-circle-reply.svg')" />

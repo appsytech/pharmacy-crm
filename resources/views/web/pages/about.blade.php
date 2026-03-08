@@ -40,5 +40,5 @@ Achievement Area
 <!--==============================
 Testimonial Area
 ==============================-->
-<x-web.pages.sections.testimonial.wrapper />
+<x-web.pages.sections.testimonial.wrapper :testimonials="$data['testimonials']" />
 @endsection

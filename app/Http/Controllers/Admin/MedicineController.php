@@ -64,6 +64,7 @@ class MedicineController extends Controller
             'description'       => 'nullable|string',
         ]);
 
+
         if ($validator->fails()) {
             return response()->json([
                 'status' => false,
@@ -91,9 +92,9 @@ class MedicineController extends Controller
     {
         $data = [
             'medicine' => $this->medicineService->find((int) decrypt($request->id)),
-             'suppliers' => $this->supplierService->getSuppliersCollection([], ['id', 'supplier_name']),
+            'suppliers' => $this->supplierService->getSuppliersCollection([], ['id', 'supplier_name']),
             'manufacturers' => $this->manufacturerService->getManufacturersCollection([], ['id', 'manufacturer_name']),
-            
+
         ];
 
         return view('admin.pages.medicine.edit', compact('data'));
@@ -123,6 +124,7 @@ class MedicineController extends Controller
             'rack_number'       => 'nullable|string|max:50',
             'description'       => 'nullable|string',
         ]);
+
 
         $response = $this->medicineService->update($request);
 

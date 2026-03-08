@@ -19,6 +19,7 @@
         "jquery": "^4.0.0",
         "jquery-datetimepicker": "^2.5.21",
         "magnific-popup": "^1.2.0",
+        "quill": "^2.0.3",
         "swiper": "^12.1.2"
     }
 }

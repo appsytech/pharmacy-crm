@@ -1,5 +1,5 @@
 @props([
-'activities' => collect([])
+'activities' => collect([]),
 ])
 
 <section class="space" id="blog-sec" data-bg-src="{{ asset('assets/img/bg/blog_bg_1.jpg') }}">

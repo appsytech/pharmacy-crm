@@ -103,7 +103,13 @@
                 </x-admin.globals.forms.field>
 
                 {{-- ====== Description ====== --}}
-                <x-admin.globals.forms.field type="textarea" label="Description" value="{{ $data['slider']->description ?? '' }}" name="description" placeholder="Enter Description"
+                <x-admin.globals.forms.field
+                    id="description"
+                    type="textarea"
+                    label="Description"
+                    value="{!! $data['slider']->description ?? '' !!}"
+                    name="description"
+                    placeholder="Enter Description"
                     :svgUrl="asset('assets/svg/file-text.svg')" />
 
                 <x-admin.globals.forms.field type="hidden" name="id" value="{{ $data['slider']->id }}" />

@@ -31,6 +31,7 @@ class ActivityService
             'status' => $request->status,
             'description' => $request->description,
             'sort' => $request->sort,
+            'category_id'        => (int) $request->category_id,
 
         ];
 
@@ -75,6 +76,7 @@ class ActivityService
             'status' => $request->status,
             'description' => $request->description,
             'sort' => $request->sort,
+            'category_id'        => (int) $request->category_id,
         ];
 
         if ($request->hasFile('images')) {

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Repositories\Admin\ActivityCategoryRepository;
 use App\Repositories\Admin\ActivityRepository;
 use App\Repositories\Admin\AdminRepository;
 use App\Repositories\Admin\AwardRepository;
@@ -13,6 +14,7 @@ use App\Repositories\Admin\FaqRepository;
 use App\Repositories\Admin\GalleryRepository;
 use App\Repositories\Admin\HomeSliderRepository;
 use App\Repositories\Admin\InquiryRepository;
+use App\Repositories\Admin\Interfaces\ActivityCategoryRepositoryInterface;
 use App\Repositories\Admin\Interfaces\ActivityRepositoryInterface;
 use App\Repositories\Admin\Interfaces\AdminRepositoryInterface;
 use App\Repositories\Admin\Interfaces\AwardRepositoryInterface;
@@ -34,6 +36,7 @@ use App\Repositories\Admin\Interfaces\PatientRepositoryInterface;
 use App\Repositories\Admin\Interfaces\PharmacyBranchRepositoryInterface;
 use App\Repositories\Admin\Interfaces\PharmacyScheduleRepositoryInterface;
 use App\Repositories\Admin\Interfaces\PharmacyStatisticRepositoryInterface;
+use App\Repositories\Admin\Interfaces\ServiceCategoryRepositoryInterface;
 use App\Repositories\Admin\Interfaces\ServiceRepositoryInterface;
 use App\Repositories\Admin\Interfaces\StaffRepositoryInterface;
 use App\Repositories\Admin\Interfaces\StaffSalaryRepositoryInterface;
@@ -50,26 +53,31 @@ use App\Repositories\Admin\PatientRepository;
 use App\Repositories\Admin\PharmacyBranchRepository;
 use App\Repositories\Admin\PharmacyScheduleRepository;
 use App\Repositories\Admin\PharmacyStatisticRepository;
+use App\Repositories\Admin\ServiceCategoryRepository;
 use App\Repositories\Admin\ServiceRepository;
 use App\Repositories\Admin\StaffRepository;
 use App\Repositories\Admin\StaffSalaryRepository;
 use App\Repositories\Admin\SupplierPaymentRepository;
 use App\Repositories\Admin\SupplierRepository;
 use App\Repositories\Admin\TestimonialRepository;
+use App\Repositories\Web\ActivityCategoryRepository as WebActivityCategoryRepository;
 use App\Repositories\Web\ActivityRepository as WebActivityRepository;
 use App\Repositories\Web\CheckupProcessRepository as WebCheckupProcessRepository;
 use App\Repositories\Web\DoctorRepository as WebDoctorRepository;
 use App\Repositories\Web\FaqRepository as WebFaqRepository;
 use App\Repositories\Web\GalleryRepository as WebGalleryRepository;
 use App\Repositories\Web\HomeSliderRepository as WebHomeSliderRepository;
+use App\Repositories\Web\Interfaces\ActivityCategoryRepositoryInterface as InterfacesActivityCategoryRepositoryInterface;
 use App\Repositories\Web\Interfaces\ActivityRepositoryInterface as InterfacesActivityRepositoryInterface;
 use App\Repositories\Web\Interfaces\CheckupProcessRepositoryInterface as InterfacesCheckupProcessRepositoryInterface;
 use App\Repositories\Web\Interfaces\DoctorRepositoryInterface as InterfacesDoctorRepositoryInterface;
 use App\Repositories\Web\Interfaces\FaqRepositoryInterface as InterfacesFaqRepositoryInterface;
 use App\Repositories\Web\Interfaces\GalleryRepositoryInterface as InterfacesGalleryRepositoryInterface;
 use App\Repositories\Web\Interfaces\HomeSliderRepositoryInterface as InterfaceHomeSliderRepositoryInterface;
+use App\Repositories\Web\Interfaces\ServiceCategoryRepositoryInterface as InterfacesServiceCategoryRepositoryInterface;
 use App\Repositories\Web\Interfaces\ServiceRepositoryInterface as InterfacesServiceRepositoryInterface;
 use App\Repositories\Web\Interfaces\TestimonialRepositoryInterface as InterfacesTestimonialRepositoryInterface;
+use App\Repositories\Web\ServiceCategoryRepository as WebServiceCategoryRepository;
 use App\Repositories\Web\ServiceRepository as WebServiceRepository;
 use App\Repositories\Web\TestimonialRepository as WebTestimonialRepository;
 use Illuminate\Support\Facades\Schema;
@@ -114,6 +122,8 @@ class AppServiceProvider extends ServiceProvider
             CheckupProcessRepositoryInterface::class => CheckupProcessRepository::class,
             FaqRepositoryInterface::class => FaqRepository::class,
             TestimonialRepositoryInterface::class => TestimonialRepository::class,
+            ServiceCategoryRepositoryInterface::class => ServiceCategoryRepository::class,
+            ActivityCategoryRepositoryInterface::class => ActivityCategoryRepository::class,
 
 
             /* ============ Web bindings ============ */
@@ -125,7 +135,9 @@ class AppServiceProvider extends ServiceProvider
             InterfacesGalleryRepositoryInterface::class => WebGalleryRepository::class,
             ServiceRepositoryInterface::class => ServiceRepository::class,
             InterfacesServiceRepositoryInterface::class => WebServiceRepository::class,
-            InterfacesActivityRepositoryInterface::class => WebActivityRepository::class
+            InterfacesActivityRepositoryInterface::class => WebActivityRepository::class,
+            InterfacesServiceCategoryRepositoryInterface::class => WebServiceCategoryRepository::class,
+            InterfacesActivityCategoryRepositoryInterface::class => WebActivityCategoryRepository::class
 
         ];
 

@@ -16,7 +16,7 @@
 
                         @if($faqs->isNotEmpty())
                         @foreach($faqs as $faq)
-                        <x-web.sections.faq.partials.card :question="$faq->question ?? ''" :answer="$faq->answer" />
+                        <x-web.sections.faq.partials.card :question="$faq->question ?? ''" answer="{!! $faq->answer !!}" />
                         @endforeach
                         @endif
                     </div>

@@ -31,7 +31,7 @@
               </div>
               <h2 class="blog-title"><a href="{{ route('web.activity.show', encrypt($activity->id)) }}">{{ $activity->title ?? '' }}</a>
               </h2>
-              <p class="blog-text">{{ $activity->description ?? '' }}</p>
-              <a href="{{ route('web.activity.show', , encrypt($activity->id)) }}" class="th-btn btn-sm">Read More</a>
+              <p class="blog-text">{!! $activity->description ?? '' !!}</p>
+              <a href="{{ route('web.activity.show', encrypt($activity->id)) }}" class="th-btn btn-sm">Read More</a>
           </div>
       </div>

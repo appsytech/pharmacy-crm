@@ -55,7 +55,11 @@ class PageController extends Controller
 
     public function aboutUs()
     {
-        $data = [];
+        $data = [
+            'testimonials' => $this->testimonialService->getTestimonials([
+                'status' => 'APPROVED'
+            ]),
+        ];
 
         return view('web.pages.about', compact('data'));
     }

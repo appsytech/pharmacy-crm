@@ -66,9 +66,12 @@
                      alt="">
              </div>
              @elseif($type == 'textarea')
-             <textarea id="{{ $id }}" placeholder="{{ $placeholder }}" name="{{ $name }}" {{ $attributes->merge([
+             <!-- <textarea id="{{ $id }}" placeholder="{{ $placeholder }}" {{ $attributes->merge([
                'class' =>   'w-full px-4 py-2.5 text-sm text-gray-700 bg-white border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all shadow-sm hover:shadow-md placeholder-gray-400'
-             ]) }}>{{ $value ?? '' }}</textarea>
+             ]) }}>{{ $value ?? '' }}</textarea> -->
+
+             <div id="descriptionEditor" style="height: 300px;">{!! $value ?? '' !!}</div>
+             <input type="hidden" name="{{ $name }}" id="{{ $id }}" value="{{ $value ?? '' }}">
 
              @else
              <input id="{{ $id }}" placeholder="{{ $placeholder }}" name="{{ $name }}" value="{{ $value ?? '' }}"

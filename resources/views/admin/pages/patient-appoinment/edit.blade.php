@@ -93,14 +93,16 @@
                 </x-admin.globals.forms.field>
 
                 {{-- ====== notes ====== --}}
-                <x-admin.globals.forms.field type="textarea" value="{{ $data['appointment']->notes ?? '' }}" label="Notes" name="notes" placeholder="Enter Notes"
+                <x-admin.globals.forms.field type="textarea" value="{!! $data['appointment']->notes ?? '' !!}"
+                    id="description"
+                    label="Notes" name="notes" placeholder="Enter Notes"
                     :svgUrl="asset('assets/svg/file-text.svg')" />
 
                 <x-admin.globals.forms.field type="hidden" name="id" value="{{ $data['appointment']->id }}" />
             </x-slot>
 
             <x-slot name="action_buttons">
-                <x-admin.globals.buttons.quinary type="url" :url="route('admin.index')" label="Cancel" :svgUrl="asset('assets/svg/corner-up-left.svg')" />
+                <x-admin.globals.buttons.quinary type="url" :url="route('patient-appointment.index')" label="Cancel" :svgUrl="asset('assets/svg/corner-up-left.svg')" />
                 <x-admin.globals.buttons.quaternary type="submit" class="flex-1" label="Save" :svgUrl="asset('assets/svg/white-save.svg')" />
             </x-slot>
 

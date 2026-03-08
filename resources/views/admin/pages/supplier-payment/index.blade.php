@@ -78,6 +78,7 @@
 
 
 
+
         @scopedslot('cellaction', ($row))
         <div class="flex items-center justify-center gap-1">
             <x-admin.headers.icon-button :url="route('supplier-payment.edit', encrypt($row->id))" class="px-0!" :svgUrl="asset('assets/svg/pencil.svg')" />
@@ -203,9 +204,10 @@
 
                 <!-- ====== Description ====== -->
                 <x-admin.globals.forms.field
-                    type="text"
+                    type="textarea"
                     label="Description"
                     name="description"
+                    id="description"
                     placeholder="Enter Description"
                     :svgUrl="asset('assets/svg/file-text.svg')" />
 

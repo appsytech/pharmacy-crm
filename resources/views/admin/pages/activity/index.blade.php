@@ -54,6 +54,11 @@
                 data-targetModalId="activity-add-modal" :svgUrl="asset('assets/svg/plus-white.svg')" />
         </x-slot>
 
+        @scopedslot('celldescription', ($row))
+        {!! \Illuminate\Support\Str::words(strip_tags($row->description), 20, '...') !!}
+        @endscopedslot
+
+
         @scopedslot('cellaction', ($row))
         <div class="flex items-center justify-center gap-1">
             <x-admin.headers.icon-button :url="route('activity.edit', encrypt($row->id))" class="px-0!" :svgUrl="asset('assets/svg/pencil.svg')" />
@@ -92,6 +97,20 @@
                 <x-admin.globals.forms.field type="text" label="Title" name="title" required
                     placeholder="Enter Full Name" :svgUrl="asset('assets/svg/book-type.svg')" />
 
+                {{-- ====== Category ====== --}}
+                <x-admin.globals.forms.field
+                    type="select"
+                    label="Category"
+                    name="category_id"
+                    required
+                    :svgUrl="asset('assets/svg/tag.svg')">
+                    <x-slot>
+                        @foreach($data['categories'] ?? [] as $category)
+                        <option value="{{ $category->id }}">{{ $category->name ?? '' }}</option>
+                        @endforeach
+                    </x-slot>
+                </x-admin.globals.forms.field>
+
                 {{-- ====== Sort ====== --}}
                 <x-admin.globals.forms.field type="number" label="Sort" name="sort" placeholder="Enter sort" required
                     :svgUrl="asset('assets/svg/arrow-up-down.svg')" />
@@ -114,7 +133,7 @@
                 </x-admin.globals.forms.field>
 
                 {{-- ====== Description ====== --}}
-                <x-admin.globals.forms.field type="textarea" label="Description" name="description" placeholder="Enter Description" required
+                <x-admin.globals.forms.field type="textarea" label="Description" id="description" name="description" placeholder="Enter Description" required
                     :svgUrl="asset('assets/svg/file-text.svg')" />
 
                 {{-- ====== Image ====== --}}

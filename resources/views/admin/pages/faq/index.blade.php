@@ -67,8 +67,9 @@
                 data-targetModalId="faq-add-modal" :svgUrl="asset('assets/svg/plus-white.svg')" />
         </x-slot>
 
-
-
+        @scopedslot('cellanswer', ($row))
+        {!! \Illuminate\Support\Str::words(strip_tags($row->answer), 20, '...') !!}
+        @endscopedslot
 
         @scopedslot('cellaction', ($row))
         <div class="flex items-center justify-center gap-1">
@@ -116,6 +117,7 @@
                 {{-- ====== Answer ====== --}}
                 <x-admin.globals.forms.field
                     type="textarea"
+                    id="description"
                     label="Answer"
                     name="answer"
                     required

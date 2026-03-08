@@ -28,6 +28,7 @@
                 @method('put')
             </x-slot:extra_methods>
             <x-slot name="fields">
+
                 {{-- ====== Title ====== --}}
                 <x-admin.globals.forms.field
                     type="text"
@@ -37,6 +38,20 @@
                     required
                     placeholder="Enter Title"
                     :svgUrl="asset('assets/svg/hash.svg')" />
+
+                {{-- ====== Category ====== --}}
+                <x-admin.globals.forms.field
+                    type="select"
+                    label="Category"
+                    name="category_id"
+                    required
+                    :svgUrl="asset('assets/svg/tag.svg')">
+                    <x-slot>
+                        @foreach($data['categories'] ?? [] as $category)
+                        <option value="{{ $category->id }}" {{ $data['service']->category_id == $category->id ? 'selected' : '' }}>{{ $category->title ?? '' }}</option>
+                        @endforeach
+                    </x-slot>
+                </x-admin.globals.forms.field>
 
                 {{-- ====== Icon ====== --}}
                 <x-admin.globals.forms.field
@@ -62,7 +77,8 @@
                     type="textarea"
                     label="Description"
                     name="description"
-                    value="{{ $data['service']->description ?? '' }}"
+                    id="description"
+                    value="{!! $data['service']->description ?? '' !!}"
                     placeholder="Enter Description"
                     :svgUrl="asset('assets/svg/file-text.svg')" />
 
@@ -75,14 +91,7 @@
                     placeholder="Enter Location"
                     :svgUrl="asset('assets/svg/map-pin.svg')" />
 
-                {{-- ====== Mission Description ====== --}}
-                <x-admin.globals.forms.field
-                    type="textarea"
-                    label="Mission Description"
-                    name="mission_description"
-                    value="{{ $data['service']->mission_description ?? '' }}"
-                    placeholder="Enter Mission Description"
-                    :svgUrl="asset('assets/svg/file-text.svg')" />
+
 
                 {{-- ====== Images 1 ====== --}}
                 <x-admin.globals.forms.field
@@ -143,8 +152,8 @@
                     required
                     :svgUrl="asset('assets/svg/tag.svg')">
                     <x-slot>
-                        <option value="1">Active</option>
-                        <option value="0">Inactive</option>
+                        <option value="1" {{ $data['service']->status == '1' ? 'selected' : '' }}>Active</option>
+                        <option value="0" {{ $data['service']->status == '0' ? 'selected' : '' }}>Inactive</option>
                     </x-slot>
                 </x-admin.globals.forms.field>
 

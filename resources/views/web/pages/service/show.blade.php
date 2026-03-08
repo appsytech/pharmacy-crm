@@ -11,6 +11,9 @@
 <!--==============================
     Service Area
 ==============================-->
-<x-web.pages.sections.service.service-details.wrapper :service="$data['service']" :realtedServices="$data['relatedServices']" />
+<x-web.pages.sections.service.service-details.wrapper
+    :service="$data['service']"
+    :categories="$data['categories']"
+    :realtedServices="$data['relatedServices']" />
 
 @endsection

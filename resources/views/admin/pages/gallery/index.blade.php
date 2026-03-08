@@ -100,6 +100,7 @@
 
                 {{-- ====== Description ====== --}}
                 <x-admin.globals.forms.field
+                    id="description"
                     type="textarea"
                     label="Description"
                     name="description"

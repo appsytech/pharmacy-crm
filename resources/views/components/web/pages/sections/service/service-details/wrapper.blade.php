@@ -1,6 +1,7 @@
 @props([
 'service',
-'relatedServices' => collect([])
+'relatedServices' => collect([]),
+'categories' => collect([])
 ])
 
 <section class="space-top space-extra-bottom">
@@ -14,14 +15,14 @@
                     <div class="page-content">
                         <h2 class="page-title">{{ $service->title ?? '' }}</h2>
                         <p class="">
-                            {{ $service->description ?? ''}}
+                            {!! $service->description ?? ''!!}
                         </p>
                     </div>
                 </div>
             </div>
 
             <div class="col-xxl-4 col-lg-4">
-                <x-web.pages.common-ui.side-category-widget.wrapper>
+                <x-web.pages.common-ui.side-category-widget.wrapper :categories="$categories">
                     <x-slot>
                         <x-web.pages.common-ui.schedule-tab.wrapper />
                     </x-slot>

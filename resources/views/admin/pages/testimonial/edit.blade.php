@@ -97,9 +97,10 @@
                 {{-- ====== Description ====== --}}
                 <x-admin.globals.forms.field
                     type="textarea"
+                    id="description"
                     label="Description"
                     name="description"
-                    value="{{ $data['testimonial']->description ?? '' }}"
+                    value="{!! $data['testimonial']->description ?? '' !!}"
                     required
                     placeholder="Enter Description"
                     :svgUrl="asset('assets/svg/file-text.svg')" />

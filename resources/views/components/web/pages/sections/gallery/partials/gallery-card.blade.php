@@ -27,8 +27,8 @@
                 <i class="far fa-eye"></i>
             </a>
             @endif
-            <h3 class="box-title">Dental Cleaning</h3>
-            <p class="box-text">Thorough dental checkups, prioritize health over aesthetics.</p>
+            <h3 class="box-title">{{ $gallery->title ?? '' }}</h3>
+            <p class="box-text">{!! $gallery->description ?? '' !!}</p>
         </div>
     </div>
 </div>

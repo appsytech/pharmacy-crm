@@ -123,10 +123,11 @@
 
                 <!-- ====== Description ====== -->
                 <x-admin.globals.forms.field
-                    type="text"
+                    type="textarea"
                     label="Description"
                     name="description"
-                    value="{{ $data['payment']->description ?? '' }}"
+                    id="description"
+                    value="{!! $data['payment']->description ?? '' !!}"
                     placeholder="Enter Description"
                     :svgUrl="asset('assets/svg/file-text.svg')" />
 

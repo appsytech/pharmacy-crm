@@ -3,13 +3,15 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Services\Web\ServiceCategoryService;
 use App\Services\Web\ServiceService;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
     public function __construct(
-        protected ServiceService $serviceService
+        protected ServiceService $serviceService,
+        protected ServiceCategoryService $serviceCategoryService
     ) {}
 
 
@@ -34,6 +36,8 @@ class ServiceController extends Controller
                 'exceptId' => $service->id,
                 'limit' => 5,
             ], ['id', 'icon', 'title', 'created_at', 'created_by']),
+            'categories' => $this->serviceCategoryService->getServiceCategoriesCollection()
+
         ];
 
 

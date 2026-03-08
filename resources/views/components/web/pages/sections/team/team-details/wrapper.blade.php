@@ -15,7 +15,7 @@
             </div>
             <div class="col-xl-8">
                 <div class="team-details">
-                    {{ $team->description ?? '' }}
+                    {!! $team->description ?? '' !!}
 
                     <x-web.pages.sections.team.team-details.partials.team-contact />
                 </div>

@@ -135,7 +135,11 @@
                     :svgUrl="asset('assets/svg/image-plus.svg')" />
 
                 {{-- ====== Description ====== --}}
-                <x-admin.globals.forms.field type="textarea" label="Description" name="description" placeholder="Enter Description"
+                <x-admin.globals.forms.field type="textarea"
+                    label="Description"
+                    id="description"
+                    name="description"
+                    placeholder="Enter Description"
                     :svgUrl="asset('assets/svg/file-text.svg')" />
             </x-slot>
 

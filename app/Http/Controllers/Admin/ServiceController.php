@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Services\Admin\ServiceCategoryService;
 use App\Services\Admin\ServiceService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -13,7 +14,9 @@ use Illuminate\View\View;
 class ServiceController extends Controller
 {
     public function __construct(
-        protected ServiceService $serviceService
+        protected ServiceService $serviceService,
+        protected ServiceCategoryService $serviceCategoryService,
+
     ) {}
 
 
@@ -31,6 +34,9 @@ class ServiceController extends Controller
                 'title' => $request->title ?? null,
                 'status' => $request->status,
             ]),
+            'categories' => $this->serviceCategoryService->getServiceCategories([
+                'status' => true
+            ], ['id', 'title']),
             'oldInputs' => $request->all(),
         ];
 
@@ -41,10 +47,10 @@ class ServiceController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title'               => 'required|string|max:255',
+            'category_id'         =>  'required|integer|exists:service_categories,id',
             'icon'                => 'required|file',
             'description'         => 'nullable|string',
             'location'            => 'nullable|string|max:255',
-            'mission_description' => 'nullable|string',
             'images1'             => 'nullable|file',
             'images2'             => 'nullable|file',
             'images3'             => 'nullable|file',
@@ -69,6 +75,9 @@ class ServiceController extends Controller
     {
         $data = [
             'service' => $this->serviceService->find((int) decrypt($request->id)),
+            'categories' => $this->serviceCategoryService->getServiceCategories([
+                'status' => true
+            ], ['id', 'title']),
         ];
 
         return view('admin.pages.service.edit', compact('data'));
@@ -78,11 +87,11 @@ class ServiceController extends Controller
     {
         $request->validate([
             'id' => 'required|integer',
+            'category_id'         =>  'required|integer|exists:service_categories,id',
             'title'               => 'required|string|max:255',
             'icon'                => 'nullable|file',
             'description'         => 'nullable|string',
             'location'            => 'nullable|string|max:255',
-            'mission_description' => 'nullable|string',
             'images1'             => 'nullable|file',
             'images2'             => 'nullable|file',
             'images3'             => 'nullable|file',
