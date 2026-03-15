@@ -5,6 +5,7 @@ namespace App\Services\Web;
 use App\Models\Service;
 use App\Repositories\Web\Interfaces\ServiceRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class ServiceService
 {
@@ -29,7 +30,7 @@ class ServiceService
     /* ============================================================================
     |  Fetch Service with optional filters and selected columns.
     ==============================================================================*/
-    public function getServices(?array $filterData = null, ?array $selectedcolumns = null): ?Collection
+    public function getServices(?array $filterData = null, ?array $selectedcolumns = null): ?LengthAwarePaginator
     {
         return $this->serviceRepo->getServices($filterData, $selectedcolumns);
     }

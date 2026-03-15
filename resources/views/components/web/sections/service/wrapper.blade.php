@@ -3,7 +3,7 @@
 'sectionSubTitle' => null,
 'sectionTitle' => null,
 'paginate' => false,
-'services' => collect([])
+'services'
 ])
 
 <section {{ $attributes->class(['overflow-hidden space'])->merge() }} id="service-sec" {{ isset($bgImg) ? 'data-bg-src="assets/img/bg/service_bg_1.png"' : '' }}>
@@ -28,18 +28,7 @@
 
         @if($paginate)
 
-        <div class="th-pagination text-center mt-5 mb-0">
-            <ul>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li>
-                    <a href="#">
-                        <i class="far fa-arrow-right"></i>
-                    </a>
-                </li>
-            </ul>
-        </div>
+        {{ $services->links('pagination::bootstrap-5') }}
 
         @else
         <div class="mt-5 pt-2 space-extra-bottom">

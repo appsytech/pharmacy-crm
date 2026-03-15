@@ -38,6 +38,7 @@ use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Web\ActivityController as WebActivityController;
 use App\Http\Controllers\Web\AppointmentController;
 use App\Http\Controllers\Web\BlogController;
+use App\Http\Controllers\web\InquiryController as WebInquiryController;
 use App\Http\Controllers\Web\PageController;
 use App\Http\Controllers\Web\ServiceController;
 use App\Http\Controllers\Web\TeamController;
@@ -333,3 +334,8 @@ Route::get('activity/details/{id}', [WebActivityController::class, 'show'])->nam
 
 /* ====================== Web > Contact  ====================== */
 Route::get('contact', [PageController::class, 'contact'])->name('web.contact.index');
+
+
+
+/* ======================Web Routes > Inquiry====================== */
+Route::post('inquiry/store', [WebInquiryController::class, 'store'])->name('inquiry.store');

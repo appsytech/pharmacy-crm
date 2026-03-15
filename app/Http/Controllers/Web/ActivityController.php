@@ -20,8 +20,7 @@ class ActivityController extends Controller
     {
         $data = [
             'activities' => $this->activityService->getActivities(),
-            'categories' => $this->serviceCategoryService->getServiceCategoriesCollection()
-
+            'categories' => $this->serviceCategoryService->getServiceCategoriesCollection(),
         ];
 
         return view('web.pages.activity.index', compact('data'));
@@ -32,8 +31,10 @@ class ActivityController extends Controller
     {
         $data = [
             'activity'  => $this->activityService->find($request->id),
-            'categories' => $this->serviceCategoryService->getServiceCategoriesCollection()
-
+            'categories' => $this->serviceCategoryService->getServiceCategoriesCollection(),
+            'recentActivities' => $this->activityService->getActivities([
+                'exceptId' =>  (int) decrypt($request->id)
+            ])
         ];
 
         return view('web.pages.activity.show', compact('data'));

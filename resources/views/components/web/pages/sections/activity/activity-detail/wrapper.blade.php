@@ -1,5 +1,7 @@
 @props([
-'activity'
+'activity',
+'recentActivities' => collect([]),
+'categories' => collect([])
 ])
 
 <section class="th-blog-wrapper blog-details space-top space-extra-bottom">
@@ -135,9 +137,9 @@
             </div>
 
             <div class="col-xxl-4 col-lg-5">
-                <x-web.pages.common-ui.side-category-widget.wrapper>
+                <x-web.pages.common-ui.side-category-widget.wrapper :categories="$categories">
                     <x-slot>
-                        <!-- <x-web.pages.common-ui.recent-post.wrapper /> -->
+                        <x-web.pages.common-ui.recent-post.wrapper :recents="$recentActivities" detailRouteName="web.activity.show" />
                         <x-web.pages.common-ui.tags.wrapper />
                     </x-slot>
                 </x-web.pages.common-ui.side-category-widget.wrapper>

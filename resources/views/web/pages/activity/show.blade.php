@@ -12,6 +12,6 @@
 <!--==============================
         Activity Area
 ==============================-->
-<x-web.pages.sections.activity.activity-detail.wrapper :activity="$data['activity']" :categories="$data['categories']" />
+<x-web.pages.sections.activity.activity-detail.wrapper :activity="$data['activity']" :recentActivities="$data['recentActivities']" :categories="$data['categories']" />
 
 @endsection

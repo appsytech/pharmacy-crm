@@ -4,6 +4,7 @@ namespace App\Repositories\Web\Interfaces;
 
 use App\Models\Service;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 interface ServiceRepositoryInterface
 {
@@ -11,7 +12,7 @@ interface ServiceRepositoryInterface
     /* ============================================================================
     |  Fetch Service with optional filters and selected columns.
     ==============================================================================*/
-    public function getServices(?array $filterData = null, ?array $selectedcolumns = null): ?Collection;
+    public function getServices(?array $filterData = null, ?array $selectedcolumns = null): ?LengthAwarePaginator;
 
 
     /* ============================================================================

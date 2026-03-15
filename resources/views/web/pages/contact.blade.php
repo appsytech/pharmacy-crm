@@ -3,6 +3,9 @@
 @section('content')
 
 
+<div id="popup-container" class="position-fixed top-0 end-0 p-3 d-flex flex-column gap-2" style="z-index: 1050;">
+</div>
+
 <!--==============================
     Breadcumb
 ============================== -->

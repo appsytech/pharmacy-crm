@@ -5,6 +5,8 @@ window.$ = window.jQuery = $;
 
 window.jQuery = $;
 
+import "./events";
+
 // import "jquery-datetimepicker/build/jquery.datetimepicker.min.css";
 
 // import "magnific-popup/dist/jquery.magnific-popup.min.js";

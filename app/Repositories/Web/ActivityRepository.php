@@ -57,6 +57,12 @@ class ActivityRepository implements ActivityRepositoryInterface
                 }
             )
             ->when(
+                isset($filterData['exceptId']),
+                function ($query) use ($filterData) {
+                    return $query->where('id', '!=', $filterData['exceptId']);
+                }
+            )
+            ->when(
                 isset($filterData['type']),
                 function ($query) use ($filterData) {
                     $query->where('type', $filterData['type']);
@@ -70,6 +76,6 @@ class ActivityRepository implements ActivityRepositoryInterface
             )
             ->where('status', true)
             ->orderBy('sort', 'asc')
-            ->paginate($filterData['paginateLimit'] ?? 10);
+            ->paginate($filterData['paginateLimit'] ?? 4);
     }
 }

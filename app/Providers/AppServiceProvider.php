@@ -67,6 +67,8 @@ use App\Repositories\Web\DoctorRepository as WebDoctorRepository;
 use App\Repositories\Web\FaqRepository as WebFaqRepository;
 use App\Repositories\Web\GalleryRepository as WebGalleryRepository;
 use App\Repositories\Web\HomeSliderRepository as WebHomeSliderRepository;
+use App\Repositories\Web\InquiryRepository as WebInquiryRepository;
+use App\Repositories\Web\Interfaces\InquiryRepositoryInterface as InterfaceInquiryRepositoryInterface;
 use App\Repositories\Web\Interfaces\ActivityCategoryRepositoryInterface as InterfacesActivityCategoryRepositoryInterface;
 use App\Repositories\Web\Interfaces\ActivityRepositoryInterface as InterfacesActivityRepositoryInterface;
 use App\Repositories\Web\Interfaces\CheckupProcessRepositoryInterface as InterfacesCheckupProcessRepositoryInterface;
@@ -137,7 +139,8 @@ class AppServiceProvider extends ServiceProvider
             InterfacesServiceRepositoryInterface::class => WebServiceRepository::class,
             InterfacesActivityRepositoryInterface::class => WebActivityRepository::class,
             InterfacesServiceCategoryRepositoryInterface::class => WebServiceCategoryRepository::class,
-            InterfacesActivityCategoryRepositoryInterface::class => WebActivityCategoryRepository::class
+            InterfacesActivityCategoryRepositoryInterface::class => WebActivityCategoryRepository::class,
+            InterfaceInquiryRepositoryInterface::class => WebInquiryRepository::class
 
         ];
 

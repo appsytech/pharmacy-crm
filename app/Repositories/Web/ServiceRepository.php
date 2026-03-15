@@ -5,6 +5,7 @@ namespace App\Repositories\Web;
 use App\Models\Service;
 use App\Repositories\Web\Interfaces\ServiceRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class ServiceRepository implements ServiceRepositoryInterface
 {
@@ -35,7 +36,7 @@ class ServiceRepository implements ServiceRepositoryInterface
     /* ============================================================================
     |  Fetch Service with optional filters and selected columns.
     ==============================================================================*/
-    public function getServices(?array $filterData = null, ?array $selectedcolumns = null): ?Collection
+    public function getServices(?array $filterData = null, ?array $selectedcolumns = null): ?LengthAwarePaginator
     {
         return Service::when(
             isset($filterData['title']),
@@ -63,6 +64,6 @@ class ServiceRepository implements ServiceRepositoryInterface
             )
             ->orderBy('sort', 'asc')
             ->where('status', true)
-            ->get();
+            ->paginate($filterData['paginateLimit'] ?? 4);
     }
 }
